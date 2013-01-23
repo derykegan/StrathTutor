@@ -1,6 +1,5 @@
 <?php
 	// import session and header
-	include_once 'libraries/session.php';
 	include_once 'header.php';
 	include_once 'libraries/sql.php';
 	
