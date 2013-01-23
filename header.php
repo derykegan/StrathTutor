@@ -2,7 +2,7 @@
 	// import session and sql
 	include_once 'libraries/session.php';
 	include_once 'libraries/sql.php';
-	include_once 'libraries/config.php';
+	include 'libraries/config.php';
 	
 	// *todo* - insert HTML doctype headers here
 
