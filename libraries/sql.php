@@ -42,7 +42,7 @@
 	}
 	
 	// create a new user if they do not exist already
-	function createUser($username, $password, $userType, $email){
+	function createUser($username, $password, $userType, $email, $firstname, $lastname){
 		global $db;
 		
 		// use escape string to avoid injection attacks
@@ -50,8 +50,8 @@
 		// hash password using SHA-512
 		$Spassword = hash("sha512", $password); 
 		
-		$query = "INSERT INTO User (username, password, userType, email) 
-			VALUES ($Susername, $Spassword, $userType, $email)";
+		$query = "INSERT INTO User (username, password, userType, email, firstname, lastname) 
+			VALUES ($Susername, $Spassword, $userType, $email, $firstname, $lastname)";
 		
 		// proceed if user doesn't already exist
 		if(!userExists($username)){
