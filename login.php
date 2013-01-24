@@ -39,7 +39,6 @@ EOT;
 	
 	// print error message if previous login was invalid
 	if($printError){
-		$_SESSION['invalidLogin'] = false;
 		echo "<div class='errorNotice'><p>Login failed - please try again.</p></div>";
 	}
 	echo $loginform;
