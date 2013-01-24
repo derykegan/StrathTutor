@@ -18,6 +18,8 @@
 		
 		// check user Type and set
 		$type = getUserType($username);
+		$firstName = getUserFirstName($username);
+		$_SESSION['firstName'] = $firstName;
 		$_SESSION['userType'] = $type;
 		
 		header("Location: ../index.php");
