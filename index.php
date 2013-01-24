@@ -6,7 +6,7 @@
 	
 	$redir = "";
 	
-	// Check if the user is logged in, then check type
+	// Check if the user is logged in, then check user type
 	if (isset($_GET['loggedIn'])) {
 		$userType = $_SESSION['userType'];
 		
