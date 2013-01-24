@@ -18,7 +18,10 @@
 	
 	// not logged in, redirect to login page
 	else{
-		// TODO - set session flag on failed login
+		
+		// set session flag to indicate incorrect login, then redirect
+		$_SESSION['invalidLogin'] = true;
+		
 		header("Location: ../login.php");
 	}
 

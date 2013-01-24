@@ -2,6 +2,15 @@
 	
 	include_once "header.php";
 	
+	$printError = false;
+	// check session login details
+	if(isset($_SESSION['invalidLogin'])){
+		if($_SESSION['invalidLogin']){
+			$printError = true;
+		}
+		unset($_SESSION['invalidLogin']);
+	}
+	
 $loginform = <<<EOT
 	
         <form method="POST" action="libraries/authenticate.php">
@@ -27,7 +36,12 @@ EOT;
 
 	// now print header and login form to client
 	echo(getHeader() . "\n");
-
+	
+	// print error message if previous login was invalid
+	if($printError){
+		$_SESSION['invalidLogin'] = false;
+		echo "<div class='errorNotice'><p>Login failed - please try again.</p></div>";
+	}
 	echo $loginform;
 
 ?>
