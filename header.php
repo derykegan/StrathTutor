@@ -17,7 +17,7 @@
 			$header = $header . "<div class='header_Description'>$site_desc</div>";
 		}
 		
-		$header = $header . "<div class='header_Nav'>Log in | About</div>";
+		$header = $header . "<div class='header_Nav'><a href='login.php'>Log in</a> | About</div>";
 		
 		// function will return header
 		return $header;

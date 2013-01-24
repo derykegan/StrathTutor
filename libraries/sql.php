@@ -41,6 +41,23 @@
 			}
 	}
 	
+	// get user type for given username
+	function getUserType($username){
+		global $db;
+		
+		// use escape string to avoid injection attacks
+		$Susername = mysqli_real_escape_string($db, $username);
+		
+		$query = "SELECT userType FROM User WHERE User.username = '$Susername'";
+     
+        // Execute query
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		
+		$row = mysqli_fetch_row($result);
+		$toReturn = $row[0];
+		return $toReturn;
+	}
+	
 	// create a new user if they do not exist already
 	function createUser($username, $password, $userType, $email, $firstname, $lastname){
 		global $db;

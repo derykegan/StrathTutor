@@ -1,6 +1,7 @@
 <?php
 	include_once "../header.php";
 	include_once "sql.php";
+	include_once "session.php";
 	
 	// get username and password from POST
 	$username = $_POST['username'];
@@ -13,6 +14,12 @@
 	
 	// if logged in, redirect to index
 	if($loggedIn){
+		$_SESSION['loggedIn'] = true;
+		
+		// check user Type and set
+		$type = getUserType($username);
+		$_SESSION['userType'] = $type;
+		
 		header("Location: ../index.php");
 	}
 	
