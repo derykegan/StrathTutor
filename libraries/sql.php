@@ -8,27 +8,25 @@
 	$db_name = "rmb09188";
 
 	// connect to database server
-	$connect = mysql_connect($db_hostname, $db_username, $db_password)
-    		or die('Connection error: ' . mysql_error());
-
-	// and then supplied database
-	mysql_select_db($db_name) or die('Could not select database' . mysql_error());
+	$db = mysqli_connect($db_hostname, $db_username, $db_password, $db_name)
+    		or die('Connection error: ' . mysqli_error());
 
 	// connected.
 	
 	// user authentication
 	function login($username, $password){
+		global $db;
 		
 		// use escape string to avoid injection attacks
-		$Susername = mysql_real_escape_string($username);
+		$Susername = mysqli_real_escape_string($username);
 			
 		// basic query - to be changed to use hashing
 		$query = "SELECT * FROM user WHERE user.username = '$Susername' AND user.password = '$password'";
      
         // Execute query
-		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error());
 		
-		$num_rows = mysql_num_rows($result);
+		$num_rows = mysqli_num_rows($result);
 		
 		// if we have only one row returned, login was successful
 		if($num_rows == 1){
@@ -43,15 +41,29 @@
 	
 	// accessor method to perform SQL query.
 	function doQuery($query){
-		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+		global $db;
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error());
 		return $result;
+	}
+	
+	// return page content for given page name
+	function getPageContent($pageName){
+		global $db;
+		$query = "SELECT Page_content FROM PageContent WHERE PageContent.Page_title = '$pageName'";
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error());
+		$row = mysqli_fetch_assoc($result);
+		$toReturn = $row['Page_content'];
+		return $toReturn;
 	}
 	
 	// method to read from site settings
 	function getSetting($setting){
-		$query = "SELECT * FROM Settings WHERE Settings.key = '$setting'";
-		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
-		return $result;
+		global $db;
+		$query = "SELECT value FROM Settings WHERE Settings.key = '$setting'";
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error());
+		$row = mysqli_fetch_row($result);
+		$toReturn = $row[0];
+		return $toReturn;
 	}
 
 ?>
