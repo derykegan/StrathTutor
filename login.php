@@ -31,7 +31,6 @@ $loginform = <<<EOT
             </table>
 			</div>
         </form>
-		</td></tr></table>
 EOT;
 
 	// now print header and login form to client
