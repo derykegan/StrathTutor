@@ -19,9 +19,11 @@
 		
 		// use escape string to avoid injection attacks
 		$Susername = mysqli_real_escape_string($username);
+		// hash password using SHA-512
+		$Spassword = hash("sha512", $password); 
 			
-		// basic query - to be changed to use hashing
-		$query = "SELECT * FROM user WHERE user.username = '$Susername' AND user.password = '$password'";
+		// query db using escaped username and hashed password
+		$query = "SELECT * FROM User WHERE User.username = '$Susername' AND User.password = '$Spassword'";
      
         // Execute query
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error());

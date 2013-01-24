@@ -6,7 +6,7 @@ $loginform = <<<EOT
 	
         <form method="POST" action="libraries/authenticate.php">
  			<div class="page_Login">           	
-			<p>Please log in below with your username or email address and password.</p>			
+			<p>Please log in below with your username (or email address) and password.</p>			
 			<table>
                 <tr>
                     <td><p>Username:</p></td>
