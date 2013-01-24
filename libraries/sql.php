@@ -46,5 +46,12 @@
 		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
 		return $result;
 	}
+	
+	// method to read from site settings
+	function getSetting($setting){
+		$query = "SELECT * FROM Settings WHERE Settings.key = '$setting'";
+		$result = mysql_query($query) or die ("Error in query: $query. ".mysql_error());
+		return $result;
+	}
 
 ?>

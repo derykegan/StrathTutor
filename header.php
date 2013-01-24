@@ -2,14 +2,13 @@
 	// import session and sql
 	include_once 'libraries/session.php';
 	include_once 'libraries/sql.php';
-	include 'libraries/config.php';
 	
 	// *todo* - insert HTML doctype headers here
 
 	// method to return header when called.
 	function getHeader(){
-		$site_name = getSiteName();
-		$site_desc = getSiteDesc();
+		$site_name = getSetting("site_name");
+		$site_desc = getSetting("site_description");
 		$header = "<div class='header_Title'>$site_name</div>";
 		
 		// display site description in header if appropriate
