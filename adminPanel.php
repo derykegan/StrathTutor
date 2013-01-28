@@ -12,7 +12,20 @@
 	// print header
 	echo(getHeader() . "\n");
 	
+	// heredoc for page content
+$adminPage = <<<EOT
 	
+	<br />
+	<div class = 'panelTitle'>Administration</div>
+	<div class = 'panelText'>Please select an option below to begin configuration.</div>
+	<br />
+	<div class = 'panelOption'><a href='admin/user.php'>User Management</a></div>
+	<div class = 'panelOption'><a href='admin/subject.php'>Subject Management</a></div>
+	<div class = 'panelOption'><a href='admin/site.php'>Site Configuration</a></div>
+    
+EOT;
 	
+	// print admin page
+	echo($adminPage);
 	
 ?>
