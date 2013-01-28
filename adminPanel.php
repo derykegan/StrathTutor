@@ -19,9 +19,9 @@ $adminPage = <<<EOT
 	<div class = 'panelTitle'>Administration</div>
 	<div class = 'panelText'>Please select an option below to begin configuration.</div>
 	<br />
-	<div class = 'panelOption'><a href='admin_user.php'>User Management</a></div>
-	<div class = 'panelOption'><a href='admin_subject.php'>Subject Management</a></div>
-	<div class = 'panelOption'><a href='admin_site.php'>Site Configuration</a></div>
+	<div><a class = 'panelOption'href='admin_user.php'>User Management</a></div>
+	<div><a class = 'panelOption'href='admin_subject.php'>Subject Management</a></div>
+	<div><a class = 'panelOption'href='admin_site.php'>Site Configuration</a></div>
     
 EOT;
 	

@@ -33,19 +33,40 @@ div.header_Description{
 /* ------------------------------------------*/
 
 /* user panel specific ----------------------*/
-div.panelOption{
+a.panelOption{
+	/* button background */
 	display:block;
 	box-shadow:#000;
-	width:200px;
+	width:20em;
+	/* default background / compatibility */
 	background-color:#090;
+	/* browser specifics */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090', endColorstr='#0C0'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#090), to(#0C0)); /* webkit */
+	background: -moz-linear-gradient(top,  #090,  #0C0); /* firefox */
+	
+	/* button text */
 	text-align:center;
 	padding: 1em 0;
+	text-shadow:0 1px 0 #000;
+	text-decoration:none;
+	color:#FFF;
 	
+	/* button border */
 	border:1px solid #000;
-	border-radius: 5px;
+	border-radius: 0.5em;
 	/* browser specific settings */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+}
+
+a.panelOption:hover{
+	/* default background / compatibility */
+	background-color:#0A0;
+	/* browser specifics */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0A0', endColorstr='#0F0'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#0A0), to(#0F0)); /* webkit */
+	background: -moz-linear-gradient(top,  #0A0,  #0F0); /* firefox */
 }
 
 
