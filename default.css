@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* StrathTutor Default CSS */
+
+/* default elements - to be overriden if required */
+html {
+	margin: 0;
+	padding: 0;
+	background-color:#FFE;
+	}
+	
+font {
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	color:#000;
+}
+/* ------------------------------------------*/	
+	
+/* header specific --------------------------*/
+div.header{
+	padding: 0;
+	margin: 0;
+	background-color:#FFA;
+}
+
+div.header_Title{
+	font-size:1.5em;
+}
+
+div.header_Description{
+	font-size:1em;
+	font-style:italic;
+}
+/* ------------------------------------------*/

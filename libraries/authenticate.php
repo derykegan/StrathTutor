@@ -22,6 +22,7 @@
 		// check user Type and set
 		$type = getUserType($username);
 		$firstName = getUserFirstName($username);
+		$lastName = getUserLastName($username);
 		$_SESSION['firstName'] = $firstName;
 		$_SESSION['lastName'] = $lastName;
 		$_SESSION['userType'] = $type;

@@ -3,7 +3,9 @@
 	include_once 'libraries/session.php';
 	include_once 'libraries/sql.php';
 	
-	$header = "<!DOCTYPE html>\n<meta charset='UTF-8'>\n";
+	$header = "<!DOCTYPE html>\n<head>\n
+		<link rel='stylesheet' type='text/css' href='default.css'>\n
+		<meta charset='UTF-8'>\n";
 	// *todo* - insert more HTML doctype headers here
 
 	// method to return header when called.
@@ -14,6 +16,9 @@
 		if(checkLogin()){
 			$header = $header . "<meta http-equiv='refresh' content='1210'>\n";
 		}
+		
+		// close HTML header tag
+		$header = $header . "</head>\n";
 		
 		$site_name = getSetting("site_name");
 		$site_desc = getSetting("site_description");
