@@ -23,6 +23,7 @@
 		$type = getUserType($username);
 		$firstName = getUserFirstName($username);
 		$_SESSION['firstName'] = $firstName;
+		$_SESSION['lastName'] = $lastName;
 		$_SESSION['userType'] = $type;
 		
 		header("Location: ../index.php");

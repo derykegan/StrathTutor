@@ -3,7 +3,7 @@
 	include_once 'libraries/session.php';
 	include_once 'libraries/sql.php';
 	
-	$header = "<!DOCTYPE html>\n<meta charset='UTF-8'>";
+	$header = "<!DOCTYPE html>\n<meta charset='UTF-8'>\n";
 	// *todo* - insert more HTML doctype headers here
 
 	// method to return header when called.
@@ -12,24 +12,26 @@
 		
 		// if logged in, make this page timeout after 20 mins
 		if(checkLogin()){
-			$header = $header . "<meta http-equiv='refresh' content='1210'>";
+			$header = $header . "<meta http-equiv='refresh' content='1210'>\n";
 		}
 		
 		$site_name = getSetting("site_name");
 		$site_desc = getSetting("site_description");
 		$show_Description = (boolean)getSetting("show_Description");
-		$header = $header . "<div class='header_Title'><a href='index.php'>$site_name</a></div>";
+		$header = $header . "<div class='header'><div class='header_Title'><a href='index.php'>$site_name</a></div>\n";
 		
 		// display site description in header if appropriate
 		if($show_Description){
-			$header = $header . "<div class='header_Description'>$site_desc</div> ";
+			$header = $header . "<div class='header_Description'>$site_desc</div> \n";
 		}
 		
 		// display log in / log out depending on state
 		if(checkLogin()){
 			  $firstName = $_SESSION['firstName'];
+			  $lastName = $_SESSION['lastName'];
 			  // display 'Log out'
-			  $header = $header . "<div class='header_Nav'>Hello $firstName | <a href='logout.php'>Log out</a> |";
+			  $header = $header . "<div class='header_Nav'>Hello $firstName $lastName | 
+			  	<a href='logout.php'>Log out</a> |";
 		}
 		// display 'Log In'
 		else{
@@ -37,7 +39,10 @@
 		}
 		
 	
-		$header = $header . " <a href='about.php'>About</a></div>";
+		$header = $header . " <a href='about.php'>About $site_name</a></div>";
+		
+		// close header div
+		$header = $header . " </div>";
 		
 		// function will return header
 		return $header;
