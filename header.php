@@ -35,17 +35,17 @@
 		if(checkLogin()){
 			  $firstName = $_SESSION['firstName'];
 			  $lastName = $_SESSION['lastName'];
-			  // display 'Log out'
-			  $header = $header . "<div class='header_Nav'>Hello $firstName $lastName | 
-			  	<a href='logout.php'>Log out</a> |";
+			  // display user's name
+			  $header = $header . "<div class='header_Name'>Hello $firstName $lastName </div>";
+			  $header = $header . "<ul class='header_Nav'> <li><a href='logout.php'>Log out</a></li>";
 		}
 		// display 'Log In'
 		else{
-			$header = $header . "<div class='header_Nav'><a href='login.php'>Log in</a> |";
+			$header = $header . "<ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
 		}
 		
 	
-		$header = $header . " <a href='about.php'>About $site_name</a></div>";
+		$header = $header . " <li><a href='about.php'>About $site_name</a></li></ul>";
 		
 		// close header div
 		$header = $header . " </div>";

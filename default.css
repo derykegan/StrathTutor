@@ -34,6 +34,38 @@ div.header_Description{
 	font-size:1em;
 	font-style:italic;
 }
+
+/* navigation bar */
+ul.header_Nav{
+	width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	list-style: none;
+	border-bottom: 1px solid #111; 
+	border-top: 1px solid #111;
+	background-color:#333;
+}
+
+ul.header_Nav li{
+	float: left;
+	display: block;
+	padding: 8px 15px;
+	border-right: 1px solid #FFF;
+}
+
+ul.header_Nav li:hover{
+	float: left;
+	display: block;
+	padding: 8px 15px;
+	background-color:#777;
+}
+
+ul.header_Nav li a{
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFF;
+}
 /* ------------------------------------------*/
 
 /* user panel specific ----------------------*/
