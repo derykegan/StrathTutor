@@ -8,9 +8,9 @@ html {
 	background-color:#FFE;
 	}
 	
-font {
+body {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:10px;
+	font-size:0.9em;
 	color:#000;
 }
 /* ------------------------------------------*/	
@@ -31,3 +31,11 @@ div.header_Description{
 	font-style:italic;
 }
 /* ------------------------------------------*/
+
+/* user panel specific ----------------------*/
+div.panelOption{
+	display:block;
+	box-shadow:#000;
+	width:200px;
+	background-color:#090;
+}
