@@ -1,7 +1,7 @@
 <?php
 	// Class to deal with MySQL interaction for admin pages.
 	
-	include_once '../libraries/sql.php';
+	include_once 'sql.php';
 	
 	// returns site settings as an associative array
 	function getSiteSettings(){
