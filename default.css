@@ -5,19 +5,53 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	background-color:#FFE;
+	background:#CCC;
 	}
 	
 body {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:0.9em;
 	color:#000;
+	background-color:#FFE;
+	margin-bottom:5em;
 }
 
 img {
   max-width: 100%;
 }
 /* ------------------------------------------*/	
+
+
+@media screen and (min-width:480px) and (max-width:800px) {
+  /* Target landscape smartphones, portrait tablets, narrow desktops
+
+  */
+}
+
+@media screen and (max-width:479px) {
+  /* Target portrait smartphones */
+  ul.header_Nav li{
+	color: #fff;
+	cursor: pointer;
+	display:block;
+	height:2em;
+	line-height: 2em;
+	text-indent: 1em;
+	text-decoration:none;
+	max-width:100%;
+	width:100%;
+	border-bottom: 1px solid #FFF;
+  }
+  
+  a.panelOption{
+	alignment-baseline:central;   
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:1em;
+  }
+ 
+}
+
 	
 /* header specific --------------------------*/
 div.header{
@@ -54,11 +88,18 @@ ul.header_Nav li{
 	border-right: 1px solid #FFF;
 }
 
+ul.header_Nav li.logout{
+	background-color:#C00;
+}
+
 ul.header_Nav li:hover{
 	float: left;
 	display: block;
 	padding: 8px 15px;
 	background-color:#777;
+}
+ul.header_Nav li.logout:hover{
+	background-color:#F00;
 }
 
 ul.header_Nav li a{
@@ -118,8 +159,7 @@ table.2col{
 
 /* footer specific --------------------------*/
 footer {
-	font-size:0.8em;
-	font-stretch:expanded;
+	font-size:0.7em;
 	text-align:center;
 	background:#CCC;
 }

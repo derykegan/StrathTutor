@@ -36,8 +36,8 @@
 			  $firstName = $_SESSION['firstName'];
 			  $lastName = $_SESSION['lastName'];
 			  // display user's name
-			  $header = $header . "<div class='header_Name'>Hello $firstName $lastName </div>";
-			  $header = $header . "<ul class='header_Nav'> <li><a href='logout.php'>Log out</a></li>";
+			  $header = $header . "<div class='header_Name'>Hello $firstName $lastName! </div>";
+			  $header = $header . "<ul class='header_Nav'> <li class='logout'><a href='logout.php'>Log out</a></li>";
 		}
 		// display 'Log In'
 		else{
@@ -45,7 +45,8 @@
 		}
 		
 	
-		$header = $header . " <li><a href='about.php'>About $site_name</a></li></ul>";
+		$header = $header . " <li><a href='index.php'>Home</a></li>
+		<li><a href='about.php'>About $site_name</a></li></ul>";
 		
 		// close header div
 		$header = $header . " </div>";
