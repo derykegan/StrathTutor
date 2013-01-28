@@ -8,7 +8,7 @@
 		global $footer;
 		
 		$footer = $footer . "<div>StrathTutor<br /> \n";
-		$footer = $footer . "by Deryk Egan, 200907381\n";
+		$footer = $footer . "by Deryk Egan, 200907381</div>\n";
 		
 		// close footer and body tags
 		$footer = $footer . "</footer></body>\n";

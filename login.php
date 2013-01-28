@@ -1,6 +1,7 @@
 <?php
 	
 	include_once "header.php";
+	include_once "footer.php";
 	
 	$printError = false;
 	// check session login details
@@ -41,5 +42,9 @@ EOT;
 		echo "<div class='errorNotice'><p>Login failed - please try again.</p></div>";
 	}
 	echo $loginform;
+	
+	// print footer
+	echo(getFooter());
+
 
 ?>

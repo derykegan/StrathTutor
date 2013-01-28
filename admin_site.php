@@ -3,6 +3,7 @@
 	include_once 'header.php';
 	include_once 'libraries/admin_sql.php';
 	include_once 'libraries/user_check.php';
+	include_once 'footer.php';
 	
 	// check is admin, direct to index if not
 	if(!validateUserType("admin")){
@@ -27,7 +28,7 @@ EOT;
 	
 	// now generate table
 	$settings = getSiteSettings();
-	echo('<table>');
+	echo('<table class="2col">');
 	
 	$size = count($settings);
 	for($i = 0; $i < $size; $i++){
@@ -42,5 +43,8 @@ EOT;
 		}
 	}
 	echo('</table>');
+	
+	// print footer
+	echo(getFooter());
 	
 ?>

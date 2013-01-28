@@ -5,7 +5,8 @@
 	
 	$header = "<!DOCTYPE html>\n<head>\n
 		<link rel='stylesheet' type='text/css' href='default.css'>\n
-		<meta charset='UTF-8'>\n";
+		<meta charset='UTF-8'>\n
+		<meta name='viewport' content='width=device-width, initial-scale=1'>\n";
 	// *todo* - insert more HTML doctype headers here
 
 	// method to return header when called.
@@ -18,7 +19,7 @@
 		}
 		
 		// close HTML header tag
-		$header = $header . "</head>\n";
+		$header = $header . "</head>\n<body>\n";
 		
 		$site_name = getSetting("site_name");
 		$site_desc = getSetting("site_description");

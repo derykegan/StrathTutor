@@ -13,6 +13,10 @@ body {
 	font-size:0.9em;
 	color:#000;
 }
+
+img {
+  max-width: 100%;
+}
 /* ------------------------------------------*/	
 	
 /* header specific --------------------------*/
@@ -71,6 +75,14 @@ a.panelOption:hover{
 
 
 /* ------------------------------------------*/
+
+/* table specific  --------------------------*/
+table.2col{
+	background-color:transparent #093;
+	table-layout:fixed;
+	border:thin;
+	padding:1em;
+}
 
 /* footer specific --------------------------*/
 footer {
