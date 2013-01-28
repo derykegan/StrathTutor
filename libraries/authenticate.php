@@ -14,6 +14,9 @@
 	
 	// if logged in, redirect to index
 	if($loggedIn){
+		// regenerate session id for security
+		session_regenerate_id();
+		
 		$_SESSION['loggedIn'] = true;
 		
 		// check user Type and set
