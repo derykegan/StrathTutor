@@ -10,7 +10,7 @@ html, body {
 	
 body {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:0.9em;
+	font-size:0.85em;
 	color:#000;
 	background-color:#FFE;
 }
@@ -27,10 +27,21 @@ img {
 
 	Left blank for now - may change during development
   */
+  
+    div.panelContainer{
+	width:20em;
+	
+	clear:both;
+  }
 }
 
 @media screen and (max-width:479px) {
-  /* For portrait smartphones */
+  /* For portrait smartphones 
+  
+  	Current differences:
+	- Vertical navigation (vs horizontal)
+	- Centre aligned user panel options
+  */
   ul.header_Nav li{
 	color: #fff;
 	cursor: pointer;
@@ -39,9 +50,15 @@ img {
 	line-height: 2em;
 	text-indent: 1em;
 	text-decoration:none;
-	max-width:100%;
 	width:100%;
+	max-width:100%;
 	border-bottom: 1px solid #FFF;
+  }
+  
+  div.panelContainer{
+	width:20em;
+	
+	clear:both;
   }
   
   a.panelOption{
@@ -49,6 +66,8 @@ img {
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:1em;
+	/* disable float for small screens */
+	clear:both;
   }
  
 }
@@ -100,7 +119,12 @@ ul.header_Nav li{
 }
 
 ul.header_Nav li.logout{
+	/* default / fallback */
 	background-color:#C00;
+	/* browser specifics */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#C00', endColorstr='#333'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#333)); /* webkit */
+	background: -moz-linear-gradient(top,  #C00,  #333); /* firefox */
 }
 
 ul.header_Nav li:hover{
@@ -111,6 +135,10 @@ ul.header_Nav li:hover{
 }
 ul.header_Nav li.logout:hover{
 	background-color:#F00;
+	/* browser specifics */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F00', endColorstr='#333'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#333)); /* webkit */
+	background: -moz-linear-gradient(top,  #F00,  #333); /* firefox */
 }
 
 ul.header_Nav li a{
@@ -126,6 +154,8 @@ a.panelOption{
 	display:block;
 	box-shadow:#000;
 	width:20em;
+	float:left;
+	margin:1em;
 	/* default background / compatibility */
 	background-color:#090;
 	/* browser specifics */
@@ -157,6 +187,14 @@ a.panelOption:hover{
 	background: -moz-linear-gradient(top,  #0A0,  #0F0); /* firefox */
 }
 
+div.panelContainer{
+	max-width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	
+}
+
 
 /* ------------------------------------------*/
 
@@ -178,6 +216,7 @@ table.login{
 
 /* footer specific --------------------------*/
 footer {
+	clear:both;
 	margin-top:2em;
 	font-size:0.7em;
 	text-align:center;

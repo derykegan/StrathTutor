@@ -20,10 +20,12 @@ $adminPage = <<<EOT
 	<div class = 'panelTitle'>Administration</div>
 	<div class = 'panelText'>Please select an option below to begin configuration.</div>
 	<br />
-	<div><a class = 'panelOption'href='admin_user.php' title='Add, edit or remove users.'>Users</a></div>
-	<div><a class = 'panelOption'href='admin_subject.php' title='Add, edit or remove subjects.'>Subjects</a></div>
-	<div><a class = 'panelOption'href='admin_pages.php' title='Edit page content, eg About or Welcome.'>Pages</a></div>
-	<div><a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a></div>
+	<div class = 'panelContainer'>
+	<a class = 'panelOption'href='admin_user.php' title='Add, edit or remove users.'>Users</a>
+	<a class = 'panelOption'href='admin_subject.php' title='Add, edit or remove subjects.'>Subjects</a>
+	<a class = 'panelOption'href='admin_pages.php' title='Edit page content, eg About or Welcome.'>Pages</a>
+	<a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a>
+	</div>
     
 EOT;
 	
