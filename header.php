@@ -37,19 +37,28 @@
 			  $lastName = $_SESSION['lastName'];
 			  // display user's name
 			  $header = $header . "<div class='header_Name'>Hello $firstName $lastName! </div>";
-			  $header = $header . "<ul class='header_Nav'> <li class='logout'><a href='logout.php'>Log out</a></li>";
+			  $header = $header . "<ul class='header_Nav'> <a href='logout.php'><li class='logout'>Log out</li></a>";
 		}
 		// display 'Log In'
 		else{
-			$header = $header . "<ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
+			$header = $header . "<ul class='header_Nav'><a href='login.php'><li>Log in</li></a>";
 		}
 		
 	
-		$header = $header . " <li><a href='index.php'>Home</a></li>
-		<li><a href='about.php'>About $site_name</a></li></ul>";
+		$header = $header . " <a href='index.php'><li>Home</li></a>
+		<a href='about.php'><li>About $site_name</li></a></ul>";
 		
 		// close header div
 		$header = $header . " </div>";
+		
+		// if there is not a cookie present, advise about cookie collection
+		// as per EU policies
+		if(!isset($_COOKIE['EUconsent'])){
+			$header = $header . "<div class='EUconsent'>This site uses cookies,
+			by continuing you consent to their use.</div>";
+			// save notification cookie
+			setcookie("EUconsent", true);
+		}
 		
 		// function will return header
 		return $header;

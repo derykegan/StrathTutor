@@ -15,22 +15,22 @@
 $loginform = <<<EOT
 	
         <form method="POST" action="libraries/authenticate.php">
- 			<div class="page_Login">           	
-			<p>Please log in below with your username (or email address) and password.</p>			
-			<table>
+ 			       	
+			<div class="page_Login"> Please log in below with your username (or email address) and password.</div>
+			<table class='login'>
                 <tr>
-                    <td><p>Username:</p></td>
+                    <td><p class="login_label">Username:</p></td>
                     <td><input type="text" name="username" size="30"></td>
                 </tr>
-                <tr valign="top">
-                    <td><p>Password:</p></td>
+                <tr>
+                    <td><p class="login_label">Password:</p></td>
                     <td><input type="password" name="password" size="30"></td>
                 </tr>
                 <tr>
-                    <td><input type="Submit" value="Log in" ></td>
+                    <td><input type="Submit" value="Log in" class="loginButton"></td>
                 </tr>
             </table>
-			</div>
+
         </form>
 EOT;
 

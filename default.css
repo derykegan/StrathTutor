@@ -13,23 +13,24 @@ body {
 	font-size:0.9em;
 	color:#000;
 	background-color:#FFE;
-	margin-bottom:5em;
 }
 
+/* prevent images from breaking layout */
 img {
   max-width: 100%;
 }
 /* ------------------------------------------*/	
 
-
+/* Mobile device support --------------------*/
 @media screen and (min-width:480px) and (max-width:800px) {
-  /* Target landscape smartphones, portrait tablets, narrow desktops
+  /* For landscape smartphones, tablets
 
+	Left blank for now - may change during development
   */
 }
 
 @media screen and (max-width:479px) {
-  /* Target portrait smartphones */
+  /* For portrait smartphones */
   ul.header_Nav li{
 	color: #fff;
 	cursor: pointer;
@@ -51,6 +52,7 @@ img {
   }
  
 }
+/* ------------------------------------------*/	
 
 	
 /* header specific --------------------------*/
@@ -67,6 +69,14 @@ div.header_Title{
 div.header_Description{
 	font-size:1em;
 	font-style:italic;
+}
+
+div.EUconsent{
+	background-color:#F03;
+	width: 100%;
+	font-size:1em;
+	font-style:italic;
+	font-weight:bold;
 }
 
 /* navigation bar */
@@ -86,6 +96,7 @@ ul.header_Nav li{
 	display: block;
 	padding: 8px 15px;
 	border-right: 1px solid #FFF;
+	color:#FFF;
 }
 
 ul.header_Nav li.logout{
@@ -157,8 +168,17 @@ table.2col{
 	padding:1em;
 }
 
+/* ------------------------------------------*/
+
+table.login{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
 /* footer specific --------------------------*/
 footer {
+	margin-top:2em;
 	font-size:0.7em;
 	text-align:center;
 	background:#CCC;
