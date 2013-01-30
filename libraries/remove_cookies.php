@@ -1,21 +1,17 @@
 <?php
-	// class to perform user type validation for current user
-	// returns true if valid, false if not
-	function validateUserType($typeToValidate){
-		$continue = false;
+	// class to remove all cookies
+	session_destroy();
 	
-		// check if logged in, and what user type
-		if(isset($_SESSION['loggedIn']) ) {
-			if($_SESSION['loggedIn']){
-				// check user is desired level
-				if($_SESSION['userType'] == $typeToValidate){
-					$continue = true;
-				}
-			}
-		}
+	// set EU privacy cookie to be removed
+	setcookie("EUconsent", false, time() - 9999);
+	
+	$printme = "<!DOCTYPE html>\n<head>\n
+		<link rel='stylesheet' type='text/css' href='default.css'>\n
+		<meta charset='UTF-8'>\n
+		<meta name='viewport' content='width=device-width, initial-scale=1'></head>\n";
 		
-		return $continue;
-		
-	}
+	echo($printme);
+	echo("<body>All cookies have been removed, you may now close this browser
+	tab or window.</body>");
 
 ?>
