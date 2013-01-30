@@ -24,11 +24,9 @@ img {
 /* Mobile device support --------------------*/
 @media screen and (min-width:480px) and (max-width:800px) {
   /* For landscape smartphones, tablets
-
-	Left blank for now - may change during development
   */
   
-    div.panelContainer{
+  div.panelContainer{
 	width:20em;
 	
 	clear:both;
@@ -43,16 +41,15 @@ img {
 	- Centre aligned user panel options
   */
   ul.header_Nav li{
-	color: #fff;
-	cursor: pointer;
+	color: #FFF;
 	display:block;
 	height:2em;
 	line-height: 2em;
 	text-indent: 1em;
 	text-decoration:none;
-	width:100%;
 	max-width:100%;
 	border-bottom: 1px solid #FFF;
+	width:100%;
   }
   
   div.panelContainer{
@@ -113,7 +110,7 @@ ul.header_Nav{
 ul.header_Nav li{
 	float: left;
 	display: block;
-	padding: 8px 15px;
+	padding: 8px 0;
 	border-right: 1px solid #FFF;
 	color:#FFF;
 }
@@ -128,9 +125,6 @@ ul.header_Nav li.logout{
 }
 
 ul.header_Nav li:hover{
-	float: left;
-	display: block;
-	padding: 8px 15px;
 	background-color:#777;
 }
 ul.header_Nav li.logout:hover{
