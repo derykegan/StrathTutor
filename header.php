@@ -37,11 +37,11 @@
 			  $lastName = $_SESSION['lastName'];
 			  // display user's name
 			  $header = $header . "<div class='header_Name'>Hello $firstName $lastName! </div>";
-			  $header = $header . "<ul class='header_Nav'> <a href='logout.php'><li class='logout'>Log out</li></a>";
+			  $header = $header . "<div class='navigation'><ul class='header_Nav'> <a href='logout.php'><li class='logout'>Log out</li></a>";
 		}
 		// display 'Log In'
 		else{
-			$header = $header . "<ul class='header_Nav'><a href='login.php'><li>Log in</li></a>";
+			$header = $header . "<div class='navigation'><ul class='header_Nav'><a href='login.php'><li>Log in</li></a>";
 		}
 		
 	
@@ -49,16 +49,25 @@
 		<a href='about.php'><li>About $site_name</li></a></ul>";
 		
 		// close header div
-		$header = $header . " </div>";
+		$header = $header . " </div></div>";
 		
 		// if there is not a cookie present, advise about cookie collection
 		// as per EU policies
+		$displayCookie = false;
 		if(!isset($_COOKIE['EUconsent'])){
+			$displayCookie = true;
+		}
+		else if($_COOKIE['EUconsent'] == false){
+			$displayCookie = true;
+		}
+		
+		if($displayCookie){
 			$header = $header . "<div class='EUconsent'>This site uses cookies,
 			by continuing you consent to their use.</div>";
 			// save notification cookie
 			setcookie("EUconsent", true);
 		}
+		
 		
 		// function will return header
 		return $header;

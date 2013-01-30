@@ -21,10 +21,23 @@ img {
 }
 /* ------------------------------------------*/	
 
-/* Mobile device support --------------------*/
+/* Various device support --------------------*/
+@media screen and (min-width:801px){
+	/* for desktops etc */
+  ul.header_Nav li{
+	padding: 8px 15px;
+  }
+  
+	
+}
+
 @media screen and (min-width:480px) and (max-width:800px) {
   /* For landscape smartphones, tablets
   */
+  
+  ul.header_Nav li{
+	padding: 8px 15px;
+  }
   
   div.panelContainer{
 	width:20em;
@@ -40,16 +53,27 @@ img {
 	- Vertical navigation (vs horizontal)
 	- Centre aligned user panel options
   */
+  ul.header_Nav {
+	width:100%;
+	max-width:100%;
+  }
+  
   ul.header_Nav li{
 	color: #FFF;
 	display:block;
 	height:2em;
 	line-height: 2em;
 	text-indent: 1em;
+	padding: 8px 0;
 	text-decoration:none;
 	max-width:100%;
 	border-bottom: 1px solid #FFF;
 	width:100%;
+  }
+  
+  div.navigation{
+	max-width: 100% - 30px;
+	width: 100% -30px;
   }
   
   div.panelContainer{
@@ -95,9 +119,15 @@ div.EUconsent{
 	font-weight:bold;
 }
 
+div.navigation{
+	max-width: 100%;
+	width: 100%;
+}
+
 /* navigation bar */
 ul.header_Nav{
 	width: 100%;
+	max-width: 100%;
 	float: left;
 	margin: 0 0 3em 0;
 	padding: 0;
@@ -108,14 +138,16 @@ ul.header_Nav{
 }
 
 ul.header_Nav li{
+	max-width: 100%;
 	float: left;
 	display: block;
-	padding: 8px 0;
+
 	border-right: 1px solid #FFF;
 	color:#FFF;
 }
 
 ul.header_Nav li.logout{
+	max-width: 100%;
 	/* default / fallback */
 	background-color:#C00;
 	/* browser specifics */
@@ -125,9 +157,11 @@ ul.header_Nav li.logout{
 }
 
 ul.header_Nav li:hover{
+	max-width: 100%;
 	background-color:#777;
 }
 ul.header_Nav li.logout:hover{
+	max-width: 100%;
 	background-color:#F00;
 	/* browser specifics */
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F00', endColorstr='#333'); /* IE */
@@ -136,6 +170,7 @@ ul.header_Nav li.logout:hover{
 }
 
 ul.header_Nav li a{
+	max-width: 100%;
 	text-decoration: none;
 	font-weight: bold;
 	color: #FFF;

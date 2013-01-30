@@ -1,4 +1,6 @@
 <?php
+	include_once 'session.php';
+	
 	// class to remove all cookies
 	session_destroy();
 	
@@ -6,7 +8,7 @@
 	setcookie("EUconsent", false, time() - 9999);
 	
 	$printme = "<!DOCTYPE html>\n<head>\n
-		<link rel='stylesheet' type='text/css' href='default.css'>\n
+		<link rel='stylesheet' type='text/css' href='../default.css'>\n
 		<meta charset='UTF-8'>\n
 		<meta name='viewport' content='width=device-width, initial-scale=1'></head>\n";
 		
