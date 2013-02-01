@@ -15,6 +15,10 @@
 		
 		*/
 		
+	// import header and footer
+	include_once 'templates/header.php';
+	include_once 'templates/footer.php';
+			
 	// interface for page factory
 	interface IPageFactory{
 		
@@ -50,10 +54,7 @@
 		
 		// constructor
 		function __construct($content) {
-				
-			// import header and footer
-			include_once '../header.php';
-			include_once '../footer.php';
+			global $page, $pageContent;
 			
 			$page = "";
 			$pageContent = $content;

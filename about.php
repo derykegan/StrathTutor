@@ -1,16 +1,13 @@
 <?php
-	// import session and header
-	include_once 'header.php';
+	// imports
+	include_once 'classes/pageFactory.php';
 	include_once 'libraries/sql.php';
-	include_once 'footer.php';
 	
-	// print header
-	echo(getHeader() . "\n");
-	// retreive about page content from db
-	echo(getPageContent("about"));
+	$content = getPageContent("about");
+	$pageFactory = new pageFactory();
 	
-	// print footer
-	echo(getFooter());
+	$page = $pageFactory->makeHFCookiesPage($content);
+	echo($page->getPage());
 
 	
 ?>
