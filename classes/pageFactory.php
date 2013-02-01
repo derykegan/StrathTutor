@@ -3,22 +3,45 @@
 	/* 	Interface and classes for creating pages.
 		Uses factory design pattern.
 		
-		Interface: IPage
+		Interface: IPage, IPageFactory
 		
+		Page factory:---
+		Concrete class 1: pageFactory
+		
+		Pages:---
 		Concrete class 1: HFCookiesPage ([Header, Footer, Cookies] page)
 		Concrete class 2: TBD
 		
 		
 		*/
 		
+	// interface for page factory
+	interface IPageFactory{
+		
+		public function makeHFCookiesPage($content);
+		
+	}
+		
 	// interface for page classes
 	interface IPage{
 		
+		// constructor
+		function __construct($content) ;
+		
 		// used to set main page content
-		function setContent($content);
+		public function setContent($content);
 		
 		// used to return the completed page
-		function getPage();
+		public function getPage();
+		
+	}
+	
+	// concrete class for page factory
+	class pageFactory implements IPageFactory{
+		
+		public function makeHFCookiesPage($content){
+			return new HFCookiesPage($content);
+		}
 		
 	}
 	
@@ -26,14 +49,14 @@
 	class HFCookiesPage implements IPage{
 		
 		// constructor
-		function __construct() {
+		function __construct($content) {
 				
-			// import session and header
+			// import header and footer
 			include_once '../header.php';
 			include_once '../footer.php';
 			
 			$page = "";
-			$pageContent = "";
+			$pageContent = $content;
 			
 		}
 		
