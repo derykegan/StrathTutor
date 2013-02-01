@@ -50,9 +50,8 @@ img {
   }
   
   div.panelContainer{
-	width:20em;
-	
-	clear:both;
+	width: 20em;
+	clear: both;
   }
 }
 
@@ -239,10 +238,10 @@ a.panelOption:hover{
 }
 
 div.panelContainer{
-	max-width:90%;
-	margin-left:auto;
-	margin-right:auto;
-	display:block;
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 	overflow:: hidden;
 	
 }
@@ -252,27 +251,26 @@ span.clear{
 	display: block;
 }
 
-
-
 /* ------------------------------------------*/
 
 /* table specific  --------------------------*/
 table.twoCol{
-	border-color:#000;
-	table-layout:fixed;
+	border-color: #000;
+	table-layout: fixed;
 	border: medium solid;
 }
 
 div.tableContainer{
 	padding: 0.5em;
+	margin-bottom: -1em;
 }
 
 td{
-	padding:1em;
+	padding: 1em;
 }
 
 td.odd{
-	font-weight:bold;
+	font-weight: bold;
 }
 
 tr.even{
@@ -291,6 +289,7 @@ tr.odd:hover{
 }
 
 /* ------------------------------------------*/
+/* Login ------------------------------------*/
 
 table.login{
 	margin-left:auto;

@@ -10,7 +10,7 @@
 		
 		Pages:---
 		Concrete class 1: HFCookiesPage ([Header, Footer, Cookies] page)
-		Concrete class 2: TBD
+		Concrete class 2: HFNoCookiesPage ([Header, Footer, No cookies] page)
 		
 		
 		*/
@@ -69,6 +69,7 @@
 		// sets desired page content
 		function setContent($content){
 			global $pageContent;
+			
 			$pageContent = $content;
 		}
 		
@@ -98,7 +99,6 @@
 	// class to generate a header and footer page not using any cookies
 	class HFNoCookiesPage implements IPage{
 		
-				
 		// constructor
 		function __construct($content) {
 			global $page, $pageContent;
@@ -111,12 +111,14 @@
 		// sets desired page content
 		function setContent($content){
 			global $pageContent;
+			
 			$pageContent = $content;
 		}
 		
 		// gets the current page object
 		function getPage(){
 			global $page, $pageContent;
+			
 			// reset current page content
 			$page = "";
 			
