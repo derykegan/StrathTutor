@@ -22,6 +22,7 @@ $adminPage = <<<EOT
 	<a class = 'panelOption'href='admin_pages.php' title='Edit page content, eg About or Welcome.'>Pages</a>
 	<a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a>
 	</div>
+	<span class='clear'></span>
     
 EOT;
 	

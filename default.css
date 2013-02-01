@@ -243,8 +243,15 @@ div.panelContainer{
 	margin-left:auto;
 	margin-right:auto;
 	display:block;
+	overflow:: hidden;
 	
 }
+
+span.clear{
+	clear: left;
+	display: block;
+}
+
 
 
 /* ------------------------------------------*/
@@ -254,21 +261,33 @@ table.twoCol{
 	border-color:#000;
 	table-layout:fixed;
 	border: medium solid;
-	
-}
-div.tableContainer{
-	padding: 1em;
 }
 
-table.twoCol.td{
+div.tableContainer{
+	padding: 0.5em;
+}
+
+td{
 	padding:1em;
 }
 
-table.twoCol.tr.even{
-	background-color:#FF6;
+td.odd{
+	font-weight:bold;
 }
-table.twoCol.tr.odd{
-	background-color: #093;
+
+tr.even{
+	background-color: #FFD;
+}
+tr.odd{
+	background-color: #FF9;
+}
+
+tr.even:hover{
+	background-color: #FFF;
+}
+
+tr.odd:hover{
+	background-color: #FFE;
 }
 
 /* ------------------------------------------*/
