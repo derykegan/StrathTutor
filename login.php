@@ -1,6 +1,7 @@
 <?php
 	
 	include_once 'classes/pageFactory.php';
+	include_once 'libraries/sql.php';
 	include 'libraries/session.php';
 	
 	$printError = false;
@@ -14,9 +15,10 @@
 	
 $loginForm = <<<EOT
 	
+	<h1>Log in</h1>
         <form method="POST" action="libraries/authenticate.php">
  			       	
-			<div class="page_Login"> Please log in below with your username (or email address) and password.</div>
+			<h2> Please log in below with your username (or email address) and password.</h2>
 			<table class='login'>
                 <tr>
                     <td><p class="login_label">Username:</p></td>

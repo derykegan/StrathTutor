@@ -18,8 +18,11 @@
 		<link rel='stylesheet' type='text/css' href='../default.css'>\n
 		<meta charset='UTF-8'>\n
 		<meta name='viewport' content='width=device-width, initial-scale=1'></head>\n";
-	$printme = $printme . ("<body>All cookies have been removed, you may now close this browser
-	tab or window.</body>");
+	$printme = $printme . ("<body><h1>Cookies removed!</h1>
+	<h2>Nom nom nom</h2>
+	<div class='pageContent'>All cookies have been removed, you may now close this browser
+	tab or window.
+	</div></body>");
 		
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
