@@ -98,10 +98,10 @@
 			
 			if($displayCookie){
 				$header = $header . "<div class='EUconsent'><div class='EUconsentText'>
-				This site uses cookies,
-				by continuing you consent to their use.<br />If you wish to remove 
-				any cookies, this can be done in your browser settings, or by 
-				visiting the 'Remove all cookies' link at the bottom of the page.
+				This site uses cookies. They're nothing to worry about, but if you want 
+				to remove them, you can by clicking <a href='remove_cookies.php'>here.</a>
+				<br />Unfortunately, if you do this, you won't be able to log in!
+				<br />This notice will disappear in the future.
 				</div></div>";
 				// save notification cookie
 				setcookie("EUconsent", true);
