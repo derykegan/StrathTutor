@@ -113,11 +113,25 @@ div.header_Description{
 }
 
 div.EUconsent{
-	background-color:#F03;
+	background-color: #F11;
 	width: 100%;
-	font-size:1em;
-	font-style:italic;
-	font-weight:bold;
+	max-width: 100%;
+	clear:both;
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* webkit */
+	background: -moz-linear-gradient(top,  #333,  #C00); /* firefox */
+}
+
+div.EUconsentText{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0.9em;
+	font-style: italic;
+	font-weight: bold;
+	color: #FFF;
+	
 }
 
 div.navigation{
@@ -130,7 +144,7 @@ ul.header_Nav{
 	width: 100%;
 	max-width: 100%;
 	float: left;
-	margin: 0 0 3em 0;
+	margin: 0 0 0 0;
 	padding: 0;
 	list-style: none;
 	border-bottom: 1px solid #111; 
@@ -228,11 +242,25 @@ div.panelContainer{
 /* ------------------------------------------*/
 
 /* table specific  --------------------------*/
-table.2col{
-	background-color:transparent #093;
+table.twoCol{
+	border-color:#000;
 	table-layout:fixed;
-	border:thin;
+	border: medium solid;
+	
+}
+div.tableContainer{
+	padding: 1em;
+}
+
+table.twoCol.td{
 	padding:1em;
+}
+
+table.twoCol.tr.even{
+	background-color:#FF6;
+}
+table.twoCol.tr.odd{
+	background-color: #093;
 }
 
 /* ------------------------------------------*/

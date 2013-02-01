@@ -97,8 +97,12 @@
 			}
 			
 			if($displayCookie){
-				$header = $header . "<div class='EUconsent'>This site uses cookies,
-				by continuing you consent to their use.</div>";
+				$header = $header . "<div class='EUconsent'><div class='EUconsentText'>
+				This site uses cookies,
+				by continuing you consent to their use.<br />If you wish to remove 
+				any cookies, this can be done in your browser settings, or by 
+				visiting the 'Remove all cookies' link at the bottom of the page.
+				</div></div>";
 				// save notification cookie
 				setcookie("EUconsent", true);
 			}

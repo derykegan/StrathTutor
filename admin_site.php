@@ -21,7 +21,7 @@ EOT;
 	
 	// now generate table
 	$settings = getSiteSettings();
-	$sitePage = $sitePage . ('<table class="2col">');
+	$sitePage = $sitePage . ('<div class="tableContainer"><table class="twoCol">');
 	
 	$size = count($settings);
 	for($i = 0; $i < $size; $i++){
@@ -35,7 +35,7 @@ EOT;
 			'<td class = "even">'. $settings[$i]["value"] . '</tr>');
 		}
 	}
-	$sitePage = $sitePage . ('</table>');
+	$sitePage = $sitePage . ('</table></div>');
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();

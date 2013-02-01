@@ -3,12 +3,16 @@
 	// class to remove all cookies
 	include_once 'classes/pageFactory.php';
 	include_once 'libraries/sql.php';
+	include_once 'libraries/session.php';
 	
 	// set EU privacy cookie to be removed
 	setcookie("EUconsent", false, time() - 9999);
 	
 	// unset session
+	$_SESSION['loggedIn'] = false;
+	$_SESSION['userType'] = "";
 	$_SESSION = array();
+	
 	
 	$printme = "<!DOCTYPE html>\n<head>\n
 		<link rel='stylesheet' type='text/css' href='../default.css'>\n
