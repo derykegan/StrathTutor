@@ -1,5 +1,4 @@
 <?php
-	include_once "../header.php";
 	include_once "sql.php";
 	include_once "session.php";
 	

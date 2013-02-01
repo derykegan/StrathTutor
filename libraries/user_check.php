@@ -1,4 +1,6 @@
 <?php
+	include_once 'session.php';
+	
 	// class to perform user type validation for current user
 	// returns true if valid, false if not
 	function validateUserType($typeToValidate){
