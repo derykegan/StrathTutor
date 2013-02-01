@@ -21,7 +21,7 @@ img {
 }
 /* ------------------------------------------*/	
 
-/* Various device support --------------------*/
+/* Various device support -------------------*/
 @media screen and (min-width:801px){
 	/* for desktops etc */
   ul.header_Nav li{
@@ -78,7 +78,6 @@ img {
   
   div.panelContainer{
 	width:20em;
-	
 	clear:both;
   }
   
@@ -124,7 +123,7 @@ div.navigation{
 	width: 100%;
 }
 
-/* navigation bar */
+/* navigation bar ------------------- */
 ul.header_Nav{
 	width: 100%;
 	max-width: 100%;
@@ -141,7 +140,6 @@ ul.header_Nav li{
 	max-width: 100%;
 	float: left;
 	display: block;
-
 	border-right: 1px solid #FFF;
 	color:#FFF;
 }
