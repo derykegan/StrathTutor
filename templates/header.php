@@ -40,10 +40,14 @@
 			include_once 'libraries/session.php';
 			include_once 'libraries/sql.php';
 			
+			$site_name = getSetting("site_name");
+			$site_desc = getSetting("site_description");
+			
 			$header = "<!DOCTYPE html>\n<head>\n
 				<link rel='stylesheet' type='text/css' href='default.css'>\n
 				<meta charset='UTF-8'>\n
-				<meta name='viewport' content='width=device-width, initial-scale=1'>\n";
+				<meta name='viewport' content='width=device-width, initial-scale=1'>\n
+				<title>$site_name</title>\n";
 			// *todo* - insert more HTML doctype headers here
 			
 			
@@ -55,8 +59,6 @@
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
 			
-			$site_name = getSetting("site_name");
-			$site_desc = getSetting("site_description");
 			$show_Description = (boolean)getSetting("show_Description");
 			$header = $header . "<div class='header'><div class='header_Title'><a href='index.php'>$site_name</a></div>\n";
 			
@@ -118,17 +120,19 @@
 
 			include_once 'libraries/sql.php';
 			
+			$site_name = getSetting("site_name");
+			$site_desc = getSetting("site_description");
+			
 			$header = "<!DOCTYPE html>\n<head>\n
 				<link rel='stylesheet' type='text/css' href='default.css'>\n
 				<meta charset='UTF-8'>\n
-				<meta name='viewport' content='width=device-width, initial-scale=1'>\n";
+				<meta name='viewport' content='width=device-width, initial-scale=1'>\n
+				<title>$site_name</title>\n";
 			// *todo* - insert more HTML doctype headers here
 			
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
 			
-			$site_name = getSetting("site_name");
-			$site_desc = getSetting("site_description");
 			$show_Description = (boolean)getSetting("show_Description");
 			$header = $header . "<div class='header'><div class='header_Title'><a href='index.php'>$site_name</a></div>\n";
 			

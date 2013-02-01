@@ -13,8 +13,8 @@
 $adminPage = <<<EOT
 	
 	<br />
-	<div class = 'panelTitle'>Administration</div>
-	<div class = 'panelText'>Please select an option below to begin configuration.</div>
+	<h1>Administration</h1>
+	<h2>Please select an option below to begin configuration.</h2>
 	<br />
 	<div class = 'panelContainer'>
 	<a class = 'panelOption'href='admin_user.php' title='Add, edit or remove users.'>Users</a>

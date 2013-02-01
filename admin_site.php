@@ -13,8 +13,8 @@
 $sitePage = <<<EOT
 	
 	<br />
-	<div class = 'panelTitle'>Site Configuration</div>
-	<div class = 'panelText'>The following values can be modified.</div>
+	<h1>Site Configuration</h1>
+	<h2>The following values can be modified.</h2>
 	<br />
     
 EOT;
