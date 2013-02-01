@@ -1,17 +1,13 @@
 <?php
 	// import session and header
-	include_once 'header.php';
 	include_once 'libraries/admin_sql.php';
 	include_once 'libraries/user_check.php';
-	include_once 'footer.php';
+	include_once 'classes/pageFactory.php';
 	
 	// check is admin, direct to index if not
 	if(!validateUserType("admin")){
 		header("Location: index.php");
 	}
-	
-	// print header
-	echo(getHeader() . "\n");
 	
 	// heredoc for page content
 $sitePage = <<<EOT
@@ -23,28 +19,29 @@ $sitePage = <<<EOT
     
 EOT;
 	
-	// print site admin page
-	echo($sitePage);
-	
 	// now generate table
 	$settings = getSiteSettings();
-	echo('<table class="2col">');
+	$sitePage = $sitePage . ('<table class="2col">');
 	
 	$size = count($settings);
 	for($i = 0; $i < $size; $i++){
 		
 		if($i % 2){
-			echo('<tr class = "odd">' . '<td class = "odd">' . $settings[$i]["key"] . 
+			$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "odd">' . $settings[$i]["key"] . 
 			'<td class = "even">'. $settings[$i]["value"] . '</tr>');
 		}
 		else{
-			echo('<tr class = "even">' . '<td class = "odd">' . $settings[$i]["key"] . 
+			$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $settings[$i]["key"] . 
 			'<td class = "even">'. $settings[$i]["value"] . '</tr>');
 		}
 	}
-	echo('</table>');
+	$sitePage = $sitePage . ('</table>');
 	
-	// print footer
-	echo(getFooter());
+	// create page factory and generate new page
+	$pageFactory = new pageFactory();
+	$page = $pageFactory->makeHFCookiesPage($sitePage);
+	
+	// print page to screen
+	echo($page->getPage());
 	
 ?>

@@ -1,7 +1,6 @@
 <?php
 	
-	include_once "header.php";
-	include_once "footer.php";
+	include_once 'classes/pageFactory.php';
 	
 	$printError = false;
 	// check session login details
@@ -12,7 +11,7 @@
 		unset($_SESSION['invalidLogin']);
 	}
 	
-$loginform = <<<EOT
+$loginForm = <<<EOT
 	
         <form method="POST" action="libraries/authenticate.php">
  			       	
@@ -33,18 +32,17 @@ $loginform = <<<EOT
 
         </form>
 EOT;
-
-	// now print header and login form to client
-	echo(getHeader() . "\n");
 	
 	// print error message if previous login was invalid
 	if($printError){
-		echo "<div class='errorNotice'><p>Login failed - please try again.</p></div>";
+		$loginForm = "<div class='errorNotice'><p>Login failed - please try again.</p></div>" . $loginForm;
 	}
-	echo $loginform;
 	
-	// print footer
-	echo(getFooter());
-
+	// create page factory and generate new page
+	$pageFactory = new pageFactory();
+	$page = $pageFactory->makeHFCookiesPage($loginForm);
+	
+	// print page to screen
+	echo($page->getPage());
 
 ?>

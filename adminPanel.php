@@ -1,17 +1,13 @@
 <?php
-	// import session and header
-	include_once 'header.php';
+	// imports
 	include_once 'libraries/sql.php';
 	include_once 'libraries/user_check.php';
-	include_once 'footer.php';
+	include_once 'classes/pageFactory.php';
 	
 	// check is admin, direct to index if not
 	if(!validateUserType("admin")){
 		header("Location: index.php");
 	}
-	
-	// print header
-	echo(getHeader() . "\n");
 	
 	// heredoc for page content
 $adminPage = <<<EOT
@@ -29,10 +25,11 @@ $adminPage = <<<EOT
     
 EOT;
 	
-	// print admin page
-	echo($adminPage);
+	// create page factory and generate new page
+	$pageFactory = new pageFactory();
+	$page = $pageFactory->makeHFCookiesPage($adminPage);
 	
-	// print footer
-	echo(getFooter());
+	// print page to screen
+	echo($page->getPage());
 	
 ?>
