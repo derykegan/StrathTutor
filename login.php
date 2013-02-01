@@ -1,6 +1,7 @@
 <?php
 	
 	include_once 'classes/pageFactory.php';
+	include 'libraries/session.php';
 	
 	$printError = false;
 	// check session login details

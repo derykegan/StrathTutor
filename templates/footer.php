@@ -7,17 +7,18 @@
 	// method to return header when called.
 	function getFooter(){
 		global $footer;
+		$header = new Header();
 		
 		$footer = $footer . "<div>StrathTutor<br /> \n";
 		$footer = $footer . "by Deryk Egan, 200907381</div>\n";
 		
 		// vary cookies removal message depending on login status
-		if(checkLogin()){
-			$footer = $footer . "<a class='cookies' href='libraries/remove_cookies.php'>
+		if($header->checkLogin()){
+			$footer = $footer . "<a class='cookies' href='remove_cookies.php'>
 				Remove all cookies (forces logout)</a>";
 		}
 		else {
-			$footer = $footer . "<a class='cookies' href='libraries/remove_cookies.php'>
+			$footer = $footer . "<a class='cookies' href='remove_cookies.php'>
 				Remove all cookies</a>";
 		}
 		

@@ -4,7 +4,7 @@
 	// check session
 	include 'libraries/session.php';
 	
-	$redir = "";
+	$redir = "welcome.php";
 	
 	// Check if the user is logged in, then check user type
 	if (isset($_SESSION['loggedIn'])) {

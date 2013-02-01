@@ -23,6 +23,7 @@
 	interface IPageFactory{
 		
 		public function makeHFCookiesPage($content);
+		public function makeHFNoCookiesPage($content);
 		
 	}
 		
@@ -45,6 +46,10 @@
 		
 		public function makeHFCookiesPage($content){
 			return new HFCookiesPage($content);
+		}
+		
+		public function makeHFNoCookiesPage($content){
+			return new HFNoCookiesPage($content);
 		}
 		
 	}
@@ -73,8 +78,11 @@
 			// reset current page content
 			$page = "";
 			
+			// generate header
+			$header = new Header();
+			
 			// add header
-			$page = $page . getHeader() . "\n";
+			$page = $page . $header->getHeader() . "\n";
 			
 			// add page content
 			$page = $page . $pageContent;
@@ -85,6 +93,47 @@
 			return $page;
 		}
 		
+	}
+	
+	// class to generate a header and footer page not using any cookies
+	class HFNoCookiesPage implements IPage{
+		
+				
+		// constructor
+		function __construct($content) {
+			global $page, $pageContent;
+			
+			$page = "";
+			$pageContent = $content;
+			
+		}
+		
+		// sets desired page content
+		function setContent($content){
+			global $pageContent;
+			$pageContent = $content;
+		}
+		
+		// gets the current page object
+		function getPage(){
+			global $page, $pageContent;
+			// reset current page content
+			$page = "";
+			
+			// generate header
+			$header = new Header();
+			
+			// add header
+			$page = $page . $header->getHeaderNoCookies() . "\n";
+			
+			// add page content
+			$page = $page . $pageContent;
+			
+			// add footer
+			$page = $page . getFooter();
+			
+			return $page;
+		}
 		
 	}
 	
