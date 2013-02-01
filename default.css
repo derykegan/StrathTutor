@@ -6,6 +6,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	background:#CCC;
+	height: 100%;
 	}
 	
 body {
@@ -15,6 +16,13 @@ body {
 	background-color:#FFE;
 	/* stop from scaling down too far */
 	min-width:300px;
+}
+
+.wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -5em;
 }
 
 /* prevent images from breaking layout */
@@ -278,6 +286,7 @@ footer {
 	font-size:0.7em;
 	text-align:center;
 	background:#CCC;
+	height: 5em;
 }
 
 /* ------------------------------------------*/

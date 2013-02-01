@@ -60,7 +60,8 @@
 			$header = $header . "</head>\n<body>\n";
 			
 			$show_Description = (boolean)getSetting("show_Description");
-			$header = $header . "<div class='header'><div class='header_Title'><a href='index.php'>$site_name</a></div>\n";
+			$header = $header . "<div class='wrap'><div class='header'><div class='header_Title'>
+				<a href='index.php'>$site_name</a></div>\n";
 			
 			// display site description in header if appropriate
 			if($show_Description){

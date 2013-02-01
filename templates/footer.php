@@ -1,8 +1,8 @@
 <?php
 	include_once 'header.php';
 	
-	// start footer
-	$footer = "<footer>\n";
+	// start footer, close wrapper div tag
+	$footer = "</div><footer>\n";
 
 	// method to return header when called.
 	function getFooter(){
