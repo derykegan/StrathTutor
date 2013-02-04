@@ -122,25 +122,28 @@ div.header_Description{
 }
 
 div.EUconsent{
-	background-color: #F11;
+	background-color: #C00;
 	width: 100%;
 	max-width: 100%;
 	clear: both;
 	
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* webkit */
-	background: -moz-linear-gradient(top,  #333,  #C00); /* firefox */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE 5 - 9*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* legacy webkit */
+	background: -moz-linear-gradient(top,  #333,  #C00); /* legacy firefox */
+	background: linear-gradient(to bottom, #333,  #C00); /* standards compliant CSS3 */
 }
 
 div.errorNotice{
-	background-color: #F11;
+	background-color: #C00;
 	width: 100%;
 	max-width: 100%;
 	clear: both;
 	
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* webkit */
-	background: -moz-linear-gradient(top,  #333,  #C00); /* firefox */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE 5 - 9*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* legacy webkit */
+	background: -moz-linear-gradient(top,  #333,  #C00); /* legacy firefox */
+	background: linear-gradient(to bottom, #333,  #C00); /* standards compliant CSS3 */
+
 }
 
 div.errorText{
@@ -196,9 +199,11 @@ ul.header_Nav li.logout{
 	/* default / fallback */
 	background-color:#C00;
 	/* browser specifics */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#C00', endColorstr='#333'); /* IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#333)); /* webkit */
-	background: -moz-linear-gradient(top,  #C00,  #333); /* firefox */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#C00', endColorstr='#333'); /* IE 5-9*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#C00), to(#333)); /* legacy webkit */
+	background: -moz-linear-gradient(top,  #C00,  #333); /* legacy firefox */
+	background: linear-gradient(to bottom, #C00,  #333); /* standards compliant CSS3 */
+
 }
 
 ul.header_Nav li:hover{
@@ -209,9 +214,11 @@ ul.header_Nav li.logout:hover{
 	max-width: 100%;
 	background-color:#F00;
 	/* browser specifics */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F00', endColorstr='#333'); /* IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#333)); /* webkit */
-	background: -moz-linear-gradient(top,  #F00,  #333); /* firefox */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F00', endColorstr='#333'); /* IE 5-9*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#F00), to(#333)); /* legacy webkit */
+	background: -moz-linear-gradient(top,  #F00,  #333); /* legacy firefox */
+	background: linear-gradient(to bottom, #F00,  #333); /* standards compliant CSS3 */
+
 }
 
 ul.header_Nav li a{
@@ -236,6 +243,7 @@ a.panelOption{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090', endColorstr='#0C0'); /* IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#090), to(#0C0)); /* webkit */
 	background: -moz-linear-gradient(top,  #090,  #0C0); /* firefox */
+	background: linear-gradient(to bottom, #090,  #0C0); /* standards compliant CSS3 */
 	
 	/* button text */
 	text-align:center;
@@ -259,6 +267,7 @@ a.panelOption:hover{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0A0', endColorstr='#0F0'); /* IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#0A0), to(#0F0)); /* webkit */
 	background: -moz-linear-gradient(top,  #0A0,  #0F0); /* firefox */
+	background: linear-gradient(to bottom, #0A0,  #0F0); /* standards compliant CSS3 */
 }
 
 div.panelContainer{
