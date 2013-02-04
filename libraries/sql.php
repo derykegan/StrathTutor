@@ -166,5 +166,16 @@
 		$toReturn = $row[0];
 		return $toReturn;
 	}
+	
+	// method to return true if this student is its own parent, else false
+	function isOwnParent($user){
+		global $db;
+		$query = "SELECT UserStudent.isOwnParent FROM User, UserStudent 
+			WHERE (User.user_id = UserStudent.user_id AND User.username = '$user')";
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		$row = mysqli_fetch_row($result);
+		$toReturn = $row[0];
+		return $toReturn;
+	}
 
 ?>

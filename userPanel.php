@@ -30,7 +30,7 @@
 	<div class = 'panelContainer'>";
 	
 	// if a parent, add in parent specific content
-	if(getLoggedInType() == 'parent'){
+	if(hasParentAccess()){
 	
 		$userPage = $userPage . $parentSpecific;
 		

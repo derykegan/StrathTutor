@@ -26,6 +26,16 @@
 		$_SESSION['lastName'] = $lastName;
 		$_SESSION['userType'] = $type;
 		
+		// set parent access flags
+		if($type == 'parent'){
+			$_SESSION['parentAccess'] = true;
+		}
+		if($type == 'student'){
+			if(isOwnParent($username)){
+				$_SESSION['parentAccess'] = true;
+			}
+		}
+		
 		header("Location: ../index.php");
 	}
 	

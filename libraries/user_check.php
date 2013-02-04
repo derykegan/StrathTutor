@@ -37,6 +37,31 @@
 		// if error, return blank response
 		return $user;
 	}
+	
+	// function to return if has access to parent panel
+	// function to return the type of the currently logged in user
+	function hasParentAccess(){
+		$user = '';
+		
+		// check if logged in, and what user type
+		if(isset($_SESSION['loggedIn']) ) {
+			
+			if($_SESSION['loggedIn']){
+				
+				if(isset($_SESSION['parentAccess'])){
+					
+					if($_SESSION['parentAccess'] == true){
+						return true;
+					}
+				
+				}
+			}
+		}
+		
+		else {
+			return false;
+		}
+	}
 		
 
 ?>
