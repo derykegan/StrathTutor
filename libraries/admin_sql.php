@@ -33,5 +33,20 @@
 		return $result_array;
 	}
 	
+	// returns the subjects editable by admins
+	function getSubjects(){
+		$query = 'SELECT * FROM Subject';
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
+	}
+	
 
 ?>

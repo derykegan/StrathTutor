@@ -18,7 +18,7 @@ $adminPage = <<<EOT
 	<br />
 	<div class = 'panelContainer'>
 	<a class = 'panelOption'href='admin_user.php' title='Add, edit or remove users.'>Users</a>
-	<a class = 'panelOption'href='admin_subject.php' title='Add, edit or remove subjects.'>Subjects</a>
+	<a class = 'panelOption'href='admin_subjects.php' title='Add, edit or remove subjects.'>Subjects</a>
 	<a class = 'panelOption'href='admin_pages.php' title='Edit page content, eg About or Welcome.'>Pages</a>
 	<a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a>
 	</div>
