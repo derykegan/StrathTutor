@@ -25,7 +25,7 @@
 	<a class = 'panelOption'href='user_reports.php' title='View past lesson reports'>Reports</a>";
 	
 	// tutor specific menu options
-	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
+	$tutorSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
 	<a class = 'panelOption'href='user_reports.php' title='Create or view past lesson reports'>Reports</a>";
 	
 	// student specific menu options - currently blank
