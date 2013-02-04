@@ -19,17 +19,17 @@
 		  
 		  // tutor
 		  if($userType == 'tutor'){
-			  $redir = "tutorPanel.php";
+			  $redir = "userPanel.php";
 		  }
 		  
 		  // parent
 		  if($userType == 'parent'){
-			  $redir = "parentPanel.php";
+			  $redir = "userPanel.php";
 		  }
 		  
 		  // student
 		  if($userType == 'student'){
-			  $redir = "studentPanel.php";
+			  $redir = "userPanel.php";
 		  }
 		}
 		
