@@ -38,7 +38,7 @@ EOT;
 	
 	// print error message if previous login was invalid
 	if($printError){
-		$loginForm = "<div class='errorNotice'><p>Login failed - please try again.</p></div>" . $loginForm;
+		$loginForm = "<div class='errorNotice'><div class='errorText'>Login failed - please try again.</div></div>" . $loginForm;
 	}
 	
 	// create page factory and generate new page

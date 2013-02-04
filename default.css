@@ -36,6 +36,7 @@ img {
 	/* for desktops etc */
   ul.header_Nav li{
 	padding: 8px 15px;
+	border-right: 1px solid #FFF;
   }
   
 	
@@ -140,6 +141,17 @@ div.errorNotice{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* webkit */
 	background: -moz-linear-gradient(top,  #333,  #C00); /* firefox */
+}
+
+div.errorText{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0.9em;
+	font-style: italic;
+	font-weight: bold;
+	color: #FFF;
+	
 }
 
 div.EUconsentText{
