@@ -17,17 +17,31 @@
 		header("Location: index.php");
 	}
 	
-	$site_name = getSetting("site_name");
+	$userIntro = getPageContent("userPanel");	
+	
+	// parent specific menu options
 	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
 	<a class = 'panelOption'href='user_payments.php' title='View payments and invoicing information'>Payments</a>
 	<a class = 'panelOption'href='user_reports.php' title='View past lesson reports'>Reports</a>";
 	
+	// tutor specific menu options
+	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
+	<a class = 'panelOption'href='user_reports.php' title='Create or view past lesson reports'>Reports</a>";
+	
+	// student specific menu options - currently blank
+	$studentSpecific = "";
+	
 	// generic content header
 	$userPage = "<br />
-	<h1>Welcome</h1>
-	<h2>Welcome to $site_name. To begin, please select an option below.</h2>
+	$userIntro
 	<br />
-	<div class = 'panelContainer'>";
+	<div class = 'panelContainer'>
+	<a class = 'panelOption' href='user_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
+	
+	// if a student, add in student specific content
+	if(getLoggedInType() == 'student'){
+		$userPage = $userPage . $studentSpecific;
+	}
 	
 	// if a parent, add in parent specific content
 	if(hasParentAccess()){
@@ -35,10 +49,16 @@
 		$userPage = $userPage . $parentSpecific;
 		
 	}
-
+	
+	// if a student, add in student specific content
+	if(getLoggedInType() == 'tutor'){
+		$userPage = $userPage . $tutorSpecific;
+	}
+	
 	// generic content end
 	$userPage = $userPage . "
-	<a class = 'panelOption'href='user_options.php' title='Personalise your options.'>Options</a>
+	<a class = 'panelOption' href='user_messaging.php' title='Send or receive messages.'>Messaging</a>
+	<a class = 'panelOption' href='user_options.php' title='Personalise your options.'>Options</a>
 	</div>
 	<span class='clear'></span>";
 	
