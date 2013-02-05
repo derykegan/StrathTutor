@@ -38,6 +38,22 @@
 		return $user;
 	}
 	
+	// returns username of logged in user, or blank if not logged in
+	function getLoggedInUserName(){
+		$username = "";
+	
+		// check if logged in, and what user type
+		if(isset($_SESSION['loggedIn']) ) {
+			if($_SESSION['loggedIn']){
+
+				$username = $_SESSION['username'];
+			}
+		}
+		
+		return $username;
+		
+	}
+	
 	// function to return if has access to parent panel
 	// function to return the type of the currently logged in user
 	function hasParentAccess(){

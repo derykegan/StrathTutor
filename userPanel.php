@@ -14,7 +14,7 @@
 	if(!validateUserType("parent")
 		&& !validateUserType("student")
 		&& !validateUserType("tutor")){
-		header("Location: index.php");
+			header("Location: index.php");
 	}
 	
 	$userIntro = getPageContent("userPanel");	
