@@ -13,11 +13,24 @@
 	// check is a valid user, direct to index if not
 	if(!validateUserType("parent")
 		&& !validateUserType("student")
-		&& !validateUserType("tutor")){
+		&& !validateUserType("tutor")
+		&& !validateUserType("admin")){
 			header("Location: index.php");
 	}
 	
+	$isNotAdmin = false;
+	// check if is not admin
+	if(!getLoggedInType() == 'admin'){
+		$isNotAdmin = true;
+	}
+	
 	$userIntro = getPageContent("userPanel");	
+	
+	// admin specific menu options
+	$adminSpecific = "<a class = 'panelOption'href='admin_user.php' title='Add, edit or remove users.'>Users</a>
+	<a class = 'panelOption'href='admin_subjects.php' title='Add, edit or remove subjects.'>Subjects</a>
+	<a class = 'panelOption'href='admin_pages.php' title='Edit page content, eg About or Welcome.'>Pages</a>
+	<a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a>";
 	
 	// parent specific menu options
 	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
@@ -35,8 +48,18 @@
 	$userPage = "<br />
 	$userIntro
 	<br />
-	<div class = 'panelContainer'>
-	<a class = 'panelOption' href='user_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
+	<div class = 'panelContainer'>";
+	
+	// if not admin, add view lessons option
+	if($isNotAdmin){
+		$userPage = $userPage . 
+			"<a class = 'panelOption' href='user_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
+	}
+	
+	// if an admin, add in admin options
+	if(getLoggedInType() == 'admin'){
+		$userPage = $userPage . $adminSpecific;
+	}
 	
 	// if a student, add in student specific content
 	if(getLoggedInType() == 'student'){
@@ -45,9 +68,7 @@
 	
 	// if a parent, add in parent specific content
 	if(hasParentAccess()){
-	
 		$userPage = $userPage . $parentSpecific;
-		
 	}
 	
 	// if a student, add in student specific content

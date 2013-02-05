@@ -92,6 +92,42 @@
 		return $toReturn;
 	}
 	
+	// returns the username for the given user ID, or else blank
+	function getUsernameFromId($id){
+		global $db;
+		$username = "";
+		
+		$query = "SELECT username FROM User WHERE User.userid = '$id'";
+     
+        // Execute query
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		
+		$row = mysqli_fetch_row($result);
+		if($row == 0){
+			return "";
+		}
+		$toReturn = $row[0];
+		return $toReturn;
+	}
+	
+	// returns the ID for the given username, else blank
+	function getIdFromUsername($username){
+		global $db;
+		$id = "";
+		
+		$query = "SELECT userid FROM User WHERE User.username = '$username'";
+     
+        // Execute query
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		
+		$row = mysqli_fetch_row($result);
+		if($row == 0){
+			return "";
+		}
+		$toReturn = $row[0];
+		return $toReturn;
+	}
+	
 	// create a new user if they do not exist already
 	function createUser($username, $password, $userType, $email, $firstname, $lastname){
 		global $db;

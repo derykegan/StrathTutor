@@ -14,7 +14,7 @@ $sitePage = <<<EOT
 	
 	<br />
 	<h1>Messages</h1>
-	<h2></h2>
+	<h2>Send New Message | Inbox | Sent Messages</h2>
 	<br />
     
 EOT;

@@ -12,9 +12,9 @@
 		if($_SESSION['loggedIn']){
 		  $userType = $_SESSION['userType'];
 		  
-		  //  admin
+		  // admin
 		  if($userType == 'admin'){
-			  $redir = "adminPanel.php";
+			  $redir = "userPanel.php";
 		  }
 		  
 		  // tutor
