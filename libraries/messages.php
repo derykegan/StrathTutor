@@ -9,7 +9,7 @@
 			FROM Messages AS M
 			INNER JOIN User AS U1 ON M.fromUserId = U1.user_id
 			INNER JOIN User AS U2 ON M.toUserId = U2.user_id
-			WHERE U2.username = '$user'";
+			WHERE U2.username = '$username'";
 		$result = doQuery($query);
 		
 		// save query results in an array

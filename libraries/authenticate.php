@@ -24,6 +24,7 @@
 		$lastName = getUserLastName($username);
 		$_SESSION['firstName'] = $firstName;
 		$_SESSION['lastName'] = $lastName;
+		$_SESSION['username'] = $username;
 		$_SESSION['userType'] = $type;
 		
 		// set parent access flags

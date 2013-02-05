@@ -39,7 +39,7 @@
 	}
 	
 	// returns username of logged in user, or blank if not logged in
-	function getLoggedInUserName(){
+	function getLoggedInUsername(){
 		$username = "";
 	
 		// check if logged in, and what user type
