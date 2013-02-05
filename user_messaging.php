@@ -11,10 +11,14 @@
 	
 	// heredoc for page content
 $sitePage = <<<EOT
-	
+	<div class='messageMenu'><ul class='message_Nav'>
+	<li>Send New Message</li>
+	<li>Inbox</li>
+	<li>Sent Messages</li>
+	</ul></div>
 	<br />
 	<h1>Messages</h1>
-	<h2>Send New Message | Inbox | Sent Messages</h2>
+	<h2>Inbox</h2>
 	<br />
     
 EOT;
