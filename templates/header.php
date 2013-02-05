@@ -47,8 +47,9 @@
 				<link rel='stylesheet' type='text/css' href='default.css'>\n
 				<meta charset='UTF-8'>\n
 				<meta name='viewport' content='width=device-width, initial-scale=1'>\n
+				<link rel='apple-touch-icon' media='screen and (resolution: 163dpi)' href='images/phoneIcon.png' />
+				<link rel='shortcut icon' href='images/fav.ico' />
 				<title>$site_name</title>\n";
-			// *todo* - insert more HTML doctype headers here
 			
 			
 			// if logged in, make this page timeout after 20 mins
@@ -128,6 +129,8 @@
 				<link rel='stylesheet' type='text/css' href='default.css'>\n
 				<meta charset='UTF-8'>\n
 				<meta name='viewport' content='width=device-width, initial-scale=1'>\n
+				<link rel='apple-touch-icon' media='screen and (resolution: 163dpi)' href='images/phoneIcon.png' />
+				<link rel='shortcut icon' href='images/fav.ico' />
 				<title>$site_name</title>\n";
 			// *todo* - insert more HTML doctype headers here
 			
