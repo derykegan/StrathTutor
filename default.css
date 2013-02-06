@@ -34,12 +34,12 @@ img {
 /* Various device support -------------------*/
 @media screen and (min-width:801px){
 	/* for desktops etc */
-  ul.header_Nav li{
+  ul.header_Nav li a{
 	padding: 8px 15px;
 	border-right: 1px solid #FFF;
   }
   
-  ul.message_Nav li{
+  ul.message_Nav li a{
 	padding: 2px 15px;
 	border-right: 1px solid #FFF;
   }
@@ -51,12 +51,12 @@ img {
   /* For landscape smartphones, tablets
   */
   
-  ul.header_Nav li{
+  ul.header_Nav li a{
 	padding: 8px 15px;
 	border-right: 1px solid #FFF;
   }
   
-  ul.message_Nav li{
+  ul.message_Nav li a{
 	padding: 2px 15px;
 	border-right: 1px solid #FFF;
   }
@@ -79,7 +79,7 @@ img {
 	max-width:100%;
   }
   
-  ul.header_Nav li{
+  ul.header_Nav li a{
 	color: #FFF;
 	display:block;
 	height:2em;
@@ -97,7 +97,7 @@ img {
 	max-width:100%;
   }
   
-  ul.message_Nav li{
+  ul.message_Nav li a{
 	color:#090;
 	display:block;
 	height:2em;
@@ -214,7 +214,7 @@ ul.header_Nav{
 	background-color:#333;
 }
 
-ul.header_Nav li{
+ul.header_Nav li a{
 	max-width: 100%;
 	float: left;
 	display: block;
@@ -222,7 +222,7 @@ ul.header_Nav li{
 	color:#FFF;
 }
 
-ul.header_Nav li.logout{
+ul.header_Nav li.logout a{
 	max-width: 100%;
 	/* default / fallback */
 	background-color:#C00;
@@ -234,11 +234,11 @@ ul.header_Nav li.logout{
 
 }
 
-ul.header_Nav li:hover{
+ul.header_Nav li a:hover{
 	max-width: 100%;
 	background-color:#777;
 }
-ul.header_Nav li.logout:hover{
+ul.header_Nav li.logout a:hover{
 	max-width: 100%;
 	background-color:#F00;
 	/* browser specifics */
@@ -276,14 +276,14 @@ ul.message_Nav{
 	background-color:#090;
 }
 
-ul.message_Nav li{
+ul.message_Nav li a{
 	max-width: 100%;
 	float: left;
 	display: block;
 	color:#FFF;
 }
 
-ul.message_Nav li:hover{
+ul.message_Nav li a:hover{
 	max-width: 100%;
 	background-color:#0C0;
 }

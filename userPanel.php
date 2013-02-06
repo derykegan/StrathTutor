@@ -20,7 +20,7 @@
 	
 	$isNotAdmin = false;
 	// check if is not admin
-	if(!getLoggedInType() == 'admin'){
+	if(getLoggedInType() != 'admin'){
 		$isNotAdmin = true;
 	}
 	
@@ -52,8 +52,7 @@
 	
 	// if not admin, add view lessons option
 	if($isNotAdmin){
-		$userPage = $userPage . 
-			"<a class = 'panelOption' href='user_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
+		$userPage = $userPage . "<a class = 'panelOption' href='user_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
 	}
 	
 	// if an admin, add in admin options

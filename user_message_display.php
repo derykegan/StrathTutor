@@ -9,6 +9,24 @@
 		header("Location: index.php");
 	}
 	
+	// if there is no post variable, redirect
+	if(!isset($_GET['id'])){
+		header("Location: user_messaging.php");
+	}
+	// read message id from post
+	$messageid = $_GET['id'];
+	
+	// get username and query the requested message
+	$username = getLoggedInUsername();
+	$messages = getSingleMessage($messageid);
+	
+	// now check that this user should be able to read this message at all.
+	if($username != $messages[0]["fromUser"]
+		&& $username != $messages[0]["toUser"]){
+			// redirect as needed
+			header("Location: user_messaging.php");
+	}
+	
 	// heredoc for page content
 $sitePage = <<<EOT
 	<div class='messageMenu'><ul class='message_Nav'>
@@ -18,14 +36,10 @@ $sitePage = <<<EOT
 	</ul></div>
 	<br />
 	<h1>Messages</h1>
-	<h2>Inbox</h2>
+	<h2>View Message</h2>
 	<br />
     
 EOT;
-	
-	// get username and query messages
-	$username = getLoggedInUsername();
-	$messages = getUserMessages($username);
 	
 	// build table
 	$sitePage = $sitePage . ('<div class="tableContainer"><table class="twoCol">');
@@ -34,38 +48,33 @@ EOT;
 	
 	// if no messages
 	if($size == 0){
-		$sitePage = $sitePage . '<tr class = "odd">' . '<td class = "bold">No messages.</td></tr>';
+		$sitePage = $sitePage . '<tr class = "odd">' . '<td class = "bold">Message does not exist.</td></tr>';
 	}
 	// else we are popular
 	else{
 		
 		//print header row
-		$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' 
-				. '</td>' .
-				'<td class = "bold">' . 'From'. '</td>' . 
+		$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' . 
+				'<td class = "bold">' . 'From' . '</td>' .
+				'<td class = "bold">' . 'To'. '</td>' . 
 				'<td class = "bold">' . 'Title' . '</td>' .
 				'<td class = "bold">' . 'Message' . '</td>' . '</tr>');
 		
 		for($i = 0; $i < $size; $i++){
 			$messageid = $messages[$i]["message_id"];
-			$text = $messages[$i]["messageText"];
-			// if message > 100, cut size for display
-			if(strlen($text) > 100){
-				$text = substr($text, 0, 100) . '...';
-			}
 			if($i % 2){
-				$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
-				. '<a href="user_message_display.php?id=' . $messageid .'">VIEW</a> </td>' .
+				$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' .
 				'<td class = "even">' . $messages[$i]["fromUser"] . '</td>' . 
+				'<td class = "even">' . $messages[$i]["toUser"] . '</td>' . 
 				'<td class = "even">' . $messages[$i]["messageTitle"] . '</td>' .
-				'<td class = "even">' . $text . '</td>' . '</tr>');
+				'<td class = "even">' . $messages[$i]["messageText"] . '</td>' . '</tr>');
 			}
 			else{
-				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' 
-				. '<a href="user_message_display.php?id=' . $messageid .'">VIEW</a> </td>' .
-				'<td class = "even">' . $messages[$i]["fromUser"] . '</td>' .
+				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+				'<td class = "even">' . $messages[$i]["fromUser"] . '</td>' . 
+				'<td class = "even">' . $messages[$i]["toUser"] . '</td>' .
 				'<td class = "even">' . $messages[$i]["messageTitle"] . '</td>' .
-				'<td class = "even">' . $text . '</td>' . '</tr>');
+				'<td class = "even">' . $messages[$i]["messageText"] . '</td>' . '</tr>');
 			}
 		}
 	}

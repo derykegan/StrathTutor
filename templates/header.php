@@ -75,17 +75,17 @@
 				  $lastName = $_SESSION['lastName'];
 				  // display user's name
 				  $header = $header . "<div class='header_Name'>Hello $firstName $lastName! </div>";
-				  $header = $header . "<div class='navigation'><ul class='header_Nav'> <a href='logout.php'>
-				  <li class='logout'>Log out</li></a>";
+				  $header = $header . "<div class='navigation'><ul class='header_Nav'><li class='logout'><a href='logout.php'>
+				  Log out</a></li>";
 			}
 			// display 'Log In'
 			else{
-				$header = $header . "<div class='navigation'><ul class='header_Nav'><a href='login.php'><li>Log in</li></a>";
+				$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
 			}
 			
 		
-			$header = $header . " <a href='index.php'><li>Home</li></a>
-			<a href='about.php'><li>About $site_name</li></a></ul>";
+			$header = $header . " <li><a href='index.php'>Home</a></li>
+			<li><a href='about.php'>About $site_name</a></li></ul>";
 			
 			// close header div
 			$header = $header . " </div></div>";
@@ -147,11 +147,11 @@
 			}
 			
 			// print login
-			$header = $header . "<div class='navigation'><ul class='header_Nav'><a href='login.php'><li>Log in</li></a>";
+			$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
 		
 			// print other links
-			$header = $header . " <a href='index.php'><li>Home</li></a>
-			<a href='about.php'><li>About $site_name</li></a></ul>";
+			$header = $header . " <li><a href='index.php'>Home</a></li>
+			<li><a href='about.php'>About $site_name</a></li></ul>";
 			
 			// close header div
 			$header = $header . " </div></div>";

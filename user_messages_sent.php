@@ -18,14 +18,14 @@ $sitePage = <<<EOT
 	</ul></div>
 	<br />
 	<h1>Messages</h1>
-	<h2>Inbox</h2>
+	<h2>Sent Messages</h2>
 	<br />
     
 EOT;
 	
 	// get username and query messages
 	$username = getLoggedInUsername();
-	$messages = getUserMessages($username);
+	$messages = getUserSentMessages($username);
 	
 	// build table
 	$sitePage = $sitePage . ('<div class="tableContainer"><table class="twoCol">');
@@ -42,7 +42,7 @@ EOT;
 		//print header row
 		$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' 
 				. '</td>' .
-				'<td class = "bold">' . 'From'. '</td>' . 
+				'<td class = "bold">' . 'To'. '</td>' . 
 				'<td class = "bold">' . 'Title' . '</td>' .
 				'<td class = "bold">' . 'Message' . '</td>' . '</tr>');
 		
@@ -53,17 +53,18 @@ EOT;
 			if(strlen($text) > 100){
 				$text = substr($text, 0, 100) . '...';
 			}
+			
 			if($i % 2){
 				$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
 				. '<a href="user_message_display.php?id=' . $messageid .'">VIEW</a> </td>' .
-				'<td class = "even">' . $messages[$i]["fromUser"] . '</td>' . 
+				'<td class = "even">' . $messages[$i]["toUser"] . '</td>' . 
 				'<td class = "even">' . $messages[$i]["messageTitle"] . '</td>' .
 				'<td class = "even">' . $text . '</td>' . '</tr>');
 			}
 			else{
 				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' 
 				. '<a href="user_message_display.php?id=' . $messageid .'">VIEW</a> </td>' .
-				'<td class = "even">' . $messages[$i]["fromUser"] . '</td>' .
+				'<td class = "even">' . $messages[$i]["toUser"] . '</td>' .
 				'<td class = "even">' . $messages[$i]["messageTitle"] . '</td>' .
 				'<td class = "even">' . $text . '</td>' . '</tr>');
 			}
