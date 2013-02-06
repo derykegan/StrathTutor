@@ -96,6 +96,8 @@
 	function getUsernameFromId($id){
 		global $db;
 		$username = "";
+		// escape id to prevent SQL injection
+		$id = mysqli_real_escape_string($db, $id);
 		
 		$query = "SELECT username FROM User WHERE User.userid = '$id'";
      
@@ -114,6 +116,8 @@
 	function getIdFromUsername($username){
 		global $db;
 		$id = "";
+		// escape id to prevent SQL injection
+		$id = mysqli_real_escape_string($db, $id);
 		
 		$query = "SELECT userid FROM User WHERE User.username = '$username'";
      
@@ -157,6 +161,8 @@
 	function userExists($username){
 		global $db;
 		
+		// escape id to prevent SQL injection
+		$username = mysqli_real_escape_string($db, $username);
 		// query db using username
 		$query = "SELECT * FROM User WHERE User.username = '$Susername'";
      
@@ -179,6 +185,9 @@
 	// accessor method to perform SQL query.
 	function doQuery($query){
 		global $db;
+		// escape id to prevent SQL injection
+		$query = mysqli_real_escape_string($db, $query);
+		
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
 		return $result;
 	}
@@ -186,6 +195,9 @@
 	// return page content for given page name
 	function getPageContent($pageName){
 		global $db;
+		// escape id to prevent SQL injection
+		$pageName = mysqli_real_escape_string($db, $pageName);
+		
 		$query = "SELECT Page_content FROM PageContent WHERE PageContent.Page_title = '$pageName'";
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
 		$row = mysqli_fetch_assoc($result);
@@ -196,6 +208,9 @@
 	// method to read from site settings
 	function getSetting($setting){
 		global $db;
+		// escape id to prevent SQL injection
+		$setting = mysqli_real_escape_string($db, $setting);
+		
 		$query = "SELECT value FROM Settings WHERE Settings.key = '$setting'";
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
 		$row = mysqli_fetch_row($result);
@@ -206,6 +221,9 @@
 	// method to return true if this student is its own parent, else false
 	function isOwnParent($user){
 		global $db;
+		// escape id to prevent SQL injection
+		$user = mysqli_real_escape_string($db, $user);
+		
 		$query = "SELECT UserStudent.isOwnParent FROM User, UserStudent 
 			WHERE (User.user_id = UserStudent.user_id AND User.username = '$user')";
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
