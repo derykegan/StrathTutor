@@ -21,10 +21,13 @@
 	$messages = getSingleMessage($messageid);
 	
 	// now check that this user should be able to read this message at all.
-	if($username != $messages[0]["fromUser"]
-		&& $username != $messages[0]["toUser"]){
-			// redirect as needed
-			header("Location: user_messaging.php");
+	// ie - admin, or either the 'from' or 'to' user
+	if(getLoggedInType() != "admin"){
+		if($username != $messages[0]["fromUser"]
+			&& $username != $messages[0]["toUser"]){
+				// redirect as needed
+				header("Location: user_messaging.php");
+		}
 	}
 	
 	// heredoc for page content
