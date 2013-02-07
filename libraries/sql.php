@@ -185,11 +185,15 @@
 	// accessor method to perform SQL query.
 	function doQuery($query){
 		global $db;
-		// escape id to prevent SQL injection
-		$query = mysqli_real_escape_string($db, $query);
-		
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
 		return $result;
+	}
+	
+	// helper method to escape an SQL query
+	function escapeQuery($query){
+		global $db;
+		$query = mysqli_real_escape_string($db, $query);
+		return $query;
 	}
 	
 	// return page content for given page name
