@@ -99,7 +99,7 @@
 		// escape id to prevent SQL injection
 		$id = mysqli_real_escape_string($db, $id);
 		
-		$query = "SELECT username FROM User WHERE User.userid = '$id'";
+		$query = "SELECT username FROM User WHERE User.user_id = '$id'";
      
         // Execute query
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
@@ -119,7 +119,7 @@
 		// escape id to prevent SQL injection
 		$id = mysqli_real_escape_string($db, $id);
 		
-		$query = "SELECT userid FROM User WHERE User.username = '$username'";
+		$query = "SELECT user_id FROM User WHERE User.username = '$username'";
      
         // Execute query
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
@@ -164,7 +164,7 @@
 		// escape id to prevent SQL injection
 		$username = mysqli_real_escape_string($db, $username);
 		// query db using username
-		$query = "SELECT * FROM User WHERE User.username = '$Susername'";
+		$query = "SELECT * FROM User WHERE User.username = '$username'";
      
         // Execute query
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));

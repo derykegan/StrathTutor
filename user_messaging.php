@@ -11,7 +11,7 @@
 	}
 	
 	// get navigation bar
-	$sitePage = getMessageNavigation();
+	$sitePage = getMessageNavigation("Inbox");
 	
 	// get username and query messages
 	$username = getLoggedInUsername();

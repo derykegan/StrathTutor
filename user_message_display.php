@@ -32,7 +32,7 @@
 	}
 	
 	// get message nav bar
-	$sitePage = getMessageNavigation();
+	$sitePage = getMessageNavigation("View Message");
 	
 	// build table
 	$sitePage = $sitePage . ('<div class="tableContainer"><table class="twoCol">');

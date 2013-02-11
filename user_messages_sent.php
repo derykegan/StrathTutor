@@ -11,7 +11,7 @@
 	}
 	
 	// get message nav bar
-	$sitePage = getMessageNavigation();
+	$sitePage = getMessageNavigation("Sent Messages");
 	
 	// get username and query messages
 	$username = getLoggedInUsername();

@@ -24,6 +24,44 @@
 		return $result_array;
 	}
 	
+	// creates the given message
+	function sendMessage($fromUser, $toUser, $subject, $message){
+		// escape all entered terms
+		$fromUser = escapeQuery($fromUser);
+		$toUser = escapeQuery($toUser);
+		$subject = escapeQuery($subject);
+		$message = escapeQuery($message);
+		
+		$continue = false;
+		
+		// check that both specified users exist, else don't do anything
+		if(userExists($fromUser) && userExists($toUser)){
+			$continue = true;
+		}
+		
+		// convert usernames to id numbers for storage
+		$fromUser = getIdFromUsername($fromUser);
+		$toUser = getIdFromUsername($toUser);
+		
+		if($continue){
+		
+			 $query = "INSERT INTO Messages(
+					fromUserId, 
+					toUserId, 
+					messageTitle, 
+					messageText) 
+				VALUES (
+					$fromUser, 
+					$toUser, 
+					'$subject', 
+					'$message');";
+			
+			$result = doQuery($query);
+		
+		}
+		
+	}
+	
 	// returns the message corresponding to this id
 	function getSingleMessage($message_id){
 		$message_id = escapeQuery($message_id);

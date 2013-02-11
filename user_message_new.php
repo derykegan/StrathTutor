@@ -22,15 +22,12 @@
 	}
 	
 $createForm = <<<EOT
-	
-	<h1>Messages</h1>
-	<h2>Create New Message</h2>
         <form method="POST" action="libraries/message_new.php">
  			       	
 			<table class='create_message'>
                 <tr>
                     <td><p class="label">To:</p></td>
-                    <td><input type="text" name="toUser" size="50" required="required"></td>
+                    <td><input type="text" name="toUser" size="30" required="required"></td>
                 </tr>
                 <tr>
                     <td><p class="label">Subject:</p></td>
@@ -48,7 +45,7 @@ $createForm = <<<EOT
 EOT;
 
 	// get navigation bar
-	$createForm = getMessageNavigation() . $createForm;
+	$createForm = getMessageNavigation("Create New Message") . $createForm;
 	
 	// print error message if appropriate
 	if($error_noUser){
