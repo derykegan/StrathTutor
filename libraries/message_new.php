@@ -38,10 +38,7 @@
 		// set session flag to indicate invalid user, then redirect
 		$_SESSION['error_message_noUser'] = true;
 		
-		print(userExists($toUser));
-		print($toUser);
-		
-		//header("Location: ../user_message_new.php");
+		header("Location: ../user_message_new.php");
 	}
 	
 ?>
