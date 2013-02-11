@@ -3,25 +3,15 @@
 	include_once 'libraries/user_check.php';
 	include_once 'libraries/messages.php';
 	include_once 'classes/pageFactory.php';
+	include_once 'templates/messages_nav.php';
 	
 	// check that user is logged in, else redirect
 	if(getLoggedInType() == ""){
 		header("Location: index.php");
 	}
 	
-	// heredoc for page content
-$sitePage = <<<EOT
-	<div class='messageMenu'><ul class='message_Nav'>
-	<li><a href='user_message_new.php'>Send New Message</a></li>
-	<li><a href='user_messaging.php'>Inbox</a></li>
-	<li><a href='user_messages_sent.php'>Sent Messages</a></li>
-	</ul></div>
-	<br />
-	<h1>Messages</h1>
-	<h2>Sent Messages</h2>
-	<br />
-    
-EOT;
+	// get message nav bar
+	$sitePage = getMessageNavigation();
 	
 	// get username and query messages
 	$username = getLoggedInUsername();

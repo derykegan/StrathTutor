@@ -4,6 +4,7 @@
 	include_once 'libraries/sql.php';
 	include_once 'libraries/session.php';
 	include_once 'libraries/user_check.php';
+	include_once 'templates/messages_nav.php';
 	
 	$error_noUser = false;
 	
@@ -45,12 +46,15 @@ $createForm = <<<EOT
 
         </form>
 EOT;
+
+	// get navigation bar
+	$createForm = getMessageNavigation() . $createForm;
 	
 	// print error message if appropriate
 	if($error_noUser){
-		$loginForm = "<div class='errorNotice'><div class='errorText'>
+		$createForm = "<div class='errorNotice'><div class='errorText'>
 		Oops! It doesn't look like that user name was right. Please try again.
-		</div></div>" . $loginForm;
+		</div></div>" . $createForm;
 	}
 	
 	// create page factory and generate new page
