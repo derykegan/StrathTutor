@@ -16,16 +16,20 @@
 		// regenerate session id for security
 		session_regenerate_id();
 		
+		// set session flags accordingly
 		$_SESSION['loggedIn'] = true;
 		
 		// check user Type and set
 		$type = getUserType($username);
 		$firstName = getUserFirstName($username);
 		$lastName = getUserLastName($username);
+		$id = getIdfromUsername($username);
+		
 		$_SESSION['firstName'] = $firstName;
 		$_SESSION['lastName'] = $lastName;
 		$_SESSION['username'] = $username;
 		$_SESSION['userType'] = $type;
+		$_SESSION['userID'] = $id;
 		
 		// set parent access flags
 		if($type == 'parent'){
