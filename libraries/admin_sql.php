@@ -63,5 +63,20 @@
 		return $result_array;
 	}
 	
+	// returns the basic lesson list
+	function getLessonList(){
+		$query = 'SELECT * FROM Lessons';
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
+	}
+	
 
 ?>
