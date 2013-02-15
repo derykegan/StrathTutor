@@ -38,13 +38,15 @@ EOT;
 			
 			if($i % 2){
 				$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "odd">' . $lessons[$i]["lesson_id"] . 
-				'<td class = "even">'. $users[$i]["tutor_id"] . '<td class = "odd">' . $users[$i]["student_id"] . " " .
-				$users[$i]["startDate"] . '<td class = "even">'. $users[$i]["endDate"] . '</tr>');
+				'</td><td class = "even">'. $lessons[$i]["tutor_id"] . '</td><td class = "odd">' . 
+				$lessons[$i]["student_id"] . '</td><td class = "even">' .
+				$lessons[$i]["startTime"] . '</td><td class = "odd">'. $lessons[$i]["endTime"] . '</td></tr>');
 			}
 			else{
-				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $users[$i]["lesson_id"] . 
-				'<td class = "even">'. $users[$i]["tutor_id"] . '<td class = "odd">' . $users[$i]["student_id"] . " " .
-				$users[$i]["startDate"] . '<td class = "even">'. $users[$i]["endDate"] . '</tr>');
+				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $lessons[$i]["lesson_id"] . 
+				'</td><td class = "even">'. $lessons[$i]["tutor_id"] . '</td><td class = "odd">' . 
+				$lessons[$i]["student_id"] . '</td><td class = "even">' .
+				$lessons[$i]["startTime"] . '</td><td class = "odd">'. $lessons[$i]["endTime"] . '</td></tr>');
 			}
 		}
 	}
