@@ -38,14 +38,14 @@ EOT;
 			
 			if($i % 2){
 				$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "odd">' . $lessons[$i]["lesson_id"] . 
-				'</td><td class = "even">'. $lessons[$i]["tutor_id"] . '</td><td class = "odd">' . 
-				$lessons[$i]["student_id"] . '</td><td class = "even">' .
+				'</td><td class = "even">'. $lessons[$i]["tutor"] . '</td><td class = "odd">' . 
+				$lessons[$i]["student"] . '</td><td class = "even">' .
 				$lessons[$i]["startTime"] . '</td><td class = "odd">'. $lessons[$i]["endTime"] . '</td></tr>');
 			}
 			else{
 				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $lessons[$i]["lesson_id"] . 
-				'</td><td class = "even">'. $lessons[$i]["tutor_id"] . '</td><td class = "odd">' . 
-				$lessons[$i]["student_id"] . '</td><td class = "even">' .
+				'</td><td class = "even">'. $lessons[$i]["tutor"] . '</td><td class = "odd">' . 
+				$lessons[$i]["student"] . '</td><td class = "even">' .
 				$lessons[$i]["startTime"] . '</td><td class = "odd">'. $lessons[$i]["endTime"] . '</td></tr>');
 			}
 		}

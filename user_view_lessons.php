@@ -16,7 +16,7 @@
 	
 	// get username and query messages
 	$username = getLoggedInUsername();
-	$lessons = getStudentLessons($username);
+	$userType = getLoggedInType();
 	
 		// heredoc for page content
 $sitePage = <<<EOT
@@ -31,47 +31,145 @@ EOT;
 	// build table
 	$sitePage = $sitePage . ('<div class="tableContainer"><table class="twoCol">');
 	
+	// get appropriate lesson list depending on user type
+	if($userType == 'student'){
+		$lessons = getStudentLessons($username);
+	}
+	else if($userType == 'tutor'){
+		$lessons = getTutorLessons($username);
+	}
+	else if($userType == 'parent'){
+		$lessons = getParentLessons($username);
+	}
+	
 	$size = count($lessons);
 	
-	// if no messages
+	// if no lessons
 	if($size == 0){
 		$sitePage = $sitePage . '<tr class = "odd"><td class = "bold">No lessons currently booked!</td></tr>';
 	}
-	// else we are popular
+	// else have lessons
 	else{
 		
-		//print header row
-		$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' 
-				. '</td>' .
-				'<td class = "bold">' . 'Tutor'. '</td>' . 
-				'<td class = "bold">' . 'Start Time' . '</td>' .
-				'<td class = "bold">' . 'End Time' . '</td>' .
-				'<td class = "bold">' . 'Subject' . '</td>' . 
-				'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
+		// case: student
+		if($userType == 'student'){
 		
-		for($i = 0; $i < $size; $i++){
-			$lessonid = $lessons[$i]["lesson_id"];
-
-			if($i % 2){
-				$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
-				. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
-				'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
-				'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-				'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
-				'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
-				'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
-				'</tr>');
-			}
-			else{
-				$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
-				'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
-				'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-				'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
-				'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
-				'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
-				'</tr>');
+			//print header row
+			$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' 
+					. '</td>' .
+					'<td class = "bold">' . 'Tutor'. '</td>' . 
+					'<td class = "bold">' . 'Start Time' . '</td>' .
+					'<td class = "bold">' . 'End Time' . '</td>' .
+					'<td class = "bold">' . 'Subject' . '</td>' . 
+					'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
+			
+			for($i = 0; $i < $size; $i++){
+				$lessonid = $lessons[$i]["lesson_id"];
+	
+				if($i % 2){
+					$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
+					. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
+					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
+					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
+					'</tr>');
+				}
+				else{
+					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
+					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
+					'</tr>');
+				}
+				
 			}
 		}
+		
+		// case: tutor
+		if($userType == 'tutor'){
+		
+			//print header row
+			$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' 
+					. '</td>' .
+					'<td class = "bold">' . 'Student'. '</td>' . 
+					'<td class = "bold">' . 'Start Time' . '</td>' .
+					'<td class = "bold">' . 'End Time' . '</td>' .
+					'<td class = "bold">' . 'Subject' . '</td>' . 
+					'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
+			
+			for($i = 0; $i < $size; $i++){
+				$lessonid = $lessons[$i]["lesson_id"];
+	
+				if($i % 2){
+					$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
+					. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
+					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
+					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
+					'</tr>');
+				}
+				else{
+					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
+					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
+					'</tr>');
+				}
+				
+			}
+			
+		}
+		
+		// case: parent
+		if($userType == 'parent'){
+		
+			//print header row
+			$sitePage = $sitePage . ('<tr class = "tableHeader">' . '<td class = "bold">' 
+					. '</td>' .
+					'<td class = "bold">' . 'Student'. '</td>' . 
+					'<td class = "bold">' . 'Tutor'. '</td>' . 
+					'<td class = "bold">' . 'Start Time' . '</td>' .
+					'<td class = "bold">' . 'End Time' . '</td>' .
+					'<td class = "bold">' . 'Subject' . '</td>' . 
+					'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
+			
+			for($i = 0; $i < $size; $i++){
+				$lessonid = $lessons[$i]["lesson_id"];
+	
+				if($i % 2){
+					$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
+					. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
+					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
+					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
+					'</tr>');
+				}
+				else{
+					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
+					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
+					'</tr>');
+				}
+				
+			}
+			
+		}
+		
 	}
 	$sitePage = $sitePage . ('</table></div>');
 	

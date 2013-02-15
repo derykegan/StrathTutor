@@ -23,17 +23,23 @@ EOT;
 	$subjects = getSubjects();
 	$sitePage = $sitePage . ('<div class="tableContainer"><table class="twoCol">');
 	
+	//print header row
+	$sitePage = $sitePage . ('<tr class = "tableHeader">' .
+			'<td class = "bold">' . 'Subject'. '</td>' . 
+			'<td class = "bold">' . 'Level' . '</td>' .
+			'<td class = "bold">' . 'Description' . '</td>' . '</tr>');
+	
 	$size = count($subjects);
 	for($i = 0; $i < $size; $i++){
 		
 		if($i % 2){
 			$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "odd">' . $subjects[$i]["SubjectName"] . 
-			'<td class = "even">'. $subjects[$i]["SubjectLevel"] . '<td class = "odd">' . $subjects[$i]["Description"] 
+			'<td class = "even">'. $subjects[$i]["SubjectLevel"] . '<td class = "odd">' . $subjects[$i]["SubjectDescription"] 
 			. '</tr>');
 		}
 		else{
 			$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $subjects[$i]["SubjectName"] . 
-			'<td class = "even">'. $subjects[$i]["SubjectLevel"] . '<td class = "odd">' . $subjects[$i]["Description"] 
+			'<td class = "even">'. $subjects[$i]["SubjectLevel"] . '<td class = "odd">' . $subjects[$i]["SubjectDescription"] 
 			. '</tr>');
 		}
 	}

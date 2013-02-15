@@ -25,6 +25,75 @@
 		return $result_array;
 	}
 	
+	// returns this tutor's messages
+	function getTutorLessons($username){
+		$username = escapeQuery($username);
+		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription
+			FROM Lessons AS L 
+			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
+			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
+			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			WHERE U1.username = '$username'";
+		
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
+	}
+	
+	// returns this parent's messages
+	function getParentLessons($username){
+		$username = escapeQuery($username);
+		
+		// first get the list of students for this parent
+		$query1 = "SELECT  U1.username AS parent, U2.username AS student, UserStudent.IsOwnParent
+			FROM UserStudent
+			INNER JOIN User AS U1 ON UserStudent.parentID = U1.user_id
+			INNER JOIN User AS U2 ON UserStudent.user_id = U2.user_id
+			WHERE U1.username = '$username' AND UserStudent.IsOwnParent = '0'";
+			
+		$result1 = doQuery($query1);
+		$student_array = array();
+		while($row = mysqli_fetch_assoc($result1))
+		{
+    		$student_array[] = $row;
+		}
+		$studentCount = count($student_array);
+		// if no students, don't continue
+		if($studentCount <= 0){
+			// return blank array
+			return array();
+		}
+		
+		// we have >=1 students
+		
+		// set up holding array
+		$toReturn = array();
+		
+		for($i = 0; $i < $studentCount; $i++){
+			
+			$studentName = $student_array[$i]['student'];
+			
+			$studentLessons = getStudentLessons($studentName);
+			
+			// append to return array
+			for($j = 0; $j < count($studentLessons); $j++){
+				$toReturn[] = $studentLessons[$j];
+			}
+			
+		}
+		
+		
+		return $toReturn;
+	}
+	
+	/*
 	// creates the given message
 	function sendMessage($fromUser, $toUser, $subject, $message){
 		// escape all entered terms
@@ -120,6 +189,6 @@
 		
 		return $result_array;
 	}
-	
+	*/
 
 ?>

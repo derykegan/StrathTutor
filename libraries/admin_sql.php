@@ -65,7 +65,11 @@
 	
 	// returns the basic lesson list
 	function getLessonList(){
-		$query = 'SELECT * FROM Lessons';
+		$query = 'SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription
+			FROM Lessons AS L 
+			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
+			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
+			INNER JOIN User AS U2 ON L.student_id = U2.user_id';
 		$result = doQuery($query);
 		
 		// save query results in an array
