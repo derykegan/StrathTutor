@@ -44,7 +44,7 @@
 	class tableFactory implements ITableFactory{
 		
 		public function makeTable($headings, $content){
-			return new Table;
+			return new Table($headings, $content);
 		}
 		
 	}
@@ -54,11 +54,11 @@
 		
 		// constructor
 		function __construct($headings, $content) {
-			global $page, $headings, $content;
+			global $page, $tableHeadings, $tableContent;
 			
 			$page = "";
-			$tableHeadings = setHeadings($headings);
-			$tableContent = setContent($content);
+			$tableHeadings = $headings;
+			$tableContent = $content;
 			
 		}
 		
@@ -86,21 +86,36 @@
 			$page = '<div class="tableContainer"><table class="twoCol">';
 			
 			// make sure we have a header row, else skip
+			/*
 			$headerSize = count($tableHeadings);
 			if($headerSize > 0){
 				
 				$page = $page . '<tr class = "tableHeader">';
 				
 				foreach ($tableHeadings as $h){
-					$page = $page . '<td class = "headerCell">$h</td>';
+					$page = $page . '<td class = "headerCell">' . $h . '</td>';
 				}
 				
 				$page = $page . '</tr>';
 			}
+			*/
+			
+			
+				
+				$page = $page . '<tr class = "tableHeader">';
+				
+				foreach (array_keys($tableContent[0]) as $h){
+					
+					$page = $page . '<td class = "headerCell">' . $h . '</td>';
+				}
+				
+				$page = $page . '</tr>';
+			
 			
 			// make sure we have table content to print
 			
 			$contentSize = count($tableContent);
+			
 			for($i = 0; $i < $contentSize; $i++){
 				$rowSize = count($tableContent[$i]);
 				
@@ -113,11 +128,11 @@
 				}
 				
 				// now build row content
-				
-				for($j = 0; $j < $rowSize; $j++){
+				$oddevenCount = 0;
+				foreach ($tableContent[$i] as $row){
 					
 					// vary cell tag depending on odd/even
-					if($j % 2){
+					if($oddevenCount % 2){
 						
 						$page = $page . '<td class = "odd">';
 						
@@ -127,10 +142,11 @@
 					}
 					
 					// add content
-					$page = $page . $tableContent[$i][$j];
+					$page = $page . $row;
 					
 					// close cell tag
 					$page = $page . '</td>';
+					$oddevenCount += 1;
 					
 				}
 				

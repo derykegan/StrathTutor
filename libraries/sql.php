@@ -236,4 +236,16 @@
 		return $toReturn;
 	}
 	
+	// method to return coloumn headings for a table
+	function getTableHeadings($table){
+		global $db;
+		$table = mysqli_real_escape_string($db, $table);
+		
+		$query = "SELECT COLUMNS 
+			FROM $table";
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		return $result;
+		
+	}
+	
 ?>
