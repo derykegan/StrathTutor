@@ -257,6 +257,11 @@ ul.header_Nav li a{
 }
 /* ------------------------------------------*/
 
+table.create_lesson{
+	float:left;
+	left:10px;
+}
+
 /* messaging */
 div.messageMenu{
 	padding: 0;

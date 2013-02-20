@@ -6,11 +6,12 @@
 	// returns this student's messages
 	function getStudentLessons($username){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription
+		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			WHERE U2.username = '$username'";
 		
 		$result = doQuery($query);
@@ -28,11 +29,12 @@
 	// returns this tutor's messages
 	function getTutorLessons($username){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription
+		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			WHERE U1.username = '$username'";
 		
 		$result = doQuery($query);
