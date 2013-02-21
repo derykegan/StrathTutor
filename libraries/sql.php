@@ -248,4 +248,18 @@
 		
 	}
 	
+	// method to return subject id for given subject and level
+	function getSubjectId($subject, $level){
+		global $db;
+		$subject = mysqli_real_escape_string($db, $subject);
+		$level = mysqli_real_escape_string($db, $level);
+		
+		$query = "SELECT SubjectId
+			FROM Subject
+			WHERE Subject.SubjectName = '$subject' AND Subject.SubjectLevel = '$level'";
+			
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		return $result;
+	}
+	
 ?>

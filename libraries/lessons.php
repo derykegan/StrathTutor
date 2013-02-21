@@ -95,45 +95,66 @@
 		return $toReturn;
 	}
 	
-	/*
-	// creates the given message
-	function sendMessage($fromUser, $toUser, $subject, $message){
+	
+	// creates a new lesson - if status is blank, the default waiting status will apply
+	function createLesson($student, $tutor, $subject, $level, $startTime, $endTime, $comments, $status){
 		// escape all entered terms
-		$fromUser = escapeQuery($fromUser);
-		$toUser = escapeQuery($toUser);
+		$student = escapeQuery($student);
+		$tutor = escapeQuery($tutor);
 		$subject = escapeQuery($subject);
-		$message = escapeQuery($message);
+		$level = escapeQuery($level);
+		$startTime = escapeQuery($startTime);
+		$endTime = escapeQuery($endTime);
+		$comments = escapeQuery($comments);
+		
+		// sanitise status string
+		if($status == null | $status == ""){
+			// set to default status - waiting for approval
+			$status = "WAITING";
+		}
+		else{
+			$status = escapeQuery($status);
+		}
+		
 		
 		$continue = false;
 		
 		// check that both specified users exist, else don't do anything
-		if(userExists($fromUser) && userExists($toUser)){
+		if(userExists($student) && userExists($tutor)){
 			$continue = true;
 		}
 		
 		// convert usernames to id numbers for storage
-		$fromUser = getIdFromUsername($fromUser);
-		$toUser = getIdFromUsername($toUser);
+		$student = getIdFromUsername($student);
+		$tutor = getIdFromUsername($tutor);
+		
+		// convert subject info into a subject id
+		$subjectId = getSubjectId($subjectName, $subjectLevel);
 		
 		if($continue){
 		
-			 $query = "INSERT INTO Messages(
-					fromUserId, 
-					toUserId, 
-					messageTitle, 
-					messageText) 
+			 $query = "INSERT INTO Lessons(
+					student_id, 
+					tutor_id, 
+					startTime, 
+					endTime,
+					subject_id,
+					status
+					) 
 				VALUES (
-					$fromUser, 
-					$toUser, 
-					'$subject', 
-					'$message');";
+					$student, 
+					$tutor, 
+					'$startTime', 
+					'$endTime',
+					$subjectId,
+					'$status');";
 			
 			$result = doQuery($query);
 		
 		}
 		
 	}
-	
+	/*
 	// returns the message corresponding to this id
 	function getSingleMessage($message_id){
 		$message_id = escapeQuery($message_id);
