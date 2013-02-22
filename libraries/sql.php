@@ -259,7 +259,9 @@
 			WHERE Subject.SubjectName = '$subject' AND Subject.SubjectLevel = '$level'";
 			
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
-		return $result;
+		$row = mysqli_fetch_row($result);
+		$toReturn = $row[0];
+		return $toReturn;
 	}
 	
 ?>

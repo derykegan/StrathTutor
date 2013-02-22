@@ -139,14 +139,16 @@
 					startTime, 
 					endTime,
 					subject_id,
-					status) 
+					status,
+					lesson_comments) 
 				VALUES (
-					'$student', 
-					'$tutor', 
+					$student, 
+					$tutor, 
 					'$startTime', 
 					'$endTime',
 					'$subjectId',
-					'$status');";
+					'$status',
+					'$comments');";
 			
 			$result = doQuery($query);
 		

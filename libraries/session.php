@@ -18,6 +18,9 @@
 			$_SESSION = array();
 			session_destroy(); 
 			
+			// set timedOut flag
+			$_SESSION['timedOut'] = true;
+			
 			// redirect to index
 			header("Location: index.php"); 
 			}

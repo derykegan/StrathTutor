@@ -43,6 +43,7 @@
 			$site_name = getSetting("site_name");
 			$site_desc = getSetting("site_description");
 			
+			// define page metadata
 			$header = "<!DOCTYPE html>\n<head>\n
 				<link rel='stylesheet' type='text/css' href='default.css'>\n
 				<meta charset='UTF-8'>\n
@@ -57,6 +58,7 @@
 				$header = $header . "<meta http-equiv='refresh' content='1210'>\n";
 			}
 			
+			// import jquery for use with date/time pickers
 			$header = $header. '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -126,6 +128,23 @@
 				setcookie("EUconsent", true);
 			}
 			
+			// if user was redirected here because they timed out, notify
+			$displayTimeout = false;
+			if(isset($_COOKIE['timedOut'])){
+				if($_COOKIE['timedOut'] == true){
+					$displayTimeout = true;
+					// unset so message only appears once
+					unset($_COOKIE['timedOut']);
+				}
+			}
+			
+			if($displayTimeout){
+				$header = $header . "<div class='errorNotice'><div class='errorText'>
+				For your security, you've been logged out as you've been idle for 20 minutes. 
+				Please log in again to continue.
+				</div></div>";
+				
+			}
 			
 			// function will return header
 			return $header;
