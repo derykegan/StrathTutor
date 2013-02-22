@@ -52,11 +52,11 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                 </tr>
 				<tr>
                     <td><p class="label">Start Date / Time:</p></td>
-                    <td><input type="text" name="startDate" size="30" required="required" class="datepicker"></td>
+                    <td><input type="text" name="startTime" size="50" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
                     <td><p class="label">End Date / Time:</p></td>
-                    <td><input type="text" name="endDate" size="30" required="required" class="datepicker"></td>
+                    <td><input type="text" name="endTime" size="50" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
 					<td><input type="textarea" name="comments"></td>
@@ -70,8 +70,8 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 
 	}
 	
-		// case: parent / self-managing student
-	if($currentUserType == 'parent' || hasParentAccess()){
+		// case: parent
+	if($currentUserType == 'parent'){
 	
 $createForm = '<form method="POST" action="libraries/lesson_new.php">
  			       	
@@ -94,11 +94,11 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                 </tr>
 				<tr>
                     <td><p class="label">Start Date / Time:</p></td>
-                    <td><input type="text" name="startDate" size="30" required="required" class="datepicker"></td>
+                    <td><input type="text" name="startTime" size="30" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
                     <td><p class="label">End Date / Time:</p></td>
-                    <td><input type="text" name="endDate" size="30" required="required" class="datepicker"></td>
+                    <td><input type="text" name="endTime" size="30" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
 					<td><p class="label">Comments (optional):</p></td>
@@ -133,11 +133,11 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                 </tr>
 				<tr>
                     <td><p class="label">Start Date / Time:</p></td>
-                    <td><input type="text" name="startDate" size="30" required="required" class="datepicker"></td>
+                    <td><input type="text" name="startTime" size="30" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
                     <td><p class="label">End Date / Time:</p></td>
-                    <td><input type="text" name="endDate" size="30" required="required" class="datepicker"></td>
+                    <td><input type="text" name="endTime" size="30" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
 					<td><p class="label">Comments (optional):</p></td>
