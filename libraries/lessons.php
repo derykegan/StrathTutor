@@ -49,7 +49,7 @@
 		return $result_array;
 	}
 	
-	// returns this parent's messages
+	// returns this parent's lessons
 	function getParentLessons($username){
 		$username = escapeQuery($username);
 		
@@ -103,8 +103,8 @@
 		$tutor = escapeQuery($tutor);
 		$subject = escapeQuery($subject);
 		$level = escapeQuery($level);
-//		$startTime = escapeQuery($startTime);
-//		$endTime = escapeQuery($endTime);
+		$startTime = escapeQuery($startTime);
+		$endTime = escapeQuery($endTime);
 		$comments = escapeQuery($comments);
 		
 		// sanitise status string
@@ -154,6 +154,29 @@
 		
 		}
 		
+	}
+	
+	// returns the message for id
+	function getSingleLessonId($id){
+		$id = escapeQuery($id);
+		$query = "SELECT *
+			FROM Lessons AS L 
+			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
+			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
+			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
+			WHERE L.lesson_id = '$id'";
+		
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
 	}
 
 ?>

@@ -92,6 +92,28 @@
 		return $toReturn;
 	}
 	
+	// get parent username for this student
+	function getParentUsername($studentUsername){
+		global $db;
+		
+		// use escape string to avoid injection attacks
+		$studentUsername = mysqli_real_escape_string($db, $studentUsername);
+		
+		// get the parent for this student
+		$query = "SELECT  U1.username AS parent, U2.username AS student, UserStudent.IsOwnParent
+			FROM UserStudent
+			INNER JOIN User AS U1 ON UserStudent.parentID = U1.user_id
+			INNER JOIN User AS U2 ON UserStudent.user_id = U2.user_id
+			WHERE U2.username = '$studentUsername' AND UserStudent.IsOwnParent = '0'";
+     
+        // Execute query
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		
+		$row = mysqli_fetch_row($result);
+		$toReturn = $row[0];
+		return $toReturn;
+	}
+	
 	// returns the username for the given user ID, or else blank
 	function getUsernameFromId($id){
 		global $db;
