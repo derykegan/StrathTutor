@@ -18,14 +18,17 @@
 	
 	// if there is no post variable, redirect
 	if(!isset($_GET['id'])){
-		header("Location: user_view_lessons.php");
+	//	header("Location: user_view_lessons.php");
+		$lessonid = 1;
 	}
-	// read lesson id from post
-	$lessonid = $_GET['id'];
+	else{
+		// read lesson id from post
+		$lessonid = $_GET['id'];
+	}
 	
 	// get username and query the requested message
 	$username = getLoggedInUsername();
-	$lesson = getSingleLesson($lessonid);
+	$lesson = getSingleLessonId($lessonid);
 	
 	// now check that this user should be able to read this message at all.
 	// ie - admin, or either the tutor, student or parent

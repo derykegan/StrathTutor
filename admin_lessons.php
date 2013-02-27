@@ -24,7 +24,7 @@ EOT;
 	$lessons = getLessonList();
 	$headings = array("");
 	$tableFactory = new tableFactory();
-	$table = $tableFactory->makeTable($headings, $lessons);
+	$table = $tableFactory->makeTableView($headings, $lessons, 'lesson_id', 'user_lesson_display.php');
 	$sitePage = $sitePage . $table->getTable();
 	
 	// create page factory and generate new page

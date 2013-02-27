@@ -159,7 +159,7 @@
 	// returns the message for id
 	function getSingleLessonId($id){
 		$id = escapeQuery($id);
-		$query = "SELECT *
+		$query = "SELECT L.lesson_id, U1.username AS Tutor, U2.username AS Student, L.startTime, L.endTime, Subject.SubjectDescription, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
