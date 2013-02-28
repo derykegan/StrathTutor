@@ -47,8 +47,7 @@
 	}
 	
 	// get lesson details from POST
-	$subject = $_POST['subject'];
-	$level = $_POST['level'];
+	$subjectId = $_POST['subject'];
 	$startTime = $_POST['startTime'];
 	$duration = $_POST['duration'];
 	
@@ -74,7 +73,7 @@
 		}
 
 		// create lesson
-		createLesson($student, $tutor, $subject, $level, $startTime, $duration, $comments, $status);
+		createLesson($student, $tutor, $subjectId, $startTime, $duration, $comments, $status);
 		
 		// redirect to lessons page
 		header("Location: ../user_view_lessons.php");

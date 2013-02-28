@@ -44,19 +44,15 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                 </tr>
                 <tr>
                     <td><p class="label">Subject:</p></td>
-                    <td><input type="text" name="subject" size="30" required="required"></td>
-                </tr>
-				<tr>
-                    <td><p class="label">Level:</p></td>
-                    <td><input type="text" name="level" size="30" required="required"></td>
+                    <td><select name="subject">' . generateDropDown('subject') . '</td>
                 </tr>
 				<tr>
                     <td><p class="label">Start Date / Time:</p></td>
                     <td><input type="text" name="startTime" size="50" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
-                    <td><p class="label">End Date / Time:</p></td>
-                    <td><input type="text" name="endTime" size="50" required="required" class="datepicker"></td>
+                    <td><p class="label">Duration:</p></td>
+                    <td><select name="duration">' . generateDropDown('duration') . '</select></td>
                 </tr>
 				<tr>
 					<td><input type="textarea" name="comments"></td>
@@ -86,19 +82,15 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                 </tr>
                 <tr>
                     <td><p class="label">Subject:</p></td>
-                    <td><input type="text" name="subject" size="30" required="required"></td>
-                </tr>
-				<tr>
-                    <td><p class="label">Level:</p></td>
-                    <td><input type="text" name="level" size="30" required="required"></td>
+                    <td><select name="subject">' . generateDropDown('subject') . '</td>
                 </tr>
 				<tr>
                     <td><p class="label">Start Date / Time:</p></td>
                     <td><input type="text" name="startTime" size="30" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
-                    <td><p class="label">End Date / Time:</p></td>
-                    <td><input type="text" name="endTime" size="30" required="required" class="datepicker"></td>
+                    <td><p class="label">Duration:</p></td>
+                    <td><select name="duration">' . generateDropDown('duration') . '</select></td>
                 </tr>
 				<tr>
 					<td><p class="label">Comments (optional):</p></td>
@@ -125,11 +117,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                 </tr>
                 <tr>
                     <td><p class="label">Subject:</p></td>
-                    <td><input type="text" name="subject" size="30" required="required"></td>
-                </tr>
-				<tr>
-                    <td><p class="label">Level:</p></td>
-                    <td><input type="text" name="level" size="30" required="required"></td>
+                    <td><select name="subject">' . generateDropDown('subject') . '</td>
                 </tr>
 				<tr>
                     <td><p class="label">Start Date / Time:</p></td>
@@ -168,13 +156,14 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 	
 	function generateDropDown($type){
 		
-		$typeArray = array('duration');
+		$typeArray = array('duration', 'subject');
 		
 		// if given option isn't predefined, return nothing
 		if(!in_array($type, $typeArray)){
 			return "";
 		}
 		
+		// possible lesson durations
 		if($type == 'duration'){
 			
 			$query = "SELECT * FROM LessonDurations";	
@@ -184,6 +173,23 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 			if(count($result) > 0){
 				while($row = $result->fetch_assoc()){
 					$toReturn = $toReturn . "<option value=" . $row['duration'] . ">" . $row['friendlyDuration'] . "</option>";
+				}
+			}
+			
+			return $toReturn;
+			
+		}
+		
+		// possible subjects
+		else if($type == 'subject'){
+			
+			$query = "SELECT * FROM Subject";	
+			$result = doQuery($query);
+			$toReturn = "";
+			
+			if(count($result) > 0){
+				while($row = $result->fetch_assoc()){
+					$toReturn = $toReturn . "<option value=" . $row['SubjectId'] . ">" . $row['SubjectDescription'] . "</option>";
 				}
 			}
 			

@@ -97,12 +97,11 @@
 	
 	
 	// creates a new lesson - if status is blank, the default waiting status will apply
-	function createLesson($student, $tutor, $subject, $level, $startTime, $duration, $comments, $status){
+	function createLesson($student, $tutor, $subject, $startTime, $duration, $comments, $status){
 		// escape all entered terms
 		$student = escapeQuery($student);
 		$tutor = escapeQuery($tutor);
 		$subject = escapeQuery($subject);
-		$level = escapeQuery($level);
 		$startTime = escapeQuery($startTime);
 		$duration = escapeQuery($duration);
 		$comments = escapeQuery($comments);
@@ -128,9 +127,6 @@
 		$student = getIdFromUsername($student);
 		$tutor = getIdFromUsername($tutor);
 		
-		// convert subject info into a subject id
-		$subjectId = getSubjectId($subject, $level);
-		
 		if($continue){
 		
 			 $query = "INSERT INTO Lessons(
@@ -146,7 +142,7 @@
 					$tutor, 
 					'$startTime', 
 					'$duration',
-					'$subjectId',
+					'$subject',
 					'$status',
 					'$comments');";
 			
