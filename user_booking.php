@@ -55,6 +55,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                     <td><select name="duration">' . generateDropDown('duration') . '</select></td>
                 </tr>
 				<tr>
+					<td><p class="label">Comments (optional):</p></td>
 					<td><input type="textarea" name="comments"></td>
 				</tr>
                 <tr>
