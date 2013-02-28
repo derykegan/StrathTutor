@@ -37,9 +37,9 @@
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			LEFT JOIN LessonReports AS LR ON L.lesson_id = LR.lesson_id
-			WHERE U2.username = '$username' AND EXISTS(SELECT LessonReports.reportText 
+			WHERE U2.username = '$username' AND ((SELECT LessonReports.reportText 
 FROM LessonReports, Lessons
-WHERE Lessons.lesson_id = LessonReports.lesson_id)";
+WHERE Lessons.lesson_id = LessonReports.lesson_id AND LessonReports.reportText > ''))";
 		
 		$result = doQuery($query);
 		
