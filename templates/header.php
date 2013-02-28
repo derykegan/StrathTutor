@@ -70,7 +70,7 @@
 				minDate: 0,
 				maxDate: 90,
 				dateFormat: "yy-mm-dd",
-				timeFormat: "hh:mm\':00\'"});
+				timeFormat: "HH:mm\':00\'"});
         });
     </script>';
 			

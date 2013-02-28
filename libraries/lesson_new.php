@@ -50,7 +50,7 @@
 	$subject = $_POST['subject'];
 	$level = $_POST['level'];
 	$startTime = $_POST['startTime'];
-	$endTime = $_POST['endTime'];
+	$duration = $_POST['duration'];
 	
 	if(isset($_POST['comments'])){
 		$comments = $_POST['comments'];
@@ -69,12 +69,12 @@
 			$status = "APPROVED";
 		}
 		
-		if($userType == 'student' || $userType == 'parent'){
+		else if($userType == 'student' || $userType == 'parent'){
 			$status = "WAITING";
 		}
 
 		// create lesson
-		createLesson($student, $tutor, $subject, $level, $startTime, $endTime, $comments, $status);
+		createLesson($student, $tutor, $subject, $level, $startTime, $duration, $comments, $status);
 		
 		// redirect to lessons page
 		header("Location: ../user_view_lessons.php");

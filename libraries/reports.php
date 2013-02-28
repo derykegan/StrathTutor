@@ -13,7 +13,7 @@
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			INNER JOIN LessonReports AS LR ON L.lesson_id = LR.lesson_id
-			WHERE L.lesson_id = '$id'";
+			WHERE L.lesson_id = '$lessonId'";
 		
 		$result = doQuery($query);
 		

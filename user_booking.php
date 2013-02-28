@@ -136,8 +136,8 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
                     <td><input type="text" name="startTime" size="30" required="required" class="datepicker"></td>
                 </tr>
 				<tr>
-                    <td><p class="label">End Date / Time:</p></td>
-                    <td><input type="text" name="endTime" size="30" required="required" class="datepicker"></td>
+                    <td><p class="label">Duration:</p></td>
+                    <td><select name="duration">' . generateDropDown('duration') . '</select></td>
                 </tr>
 				<tr>
 					<td><p class="label">Comments (optional):</p></td>
@@ -165,5 +165,32 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 	
 	// print page to screen
 	echo($page->getPage());
+	
+	function generateDropDown($type){
+		
+		$typeArray = array('duration');
+		
+		// if given option isn't predefined, return nothing
+		if(!in_array($type, $typeArray)){
+			return "";
+		}
+		
+		if($type == 'duration'){
+			
+			$query = "SELECT * FROM LessonDurations";	
+			$result = doQuery($query);
+			$toReturn = "";
+			
+			if(count($result) > 0){
+				while($row = $result->fetch_assoc()){
+					$toReturn = $toReturn . "<option value=" . $row['duration'] . ">" . $row['friendlyDescription'] . "</option>";
+				}
+			}
+			
+			return $toReturn;
+			
+		}
+		
+	}
 
 ?>

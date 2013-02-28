@@ -59,7 +59,7 @@ EOT;
 					. '</td>' .
 					'<td class = "bold">' . 'Tutor'. '</td>' . 
 					'<td class = "bold">' . 'Start Time' . '</td>' .
-					'<td class = "bold">' . 'End Time' . '</td>' .
+					'<td class = "bold">' . 'Duration' . '</td>' .
 					'<td class = "bold">' . 'Subject' . '</td>' . 
 					'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
 			
@@ -71,7 +71,7 @@ EOT;
 					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["duration"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
 					'</tr>');
@@ -81,7 +81,7 @@ EOT;
 					'<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["duration"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
 					'</tr>');
@@ -98,7 +98,7 @@ EOT;
 					. '</td>' .
 					'<td class = "bold">' . 'Student'. '</td>' . 
 					'<td class = "bold">' . 'Start Time' . '</td>' .
-					'<td class = "bold">' . 'End Time' . '</td>' .
+					'<td class = "bold">' . 'Duration' . '</td>' .
 					'<td class = "bold">' . 'Subject' . '</td>' . 
 					'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
 			
@@ -110,7 +110,7 @@ EOT;
 					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["duration"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
 					'</tr>');
@@ -120,7 +120,7 @@ EOT;
 					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["duration"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
 					'</tr>');
@@ -139,7 +139,7 @@ EOT;
 					'<td class = "bold">' . 'Student'. '</td>' . 
 					'<td class = "bold">' . 'Tutor'. '</td>' . 
 					'<td class = "bold">' . 'Start Time' . '</td>' .
-					'<td class = "bold">' . 'End Time' . '</td>' .
+					'<td class = "bold">' . 'Duration' . '</td>' .
 					'<td class = "bold">' . 'Subject' . '</td>' . 
 					'<td class = "bold">' . 'Level' . '</td>' .'</tr>');
 			
@@ -152,7 +152,7 @@ EOT;
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["duration"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
 					'</tr>');
@@ -163,7 +163,7 @@ EOT;
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
-					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
+					'<td class = "even">' . $lessons[$i]["duration"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectName"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["SubjectLevel"] . '</td>' .
 					'</tr>');

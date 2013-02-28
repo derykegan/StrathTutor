@@ -30,28 +30,35 @@
 	$username = getLoggedInUsername();
 	$report = getSingleReportId($reportid);
 	
-	// now check that this user should be able to read this message at all.
-	// ie - admin, or either the tutor, student or parent
-	if(getLoggedInType() != "admin"){
-		if($username != $report[0]["Tutor"]
-			&& $username != $report[0]["Student"]
-			&& $username != getParentUsername($report[0]["Student"])){
-				// redirect as needed
-				//header("Location: user_reports.php");
-				var_dump($lesson);
-				var_dump($username);
-				var_dump($report);
+	var_dump($report);
+	
+	$sitePage = "<br />
+	<h1>View Lesson Report</h1>
+	<h2></h2>
+	<br />";
+	
+	// check report isn't null
+	if(empty($report) || $report == null){
+		$sitePage = "<br />
+		<h1>View Lesson Report</h1>
+		<h2></h2>
+		<br />No report found.";
+	}
+	
+	else{
+	
+		// now check that this user should be able to read this message at all.
+		// ie - admin, or either the tutor, student or parent
+		if(getLoggedInType() != "admin"){
+			if($username != $report[0]["Tutor"]
+				&& $username != $report[0]["Student"]
+				&& $username != getParentUsername($report[0]["Student"])){
+					// redirect as needed
+					header("Location: user_reports.php");
+			}
 		}
 	}
 	
-	$sitePage = <<<EOT
-	
-	<br />
-	<h1>View Lesson Report</h1>
-	<h2></h2>
-	<br />
-    
-EOT;
 	
 	// create table and get content
 	$tablef = new tableFactory();

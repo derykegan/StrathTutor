@@ -6,7 +6,7 @@
 	// returns this student's messages
 	function getStudentLessons($username){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
@@ -29,7 +29,7 @@
 	// returns this tutor's lessons
 	function getTutorLessons($username){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
@@ -97,14 +97,14 @@
 	
 	
 	// creates a new lesson - if status is blank, the default waiting status will apply
-	function createLesson($student, $tutor, $subject, $level, $startTime, $endTime, $comments, $status){
+	function createLesson($student, $tutor, $subject, $level, $startTime, $duration, $comments, $status){
 		// escape all entered terms
 		$student = escapeQuery($student);
 		$tutor = escapeQuery($tutor);
 		$subject = escapeQuery($subject);
 		$level = escapeQuery($level);
 		$startTime = escapeQuery($startTime);
-		$endTime = escapeQuery($endTime);
+		$duration = escapeQuery($duration);
 		$comments = escapeQuery($comments);
 		
 		// sanitise status string
@@ -137,7 +137,7 @@
 					student_id, 
 					tutor_id, 
 					startTime, 
-					endTime,
+					duration,
 					subject_id,
 					status,
 					lesson_comments) 
@@ -145,7 +145,7 @@
 					$student, 
 					$tutor, 
 					'$startTime', 
-					'$endTime',
+					'$duration',
 					'$subjectId',
 					'$status',
 					'$comments');";
@@ -159,7 +159,7 @@
 	// returns the message for id
 	function getSingleLessonId($id){
 		$id = escapeQuery($id);
-		$query = "SELECT L.lesson_id, U1.username AS Tutor, U2.username AS Student, L.startTime, L.endTime, Subject.SubjectDescription, LS.statusDescription
+		$query = "SELECT L.lesson_id, U1.username AS Tutor, U2.username AS Student, L.startTime, L.duration, Subject.SubjectDescription, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
