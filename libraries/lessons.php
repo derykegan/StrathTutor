@@ -26,7 +26,7 @@
 		return $result_array;
 	}
 	
-	// returns this tutor's messages
+	// returns this tutor's lessons
 	function getTutorLessons($username){
 		$username = escapeQuery($username);
 		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.endTime, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription

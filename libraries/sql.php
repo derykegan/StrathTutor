@@ -286,4 +286,21 @@
 		return $toReturn;
 	}
 	
+	// method to return children for this parent (as array)
+	function getChildrenUsernames($parent){
+		global $db;
+		$parent = escapeQuery($parent);
+		
+		$query = "SELECT U2.username AS student
+		FROM UserParent
+		INNER JOIN User AS U1 ON UserParent.parent_id = U1.user_id
+		INNER JOIN User AS U2 ON UserParent.student_id = U2.user_id
+		WHERE U1.username = '$parent'";
+		
+		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
+		$result = mysqli_fetch_assoc($result);
+		return $result;
+		
+	}
+	
 ?>
