@@ -68,7 +68,7 @@ EOT;
 	
 				if($i % 2){
 					$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
-					. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
+					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
@@ -78,6 +78,7 @@ EOT;
 				}
 				else{
 					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+					'<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
@@ -106,7 +107,7 @@ EOT;
 	
 				if($i % 2){
 					$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
-					. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
+					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
@@ -115,7 +116,8 @@ EOT;
 					'</tr>');
 				}
 				else{
-					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">'
+					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["endTime"] . '</td>' .
@@ -146,7 +148,7 @@ EOT;
 	
 				if($i % 2){
 					$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "bold">' 
-					. '<a href="user_message_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
+					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
@@ -156,7 +158,8 @@ EOT;
 					'</tr>');
 				}
 				else{
-					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">' .
+					$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "bold">'
+					. '<a href="user_lesson_display.php?id=' . $lessonid .'">VIEW</a> </td>' .
 					'<td class = "even">' . $lessons[$i]["student"] . '</td>' . 
 					'<td class = "even">' . $lessons[$i]["tutor"] . '</td>' .
 					'<td class = "even">' . $lessons[$i]["startTime"] . '</td>' .
