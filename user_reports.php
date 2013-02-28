@@ -50,9 +50,10 @@ EOT;
 	else if($userType == 'parent'){
 		// get lessons for each child
 		$students = getChildrenUsernames($username);
-		var_dump( $students);
-		foreach($students['student'] as $student){
-			$lessons = $lessons . getStudentLessonsWithReports($student);
+
+		$lessons = array();
+		foreach($students as $s){
+			$lessons = getStudentLessonsWithReports($s);
 		}
 		
 	}

@@ -28,9 +28,8 @@
 	
 	// get username and query the requested message
 	$username = getLoggedInUsername();
+	$currentUserType = getLoggedInType();
 	$report = getSingleReportId($reportid);
-	
-	var_dump($report);
 	
 	$sitePage = "<br />
 	<h1>View Lesson Report</h1>
@@ -42,7 +41,20 @@
 		$sitePage = "<br />
 		<h1>View Lesson Report</h1>
 		<h2></h2>
-		<br />No report found.";
+		<br />No report found for this lesson.
+		<br /><br />If you believe this is in error, please contact the administrator, quoting 
+		lesson id: " . $reportid . ".";
+		
+		// show add report button - if applicable
+		if($currentUserType == 'admin' || $currentUserType == 'tutor'){
+			$sitePage = $sitePage . '<div class ="reportBlock"><a class="addReportButton" href="user_report_new.php">
+			Add Report</a>';
+		}
+		
+		// redirect to the main report page.
+		else{
+			$sitePage = $sitePage . '<meta http-equiv="refresh" content="10;URL=user_reports.php">';
+		}
 	}
 	
 	else{
@@ -57,13 +69,14 @@
 					header("Location: user_reports.php");
 			}
 		}
+		
+		// create table and get content
+		$tablef = new tableFactory();
+		$table = $tablef->makeTable(null, $report);
+		$sitePage = $sitePage . $table->getTable();
+		
 	}
 	
-	
-	// create table and get content
-	$tablef = new tableFactory();
-	$table = $tablef->makeTable(null, $report);
-	$sitePage = $sitePage . $table->getTable();
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
