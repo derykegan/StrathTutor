@@ -32,9 +32,9 @@
 	// now check that this user should be able to read this message at all.
 	// ie - admin, or either the tutor, student or parent
 	if(getLoggedInType() != "admin"){
-		if($username != $lesson[0]["tutor_id"]
-			&& $username != $lesson[0]["student_id"]
-			&& $username != getParentUsername($lesson[0]["student_id"])){
+		if($username != $lesson[0]["Tutor"]
+			&& $username != $lesson[0]["Student"]
+			&& $username != getParentUsername($lesson[0]["Student"])){
 				// redirect as needed
 				header("Location: user_view_lessons.php");
 		}
