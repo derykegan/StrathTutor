@@ -183,7 +183,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 			
 			if(count($result) > 0){
 				while($row = $result->fetch_assoc()){
-					$toReturn = $toReturn . "<option value=" . $row['duration'] . ">" . $row['friendlyDescription'] . "</option>";
+					$toReturn = $toReturn . "<option value=" . $row['duration'] . ">" . $row['friendlyDuration'] . "</option>";
 				}
 			}
 			

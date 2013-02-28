@@ -159,12 +159,13 @@
 	// returns the message for id
 	function getSingleLessonId($id){
 		$id = escapeQuery($id);
-		$query = "SELECT L.lesson_id, U1.username AS Tutor, U2.username AS Student, L.startTime, L.duration, Subject.SubjectDescription, LS.statusDescription
+		$query = "SELECT L.lesson_id, U1.username AS Tutor, U2.username AS Student, L.startTime, L.duration, LD.friendlyDuration, Subject.SubjectDescription, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
+			INNER JOIN LessonDurations AS LD on L.duration = LD.duration
 			WHERE L.lesson_id = '$id'";
 		
 		$result = doQuery($query);

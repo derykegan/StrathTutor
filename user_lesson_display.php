@@ -47,16 +47,61 @@
 	<h1>View Lesson</h1>
 	<h2></h2>
 	<br />
-    
+    <div class = "lessonBlock">
 EOT;
-	
+
+	$currentUserType = getLoggedInType();
+	/*
 	// create table and get lesson content
 	$tablef = new tableFactory();
 	$table = $tablef->makeTable(null, $lesson);
 	$sitePage = $sitePage . $table->getTable();
+	*/
+	
+	$lesson = $lesson[0];
+	
+	// now render lesson display, depending on user type
+	// case: admin or parent
+	if($currentUserType == 'admin' || hasParentAccess()){
+		$sitePage = $sitePage . 
+			'<div class = "lessonBlock_user"><span class = "label">Student:</span>' 
+			. $lesson['Student'] .'</div> ';
+		$sitePage = $sitePage . 
+			'<div class = "lessonBlock_user"><span class = "label">Tutor:</span>' 
+			. $lesson['Tutor'] .'</div> ';
+	}
+	// case: student
+	else if($currentUserType == 'student'){
+		$sitePage = $sitePage . 
+			'<div class = "lessonBlock_user"><span class = "label">Tutor:</span>' 
+			. $lesson['Tutor'] .'</div> ';
+	}
+	// case: tutor
+	else if($currentUserType == 'tutor'){
+		$sitePage = $sitePage . 
+			'<div class = "lessonBlock_user"><span class = "label">Student:</span>' 
+			. $lesson['Student'] .'</div> ';
+	}
+	
+	// display lesson type (friendly)
+	$sitePage = $sitePage . 
+			'<div class = "lessonBlock_type"><span class = "label">Subject:</span>' 
+			. $lesson['SubjectDescription'] .'</div>';
+	
+	// display time and duration
+	$sitePage = $sitePage . 
+			'<div class = "lessonBlock_time"><div class = "time"><span class = "label">Start Time:</span>' 
+			. $lesson['startTime'] .'</div> <div class = "duration"> <span class = "label">Duration:</span>'
+			. $lesson['friendlyDuration'] . '</div></div>';
+			
+	// display lesson status
+	$sitePage = $sitePage . 
+			'<div class = "lessonBlock_status"><span class = "label">Status:</span>' 
+			. $lesson['statusDescription'] .'</div>';
+	
 	
 	// report
-	$currentUserType = getLoggedInType();
+	
 	
 	// if current user is not a student, show report (if any)
 	if(hasParentAccess() || $currentUserType == 'admin' || $currentUserType == 'tutor'){
@@ -66,7 +111,9 @@ EOT;
 			$sitePage = $sitePage . '<div class ="report">' . $report['reportText'] . '</div>';
 		}
 		else{
-			$sitePage = $sitePage . '<div class ="reportBlock"><a class="addReportButton" href="user_report_new.php">Add Report</a>';
+			if($currentUserType == 'tutor' || $currentUserType == 'admin'){
+				$sitePage = $sitePage . '<div class ="reportBlock"><a class="addReportButton" href="user_report_new.php">Add Report</a>';
+			}
 		}
 		$sitePage = $sitePage . '</div>';
 	}
