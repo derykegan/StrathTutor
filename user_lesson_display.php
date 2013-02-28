@@ -8,6 +8,7 @@
 	// import session and header
 	include_once 'libraries/user_check.php';
 	include_once 'libraries/lessons.php';
+	include_once 'libraries/reports.php';
 	include_once 'classes/pageFactory.php';
 	include_once 'classes/tableFactory.php';
 	
@@ -49,10 +50,27 @@
     
 EOT;
 	
-	// create table and get content
+	// create table and get lesson content
 	$tablef = new tableFactory();
 	$table = $tablef->makeTable(null, $lesson);
 	$sitePage = $sitePage . $table->getTable();
+	
+	// report
+	$currentUserType = getLoggedInType();
+	
+	// if current user is not a student, show report (if any)
+	if(hasParentAccess() || $currentUserType == 'admin' || $currentUserType == 'tutor'){
+		$report = getSingleReportId($lessonid);
+		if(!empty($report)){
+			$sitePage = $sitePage . '<div class ="reportBlock"><a class ="editReportButton" href="">Edit Report</a>';
+			$sitePage = $sitePage . '<div class ="report">' . $report['reportText'] . '</div>';
+		}
+		else{
+			$sitePage = $sitePage . '<div class ="reportBlock"><a class="addReportButton" href="user_report_new.php">Add Report</a>';
+		}
+		$sitePage = $sitePage . '</div>';
+	}
+	
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
