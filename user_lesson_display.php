@@ -98,6 +98,16 @@ EOT;
 	$sitePage = $sitePage . 
 			'<div class = "lessonBlock_status"><span class = "label">Status:</span>' 
 			. $lesson['statusDescription'] .'</div>';
+			
+	// display lesson comments (if any)
+	if(!empty($lesson['lesson_comments'])){
+		$sitePage = $sitePage . 
+				'<div class = "lessonBlock_comments"><span class = "label">Comments:</span>' 
+				. $lesson['lesson_comments'] .'</div>';
+	}
+	
+	// close lesson container div
+	$sitePage = $sitePage . '</div>';
 	
 	
 	// report
