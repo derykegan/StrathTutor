@@ -18,8 +18,7 @@
 	
 	// if there is no post variable, redirect
 	if(!isset($_GET['id'])){
-	//	header("Location: user_view_lessons.php");
-		$lessonid = 1;
+		header("Location: user_view_lessons.php");
 	}
 	else{
 		// read lesson id from post
@@ -41,10 +40,19 @@
 		}
 	}
 	
+	$sitePage = <<<EOT
+	
+	<br />
+	<h1>View Lesson</h1>
+	<h2></h2>
+	<br />
+    
+EOT;
+	
 	// create table and get content
 	$tablef = new tableFactory();
 	$table = $tablef->makeTable(null, $lesson);
-	$sitePage = $table->getTable();
+	$sitePage = $sitePage . $table->getTable();
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
