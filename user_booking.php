@@ -155,6 +155,8 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 	// print page to screen
 	echo($page->getPage());
 	
+	
+	// generates drop down options depending on type
 	function generateDropDown($type){
 		
 		$typeArray = array('duration', 'subject');
