@@ -1,6 +1,7 @@
 <?php
 	include_once "sql.php";
 	include_once "session.php";
+	include_once "event_add.php";
 	
 	// get username and password from POST
 	$username = $_POST['username'];
@@ -49,6 +50,17 @@
 		
 		// set session flag to indicate incorrect login, then redirect
 		$_SESSION['invalidLogin'] = true;
+		
+		// save to event log
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$useragent = $_SERVER['HTTP_USER_AGENT'];
+		
+		$eventDetails = "Invalid login attempt from " . $ip;
+		if(!empty($username)){
+			$eventDetails = $eventDetails . ". Username: " . $username;
+		}
+		$eventDetails = $eventDetails . ". User details: " . $useragent;
+		addEvent('FAILED_LOGIN', $eventDetails);
 		
 		header("Location: ../login.php");
 	}
