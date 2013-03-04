@@ -2,7 +2,8 @@
 
 	/*
 		Create user form for admin - page 2.
-		Processes input for: user type, username, password, first/last name, email address.
+		Processes input for: 	student - if is self sufficient
+								parent  - student username
 		
 		Saves variables in session for later processing.
 		
@@ -12,6 +13,7 @@
 	include_once 'libraries/sql.php';
 	include_once 'libraries/session.php';
 	include_once 'libraries/user_check.php';
+	include_once 'libraries/hashing.php';
 	include_once 'libraries/admin_user_new.php';
 	
 	$step1URL = "admin_user_new_step1.php";
@@ -33,11 +35,19 @@
 		&& isset($_POST['new_user_lastname']) && isset($_POST['new_user_email']) )){
 			header("Location: " . $step1URL);
 		}
+		
+	// check that username does not exist already
+	if(userExists($_POST['new_user_username'])){
+		// set flag and redirect to step1
+		$_SESSION['error_UserExists'] = true;
+		header("Location: " . $step1URL);
+		return;
+	}
 	
 	// get user details from POST and place in session
 	$_SESSION['new_user_type'] 		= $_POST['new_user_type'];
 	$_SESSION['new_user_username'] 	= $_POST['new_user_username'];
-	$_SESSION['new_user_password'] 	= $_POST['new_user_password'];
+	$_SESSION['new_user_password'] 	= hashPassword($_POST['new_user_password']);
 	$_SESSION['new_user_firstname'] = $_POST['new_user_firstname'];
 	$_SESSION['new_user_lastname'] 	= $_POST['new_user_lastname'];
 	$_SESSION['new_user_email'] 	= $_POST['new_user_email'];
@@ -87,7 +97,7 @@
  			       	
 			<table class="create_user">
                 <tr>
-                    <td><p class="label">New student - part 2.</p></td>
+                    <td><p class="label" colspan="2">New student - part 2.</p></td>
                 </tr>
                 <tr>
                     <td><p class="label">Is this student self sufficient?:</p></td>
@@ -103,6 +113,23 @@
 	
 	// case: new parent
 	else if($_SESSION['new_user_type'] == 'parent'){
+		$createForm = ' <form method="POST" action="' . $step3URL .'">
+ 			       	
+			<table class="create_user">
+                <tr>
+                    <td><p class="label" colspan="2">New parent - part 2.</p></td>
+                </tr>
+                <tr>
+                    <td><p class="label">If this parent has a child, enter the child username here. Note: more can be added later.</p></td>
+                    <td><input type="text" name="new_user_parent_childname"></td>
+                </tr>
+                <tr>
+                    <td><input type="Submit" value="Continue" class="continueButton"></td>
+                </tr>
+            </table>
+
+        </form>';
+
 		
 	}
 	
