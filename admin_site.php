@@ -9,6 +9,8 @@
 		header("Location: index.php");
 	}
 	
+	$actionURL = "libraries/admin_site_update.php";
+	
 	// heredoc for page content
 $sitePage = <<<EOT
 	
@@ -28,11 +30,17 @@ EOT;
 		
 		if($i % 2){
 			$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "odd">' . $settings[$i]["key"] . 
-			'<td class = "even">'. $settings[$i]["value"] . '</tr>');
+			'<td class = "even">'.
+			' <form method="post" action="' . $actionURL . '"><input type="text" name="' .  $settings[$i]["key"]
+			. '" class="inline_singleText" value="' . $settings[$i]["value"]
+			. '" title="' . $settings[$i]["friendly_key"] . '"><input type="Submit" value="Save"></form></tr>');
 		}
 		else{
 			$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $settings[$i]["key"] . 
-			'<td class = "even">'. $settings[$i]["value"] . '</tr>');
+			'<td class = "even">'.
+			' <form method="post" action="' . $actionURL . '"><input type="text" name="' .  $settings[$i]["key"]
+			. '" class="inline_singleText" value="' . $settings[$i]["value"]
+			. '" title="' . $settings[$i]["friendly_key"] . '"><input type="Submit" value="Save"></form></tr>');
 		}
 	}
 	$sitePage = $sitePage . ('</table></div>');
