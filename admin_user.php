@@ -21,7 +21,8 @@ EOT;
 	
 	// now generate table
 	$users = getUserList();
-	$sitePage = $sitePage . '<div class="tableContainer"><table class="twoCol">'
+	$sitePage = $sitePage . '<a class = "panelOption" href="admin_user_new_step1.php">Add New User</a><br />
+	<div class="tableContainer"><table class="twoCol">'
 		. '<tr class = "tableHeader">'
 		. '<td>Username</td>'
 		. '<td>User Type</td>'

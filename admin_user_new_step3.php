@@ -3,6 +3,10 @@
 	/*
 		Actually creates the user with the information provided so far.
 		
+		Performs some additional checks to ensure that the user isn't being duplicated.
+		
+		On completion, displays a success page and redirects after 20 seconds.
+		
 		*/
 	
 	include_once 'classes/pageFactory.php';
@@ -13,7 +17,7 @@
 	
 	$step1URL = "admin_user_new_step1.php";
 	$step2URL = "admin_user_new_step2.php";
-	$completeURL = "admin_users.php";
+	$completeURL = "admin_user.php";
 	
 	// check that user is logged in, else redirect
 	if(getLoggedInType() == ""){
@@ -107,7 +111,7 @@
 			. "Last name: " . $newUserLastName . " <br / >"
 			. "Email: " . $newUserEmail . " <br / >"
 			. "<br />This page will redirect in 20 seconds.<br />"
-		. "<meta http-equiv='refresh' content='20; url=" . $completeURL . "> </div>";
+		. "<meta http-equiv='refresh' content='20; url='" . $completeURL . "'> </div>";
 	}
 	
 	// create page factory and generate new page
