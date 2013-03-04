@@ -9,6 +9,8 @@
 		header("Location: index.php");
 	}
 	
+	$actionURL = "libraries/admin_page_update.php";
+	
 	// heredoc for page content
 $sitePage = <<<EOT
 	
@@ -28,11 +30,17 @@ EOT;
 		
 		if($i % 2){
 			$sitePage = $sitePage . ('<tr class = "odd">' . '<td class = "odd">' . $pages[$i]["Page_title"] . 
-			'<td class = "even">'. $pages[$i]["Page_content"] . '</tr>');
+			'<td class = "even">
+			<form method="post" action="' . $actionURL . '"><textarea name="' . $pages[$i]["Page_title"]
+			. '" class="edit_inline">' . $pages[$i]["Page_content"] 
+			. '</textarea><input type="Submit" value="Save"></form></tr>');
 		}
 		else{
 			$sitePage = $sitePage . ('<tr class = "even">' . '<td class = "odd">' . $pages[$i]["Page_title"] . 
-			'<td class = "even">'. $pages[$i]["Page_content"] . '</tr>');
+			'<td class = "even">
+			<form method="post" action="' . $actionURL . '"><textarea name="' . $pages[$i]["Page_title"]
+			. '" class="edit_inline">' . $pages[$i]["Page_content"] 
+			. '</textarea><input type="Submit" value="Save"></form></tr>');
 		}
 	}
 	$sitePage = $sitePage . ('</table></div>');

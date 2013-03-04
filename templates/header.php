@@ -60,19 +60,32 @@
 			
 			// import jquery for use with date/time pickers
 			$header = $header. '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<script src="js/jquery-ui-timepicker-addon.js"></script>
-  
-	<script>
-        $(document).ready(function() {
-            $(".datepicker").datetimepicker({
-				minDate: 0,
-				maxDate: 90,
-				dateFormat: "yy-mm-dd",
-				timeFormat: "HH:mm\':00\'"});
-        });
-    </script>';
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+				<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+				<script src="js/jquery-ui-timepicker-addon.js"></script>
+			  
+				<script>
+					$(document).ready(function() {
+						$(".datepicker").datetimepicker({
+							minDate: 0,
+							maxDate: 90,
+							dateFormat: "yy-mm-dd",
+							timeFormat: "HH:mm\':00\'"});
+					});
+				</script>';
+	
+			// import TinyMCE
+			$header = $header . '<script language="javascript" type="text/javascript" src="js/tiny_mce/tiny_mce.js"></script>
+				<script language="javascript" type="text/javascript">
+				tinyMCE.init({
+						theme : "advanced",
+						mode : "specific_textareas",
+						editor_selector : "edit_inline",
+						width: "100%"
+
+				});
+				</script>';
+
 			
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
