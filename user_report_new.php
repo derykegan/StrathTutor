@@ -1,7 +1,7 @@
 <?php
 
 	/*
-		Lesson display - takes id from post
+		Lesson Report Creation - takes lesson id from URL
 		
 		*/
 		
@@ -26,16 +26,14 @@
 		$lessonid = $_GET['id'];
 	}
 	
-	// get username and query the requested lesson
+	// get username and query the requested message
 	$username = getLoggedInUsername();
 	$lesson = getSingleLessonId($lessonid);
 	
-	// now check that this user should be able to view this lesson at all.
-	// ie - admin, or either the tutor, student or parent
+	// now check that this user should be able to read this message at all.
+	// ie - admin or the lesson tutor only
 	if(getLoggedInType() != "admin"){
-		if($username != $lesson[0]["Tutor"]
-			&& $username != $lesson[0]["Student"]
-			&& $username != getParentUsername($lesson[0]["Student"])){
+		if($username != $lesson[0]["Tutor"]){
 				// redirect as needed
 				header("Location: user_view_lessons.php");
 		}
@@ -44,7 +42,7 @@
 	$sitePage = <<<EOT
 	
 	<br />
-	<h1>View Lesson</h1>
+	<h1>Add Report</h1>
 	<h2></h2>
 	<br />
     <div class = "lessonBlock">
@@ -60,29 +58,11 @@ EOT;
 	
 	$lesson = $lesson[0];
 	
-	// now render lesson display, depending on user type
-	// case: admin or parent
-	if($currentUserType == 'admin' || hasParentAccess()){
-		$sitePage = $sitePage . 
-			'<div class = "lessonBlock_user"><span class = "label">Student:</span>' 
-			. $lesson['Student'] .'</div> ';
-		$sitePage = $sitePage . 
-			'<div class = "lessonBlock_user"><span class = "label">Tutor:</span>' 
-			. $lesson['Tutor'] .'</div> ';
-	}
-	// case: student
-	else if($currentUserType == 'student'){
-		$sitePage = $sitePage . 
-			'<div class = "lessonBlock_user"><span class = "label">Tutor:</span>' 
-			. $lesson['Tutor'] .'</div> ';
-	}
-	// case: tutor
-	else if($currentUserType == 'tutor'){
-		$sitePage = $sitePage . 
-			'<div class = "lessonBlock_user"><span class = "label">Student:</span>' 
-			. $lesson['Student'] .'</div> ';
-	}
 	
+	$sitePage = $sitePage . 
+			'<div class = "lessonBlock_user"><span class = "label">Student:</span>' 
+			. $lesson['Student'] .'</div> ';
+
 	// display lesson type (friendly)
 	$sitePage = $sitePage . 
 			'<div class = "lessonBlock_type"><span class = "label">Subject:</span>' 
@@ -106,41 +86,15 @@ EOT;
 				. $lesson['lesson_comments'] .'</div>';
 	}
 	
+	$sitePage = $sitePage . "<div class='newReport'><span class = 'label'>Report:</span>
+		<form method='post' action='libraries/report_add.php'>
+		<textarea name='reportText' class='edit_inline'></textarea>
+		<input type='hidden' name='lesson_id' value='" . $lessonid . "'>
+		<input type='Submit' value='Save Report' class='submitButton'>
+		</form></div>";
+	
 	// close lesson container div
 	$sitePage = $sitePage . '</div>';
-	
-	
-	// report
-	
-	
-	// if current user is not a student, show report (if any)
-	if(hasParentAccess() || $currentUserType == 'admin' || $currentUserType == 'tutor'){
-		$report = getSingleReportId($lessonid);
-		$report = $report[0];
-		if(!empty($report)){
-			
-			// editable for admins or tutors
-			if($currentUserType == 'admin' || $currentUserType == 'tutor'){
-					$sitePage = $sitePage . "<div class='newReport'><span class = 'label'>Report:</span>
-						<form method='post' action='libraries/report_edit.php'>
-						<textarea name='reportText' class='edit_inline'>". $report['Report'] . "</textarea>
-						<input type='hidden' name='lesson_id' value='" . $lessonid . "'>
-						<input type='Submit' value='Save Report' class='submitButton'>
-						</form></div>";
-					}
-			// non editable for anyone else
-			else{
-				$sitePage = $sitePage . "<div class='newReport'><span class = 'label'>Report:</span>". $report['Report'] . "</div>";
-			}
-		}
-		else{
-			if($currentUserType == 'tutor' || $currentUserType == 'admin'){
-				$sitePage = $sitePage . '<div class ="reportBlock"><a class="addReportButton" href="user_report_new.php?id=' . $lessonid . '">Add Report</a>';
-			}
-		}
-		$sitePage = $sitePage . '</div>';
-	}
-	
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
