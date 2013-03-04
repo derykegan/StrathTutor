@@ -14,6 +14,32 @@
 		header("Location: index.php");
 	}
 	
+	// set default view
+	$possibleViews = array('futureOnly', 'all' );
+	$view = $possibleViews[0];
+	
+	// read view type from URL
+	if(isset($_GET['view'])){
+		
+		// if valid, change to given view
+		if(in_array($_GET['view'], $possibleViews)){
+			$view = $_GET['view'];
+		}
+	}
+	
+	// check start and end
+	// read view type from URL
+	if(isset($_GET['start'])){
+		if(is_numeric($_GET['start'])){
+			$start = $_GET['start'];
+		}
+	}
+	if(isset($_GET['end'])){
+		if(is_numeric($_GET['end'])){
+			$end = $_GET['end'];
+		}
+	}
+	
 	// get username and query messages
 	$username = getLoggedInUsername();
 	$userType = getLoggedInType();
@@ -25,6 +51,9 @@ $sitePage = <<<EOT
 	<h1>Lessons</h1>
 	<h2>Select a lesson to see more information.</h2>
 	<br />
+	<a class = 'panelOption' href='user_view_lessons.php?view=futureOnly'>View Future Lessons</a>
+	<a class = 'panelOption' href='user_view_lessons.php?view=all'>View All Lessons</a>
+	
     
 EOT;
 	
@@ -33,13 +62,13 @@ EOT;
 	
 	// get appropriate lesson list depending on user type
 	if($userType == 'student'){
-		$lessons = getStudentLessons($username);
+		$lessons = getStudentLessons($username, $view);
 	}
 	else if($userType == 'tutor'){
-		$lessons = getTutorLessons($username);
+		$lessons = getTutorLessons($username, $view);
 	}
 	else if($userType == 'parent'){
-		$lessons = getParentLessons($username);
+		$lessons = getParentLessons($username, $view);
 	}
 	
 	$size = count($lessons);

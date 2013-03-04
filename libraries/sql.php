@@ -293,7 +293,7 @@
 		$query = "SELECT U2.username AS student
 		FROM UserStudent
 		INNER JOIN User AS U1 ON UserStudent.parentId = U1.user_id
-		INNER JOIN User AS U2 ON UserParent.user_id = U2.user_id
+		INNER JOIN User AS U2 ON UserStudent.user_id = U2.user_id
 		WHERE U1.username = '$parent'";
 		
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));

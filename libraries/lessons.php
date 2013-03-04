@@ -4,15 +4,28 @@
 	include_once 'sql.php';
 	
 	// returns this student's messages
-	function getStudentLessons($username){
+	function getStudentLessons($username, $view){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+		
+		if($view == 'futureOnly'){
+			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+			FROM Lessons AS L 
+			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
+			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
+			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
+			WHERE U2.username = '$username'
+			AND L.startTime >= NOW()";
+		}
+		else if($view == 'all'){
+			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			WHERE U2.username = '$username'";
+		}
 		
 		$result = doQuery($query);
 		
@@ -27,15 +40,27 @@
 	}
 	
 	// returns this tutor's lessons
-	function getTutorLessons($username){
+	function getTutorLessons($username, $view){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+		if($view == 'futureOnly'){
+			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+			FROM Lessons AS L 
+			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
+			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
+			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
+			WHERE U1.username = '$username'
+			AND L.startTime >= NOW()";
+		}
+		else if($view == 'all'){
+			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			WHERE U1.username = '$username'";
+		}
 		
 		$result = doQuery($query);
 		
@@ -50,7 +75,7 @@
 	}
 	
 	// returns this parent's lessons
-	function getParentLessons($username){
+	function getParentLessons($username, $view){
 		$username = escapeQuery($username);
 		
 		// first get the list of students for this parent
@@ -82,7 +107,7 @@
 			
 			$studentName = $student_array[$i]['student'];
 			
-			$studentLessons = getStudentLessons($studentName);
+			$studentLessons = getStudentLessons($studentName, $view);
 			
 			// append to return array
 			for($j = 0; $j < count($studentLessons); $j++){
