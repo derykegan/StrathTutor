@@ -2,6 +2,7 @@
 	include_once "sql.php";
 	include_once "session.php";
 	include_once "event_add.php";
+	include_once "hashing.php";
 	
 	// get username and password from POST
 	$username = $_POST['username'];
@@ -10,7 +11,7 @@
 	// TODO - save wanted page in session and then restore on login
 	
 	// save login state
-	$loggedIn = login($username, $password);
+	$loggedIn = login($username, hashPassword($password));
 	
 	// if logged in, redirect to index
 	if($loggedIn){

@@ -18,12 +18,11 @@
 		global $db;
 		
 		// use escape string to avoid injection attacks
-		$Susername = mysqli_real_escape_string($db, $username);
-		// hash password using SHA-512
-		$Spassword = hash("sha512", $password); 
+		$username = mysqli_real_escape_string($db, $username);
+		$password = mysqli_real_escape_string($db, $password);
 			
 		// query db using escaped username and hashed password
-		$query = "SELECT * FROM User WHERE User.username = '$Susername' AND User.password = '$Spassword'";
+		$query = "SELECT * FROM User WHERE User.username = '$username' AND User.password = '$password'";
      
         // Execute query
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
@@ -292,9 +291,9 @@
 		$parent = escapeQuery($parent);
 		
 		$query = "SELECT U2.username AS student
-		FROM UserParent
-		INNER JOIN User AS U1 ON UserParent.parent_id = U1.user_id
-		INNER JOIN User AS U2 ON UserParent.student_id = U2.user_id
+		FROM UserStudent
+		INNER JOIN User AS U1 ON UserStudent.parentId = U1.user_id
+		INNER JOIN User AS U2 ON UserParent.user_id = U2.user_id
 		WHERE U1.username = '$parent'";
 		
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
