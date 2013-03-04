@@ -30,16 +30,14 @@
 	// returns the list of this students lessons with reports added
 	function getStudentLessonsWithReports($username){
 		$username = escapeQuery($username);
-		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
+		$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription, LR.reportText
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			LEFT JOIN LessonReports AS LR ON L.lesson_id = LR.lesson_id
-			WHERE U2.username = '$username' AND ((SELECT LessonReports.reportText 
-FROM LessonReports, Lessons
-WHERE Lessons.lesson_id = LessonReports.lesson_id AND LessonReports.reportText > ''))";
+			WHERE U2.username = '$username' AND LR.reportText > ''";
 		
 		$result = doQuery($query);
 		

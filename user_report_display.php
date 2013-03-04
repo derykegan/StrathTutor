@@ -9,6 +9,7 @@
 	include_once 'libraries/user_check.php';
 	include_once 'libraries/lessons.php';
 	include_once 'libraries/reports.php';
+	include_once 'libraries/sql.php';
 	include_once 'classes/pageFactory.php';
 	include_once 'classes/tableFactory.php';
 	
@@ -59,12 +60,11 @@
 	
 	else{
 	
-		// now check that this user should be able to read this message at all.
+		// now check that this user should be able to view this report at all.
 		// ie - admin, or either the tutor, student or parent
 		if(getLoggedInType() != "admin"){
-			if($username != $report[0]["Tutor"]
-				&& $username != $report[0]["Student"]
-				&& $username != getParentUsername($report[0]["Student"])){
+			if($username != getUsernameFromId($report[0]["Tutor"])
+				&& $username != getParentUsername(getUsernameFromId($report[0]["Student"]))){
 					// redirect as needed
 					header("Location: user_reports.php");
 			}

@@ -16,6 +16,12 @@
 		header("Location: index.php");
 	}
 	
+	// check if ordinary student, if so, redirect
+	if(getLoggedInType() == 'student' && !hasParentAccess()){
+		header("Location: index.php");
+	}
+	
+	
 	// get username and query messages
 	$username = getLoggedInUsername();
 	$userType = getLoggedInType();
