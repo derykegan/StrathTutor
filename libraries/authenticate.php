@@ -42,6 +42,14 @@
 			}
 		}
 		
+		// if admin, log event
+		if($type == 'admin'){
+			$useragent = $_SERVER['HTTP_USER_AGENT'];
+			$eventDetails = "Admin user " . $username . " logged in. User details: " . $useragent;
+			addEvent('ADMIN_LOGIN', $eventDetails);
+			
+		}
+		
 		header("Location: ../index.php");
 	}
 	

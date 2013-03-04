@@ -42,6 +42,44 @@
 	$_SESSION['new_user_lastname'] 	= $_POST['new_user_lastname'];
 	$_SESSION['new_user_email'] 	= $_POST['new_user_email'];
 	
+	// check for optional fields and set if necessary
+	if(isset($_POST['new_user_address1'])){
+		$_SESSION['new_user_address1'] = $_POST['new_user_address1'];
+	}
+	else{
+		$_SESSION['new_user_address1'] = "";
+	}
+	if(isset($_POST['new_user_address2'])){
+		$_SESSION['new_user_address2'] = $_POST['new_user_address2'];
+	}
+	else{
+		$_SESSION['new_user_address2'] = "";
+	}
+	if(isset($_POST['new_user_address3'])){
+		$_SESSION['new_user_address3'] = $_POST['new_user_address3'];
+	}
+	else{
+		$_SESSION['new_user_address3'] = "";
+	}
+	if(isset($_POST['new_user_postcode'])){
+		$_SESSION['new_user_postcode'] = $_POST['new_user_postcode'];
+	}
+	else{
+		$_SESSION['new_user_postcode'] = "";
+	}
+	if(isset($_POST['new_user_phone_home'])){
+		$_SESSION['new_user_phone_home'] = $_POST['new_user_phone_home'];
+	}
+	else{
+		$_SESSION['new_user_phone_home'] = "";
+	}
+	if(isset($_POST['new_user_phone_mobile'])){
+		$_SESSION['new_user_phone_mobile'] = $_POST['new_user_phone_mobile'];
+	}
+	else{
+		$_SESSION['new_user_phone_mobile'] = "";
+	}
+	
 	
 	// case: new student
 	if($_SESSION['new_user_type'] == 'student'){
