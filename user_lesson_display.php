@@ -116,9 +116,9 @@ EOT;
 	// if current user is not a student, show report (if any)
 	if(hasParentAccess() || $currentUserType == 'admin' || $currentUserType == 'tutor'){
 		$report = getSingleReportId($lessonid);
-		$report = $report[0];
+		
 		if(!empty($report)){
-			
+			$report = $report[0];
 			// editable for admins or tutors
 			if($currentUserType == 'admin' || $currentUserType == 'tutor'){
 					$sitePage = $sitePage . "<div class='newReport'><span class = 'label'>Report:</span>
