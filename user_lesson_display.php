@@ -149,13 +149,13 @@ EOT;
 	$sitePage = $sitePage . '</div>';
 	
 	
-	// report
+	// report -------------------
 	
 	
 	// if current user is not a student, show report (if any)
 	if(hasParentAccess() || $currentUserType == 'admin' || $currentUserType == 'tutor'){
 		$report = getSingleReportId($lessonid);
-		
+		// display report if it exists
 		if(!empty($report)){
 			$report = $report[0];
 			// editable for admins or tutors
@@ -172,6 +172,7 @@ EOT;
 				$sitePage = $sitePage . "<div class='newReport'><span class = 'label'>Report:</span>". $report['Report'] . "</div>";
 			}
 		}
+		// display add report option if appropriate
 		else{
 			if($currentUserType == 'tutor' || $currentUserType == 'admin'){
 				// only completed lessons can have reports added
@@ -182,7 +183,7 @@ EOT;
 				}
 			}
 		}
-		$sitePage = $sitePage . '</div>';
+
 	}
 	
 	

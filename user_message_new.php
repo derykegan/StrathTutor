@@ -34,7 +34,7 @@ $createForm = <<<EOT
                     <td><input type="text" name="subject" size="30" required="required"></td>
                 </tr>
 				<tr>
-					<td><input type="textarea" name="message" required="required"></td>
+					<td class="styledText" colspan="2"><input type="textarea" name="message" required="required" class="maxText"></td>
 				</tr>
                 <tr>
                     <td><input type="Submit" value="Send Message" class="sendButton"></td>
