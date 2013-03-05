@@ -37,7 +37,8 @@
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			LEFT JOIN LessonReports AS LR ON L.lesson_id = LR.lesson_id
-			WHERE U2.username = '$username' AND LR.reportText > ''";
+			WHERE U2.username = '$username' AND LR.reportText > ''
+			ORDER BY L.startTime DESC";
 		
 		$result = doQuery($query);
 		
@@ -62,8 +63,9 @@
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			LEFT JOIN LessonReports AS LR ON L.lesson_id = LR.lesson_id
 			WHERE U1.username = '$username' AND NOT EXISTS(SELECT LessonReports.reportText 
-FROM LessonReports, Lessons
-WHERE Lessons.lesson_id = LessonReports.lesson_id)";
+				FROM LessonReports, Lessons
+				WHERE Lessons.lesson_id = LessonReports.lesson_id)
+			ORDER BY L.startTime ASC";
 		
 		$result = doQuery($query);
 		

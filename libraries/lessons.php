@@ -15,7 +15,8 @@
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			WHERE U2.username = '$username'
-			AND L.startTime >= NOW()";
+			AND L.startTime >= NOW()
+			ORDER BY L.startTime ASC";
 		}
 		else if($view == 'all'){
 			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
@@ -24,7 +25,8 @@
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
-			WHERE U2.username = '$username'";
+			WHERE U2.username = '$username'
+			ORDER BY L.startTime DESC";
 		}
 		
 		$result = doQuery($query);
@@ -50,7 +52,8 @@
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
 			WHERE U1.username = '$username'
-			AND L.startTime >= NOW()";
+			AND L.startTime >= NOW()
+			ORDER BY L.startTime ASC";
 		}
 		else if($view == 'all'){
 			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
@@ -59,7 +62,8 @@
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
 			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
-			WHERE U1.username = '$username'";
+			WHERE U1.username = '$username'
+			ORDER BY L.startTime DESC";
 		}
 		
 		$result = doQuery($query);
