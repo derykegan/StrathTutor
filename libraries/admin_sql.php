@@ -79,26 +79,5 @@
 		return $result_array;
 	}
 	
-	// returns the basic lesson list
-	function getLessonList(){
-		$query = 'SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription, L.lesson_comments
-			FROM Lessons AS L 
-			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
-			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
-			INNER JOIN User AS U2 ON L.student_id = U2.user_id
-			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
-			ORDER BY L.startTime DESC';
-		$result = doQuery($query);
-		
-		// save query results in an array
-		$result_array = array();
-		while($row = mysqli_fetch_assoc($result))
-		{
-    		$result_array[] = $row;
-		}
-		
-		return $result_array;
-	}
-	
 
 ?>

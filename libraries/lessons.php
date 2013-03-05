@@ -5,6 +5,7 @@
 	
 	// returns this student's messages
 	function getStudentLessons($username, $view){
+		findAndCleanLessons();
 		$username = escapeQuery($username);
 		
 		if($view == 'futureOnly'){
@@ -43,6 +44,7 @@
 	
 	// returns this tutor's lessons
 	function getTutorLessons($username, $view){
+		findAndCleanLessons();
 		$username = escapeQuery($username);
 		if($view == 'futureOnly'){
 			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
@@ -80,6 +82,7 @@
 	
 	// returns this parent's lessons
 	function getParentLessons($username, $view){
+		findAndCleanLessons();
 		$username = escapeQuery($username);
 		
 		// first get the list of students for this parent
@@ -127,6 +130,7 @@
 	
 	// creates a new lesson - if status is blank, the default waiting status will apply
 	function createLesson($student, $tutor, $subject, $startTime, $duration, $comments, $status){
+		findAndCleanLessons();
 		// escape all entered terms
 		$student = escapeQuery($student);
 		$tutor = escapeQuery($tutor);
@@ -183,6 +187,7 @@
 	
 	// returns the message for id
 	function getSingleLessonId($id){
+		findAndCleanLessons();
 		$id = escapeQuery($id);
 		$query = "SELECT L.lesson_id, U1.username AS Tutor, U2.username AS Student, L.startTime, L.duration, LD.friendlyDuration, Subject.SubjectDescription, LS.statusName, LS.statusDescription, L.lesson_comments
 			FROM Lessons AS L 
@@ -204,5 +209,47 @@
 		
 		return $result_array;
 	}
+	
+	// returns the basic lesson list (admin use)
+	function getLessonList(){
+		findAndCleanLessons();
+		$query = 'SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription, L.lesson_comments
+			FROM Lessons AS L 
+			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
+			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
+			INNER JOIN User AS U2 ON L.student_id = U2.user_id
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
+			ORDER BY L.startTime DESC';
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
+	}
+	
+	// maintenance - cleans the lesson statuses for lessons that have already occurred.
+	function findAndCleanLessons(){
+		
+		// check site settings to see if should proceed
+		$continue = getSetting("lesson_auto_mark_done");
+		if($continue == 'true'){
+			
+			// foreach(lesson[status]=APPROVED && startTime+duration < now())
+			$query = 'UPDATE Lessons
+				SET status="DONE_NO_PAY"
+				WHERE (status="APPROVED" AND
+				(NOW() > (startTime+INTERVAL duration MINUTE)))';
+			$result = doQuery($query);
+		}
+		else{
+			// do nothing
+		}
+	}
+	
 
 ?>

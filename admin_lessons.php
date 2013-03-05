@@ -1,6 +1,6 @@
 <?php
 	// import session and header
-	include_once 'libraries/admin_sql.php';
+	include_once 'libraries/lessons.php';
 	include_once 'libraries/user_check.php';
 	include_once 'classes/pageFactory.php';
 	include_once 'classes/tableFactory.php';

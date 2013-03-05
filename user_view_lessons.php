@@ -53,7 +53,7 @@ $sitePage = <<<EOT
 	<br />
 	<a class = 'panelOption' href='user_view_lessons.php?view=futureOnly'>View Future Lessons</a>
 	<a class = 'panelOption' href='user_view_lessons.php?view=all'>View All Lessons</a>
-	
+	<br />
     
 EOT;
 	
@@ -75,7 +75,7 @@ EOT;
 	
 	// if no lessons
 	if($size == 0){
-		$sitePage = $sitePage . '<tr class = "odd"><td class = "bold">No lessons currently booked!</td></tr>';
+		$sitePage = $sitePage . '<tr class = "odd"><td class = "bold">No lessons found matching criteria.</td></tr>';
 	}
 	// else have lessons
 	else{
