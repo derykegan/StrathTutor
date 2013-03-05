@@ -90,12 +90,12 @@
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
 			
-			$show_Description = (boolean)getSetting("show_Description");
+			$show_Description = getSetting("show_description");
 			$header = $header . "<div class='wrap'><div class='header'><div class='header_Title'>
 				<a href='index.php'>$site_name</a></div>\n";
 			
 			// display site description in header if appropriate
-			if($show_Description){
+			if($show_Description == "true"){
 				$header = $header . "<div class='header_Description'>$site_desc</div> \n";
 			}
 			
@@ -184,12 +184,12 @@
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
 			
-			$show_Description = (boolean)getSetting("show_Description");
+			$show_Description = getSetting("show_description");
 			$header = $header . "<div class='wrap'><div class='header'><div class='header_Title'>
 			<a href='index.php'>$site_name</a></div>\n";
 			
 			// display site description in header if appropriate
-			if($show_Description){
+			if($show_Description == "true"){
 				$header = $header . "<div class='header_Description'>$site_desc</div> \n";
 			}
 			
