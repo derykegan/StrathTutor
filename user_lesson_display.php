@@ -94,10 +94,44 @@ EOT;
 			. $lesson['startTime'] .'</div> <div class = "duration"> <span class = "label">Duration:</span>'
 			. $lesson['friendlyDuration'] . '</div></div>';
 			
-	// display lesson status
+	// display lesson status  ------------------------------
 	$sitePage = $sitePage . 
 			'<div class = "lessonBlock_status"><span class = "label">Status:</span>' 
-			. $lesson['statusDescription'] .'</div>';
+			. $lesson['statusDescription'];
+			
+	// case: Tutor
+	if($currentUserType == 'tutor'){
+		// if lesson is WAITING, allow APPROVE option
+		if($lesson['statusName'] == 'WAITING'){
+			$sitePage = $sitePage . 
+				'<a class="lessonButton" href="libraries/lesson_status_change.php">Approve Lesson</a>';
+		}
+		// else nothing to show
+	}
+	
+	// case: Parent
+	else if($currentUserType == 'parent'){
+		// if lesson is DONE_NO_PAY, allow pay option
+		if($lesson['statusName'] == 'DONE_NO_PAY'){
+			$sitePage = $sitePage . 
+				'<a class="lessonButton" href="TODO">Make Payment</a>';
+		}
+		// else nothing to show
+	}
+	
+	// case: Admin
+	if($currentUserType == 'admin'){
+		// if admin, add a drop down list to allow changing the status
+		$sitePage = $sitePage . 
+			'<form method="POST" action="libraries/lesson_status_change.php">' 
+			. generateStatusDropDown($lesson['statusName'])
+			. '<input type="Submit" value="Save" class="saveButton">'
+			. '</form>';
+		
+	}
+		
+	// close lesson status div	---------------------------
+	$sitePage = $sitePage . '</div>';
 			
 	// display lesson comments (if any)
 	if(!empty($lesson['lesson_comments'])){
@@ -148,5 +182,30 @@ EOT;
 	
 	// print page to screen
 	echo($page->getPage());
+	
+	
+	// generates a drop down menu with possible statuses
+	function generateStatusDropDown($currentStatus){
+		
+		$query = "SELECT * FROM LessonStatus";
+		$result = doQuery($query);
+		
+		$drop = "<select name='lesson_new_status'>";
+		
+		while($row = $result->fetch_assoc()){
+			if($row['statusName'] == $currentStatus){
+				$drop = $drop . '<option value="' . $row['statusName'] . '" selected>' . $row['statusDescription'] . '</option>';
+			}
+			else{
+				$drop = $drop . '<option value="' . $row['statusName'] . '">' . $row['statusDescription'] . '</option>';
+			}
+		}
+		
+		$drop = $drop . "</select>";
+		
+		return $drop;
+		
+		
+	}
 	
 ?>

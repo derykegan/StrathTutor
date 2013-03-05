@@ -32,7 +32,8 @@
 	<a class = 'panelOption'href='admin_messaging.php' title='View all messages on the site.'>All Messages</a>
 	<a class = 'panelOption'href='admin_subjects.php' title='Add, edit or remove subjects.'>Subjects</a>
 	<a class = 'panelOption'href='admin_pages.php' title='Edit page content, eg About or Welcome.'>Pages</a>
-	<a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a>";
+	<a class = 'panelOption'href='admin_site.php' title='Change options to personalise the site.'>Site Configuration</a>
+	<a class = 'panelOption'href='admin_log.php' title='View the system event log.'>Event Log</a>";
 	
 	// parent specific menu options
 	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
