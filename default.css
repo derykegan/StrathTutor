@@ -15,6 +15,7 @@ body {
 	background-color:#FFE;
 	/* stop from scaling down too far */
 	min-width:300px;
+	height: 100%;
 }
 
 #page_Container {
@@ -29,6 +30,8 @@ body {
 
 #page_Body{
 	padding-bottom: 5em; 
+	min-height: 100%;
+	height: 100%;
 }
 
 #page_Footer{
