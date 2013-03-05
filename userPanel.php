@@ -80,9 +80,9 @@
 	
 	// generic content end
 	$userPage = $userPage . "
-	<a class = 'panelOption' href='user_messaging.php' title='Send or receive messages.'>Messaging</a>
-	<a class = 'panelOption' href='user_options.php' title='Personalise your options.'>Options</a>
-	</div>
+	<a class = 'panelOption' href='user_messaging.php' title='Send or receive messages.'>Messaging</a>" .
+/*	<a class = 'panelOption' href='user_options.php' title='Personalise your options.'>Options</a> */
+	"</div>
 	<span class='clear'></span>";
 	
 	

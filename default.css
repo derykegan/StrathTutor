@@ -42,6 +42,11 @@ body {
 	max-height: 5em;
 	width: 100%;
 	
+	margin-top:2em;
+	font-size:0.7em;
+	text-align:center;
+	background:#CCC;
+	
 }
 
 /* prevent images from breaking layout */
@@ -81,8 +86,7 @@ img {
   }
   
   div.panelContainer{
-	width: 20em;
-	clear: both;
+	width: 22em;
   }
 }
 
@@ -135,8 +139,7 @@ img {
   }
   
   div.panelContainer{
-	width:20em;
-	clear:both;
+	width:22em;
   }
   
   a.panelOption{

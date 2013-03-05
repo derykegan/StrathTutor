@@ -22,7 +22,7 @@ $sitePage = <<<EOT
 	
 	<br />
 	<h1>Event Log</h1>
-	<h2>Select a lesson to edit.</h2>
+	<h2></h2>
 	<br />
     
 EOT;

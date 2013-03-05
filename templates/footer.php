@@ -2,7 +2,7 @@
 	include_once 'header.php';
 	
 	// start footer, close page_Body div tag
-	$footer = "</div><footer><div id='pageFooter'>\n";
+	$footer = "</div><div id='page_Footer'>\n";
 
 	// method to return header when called.
 	function getFooter(){
@@ -23,7 +23,7 @@
 		}
 		
 		// close footer and body tags, and page_Container div
-		$footer = $footer . "</div></div></footer></body>\n";
+		$footer = $footer . "</div></div></body>\n";
 		
 		// function will return footer
 		return $footer;

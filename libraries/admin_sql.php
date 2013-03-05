@@ -86,7 +86,8 @@
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
 			INNER JOIN User AS U1 ON L.tutor_id = U1.user_id
 			INNER JOIN User AS U2 ON L.student_id = U2.user_id
-			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName';
+			INNER JOIN LessonStatus AS LS ON L.status = LS.statusName
+			ORDER BY L.startTime DESC';
 		$result = doQuery($query);
 		
 		// save query results in an array
