@@ -18,6 +18,22 @@
 		return $result_array;
 	}
 	
+	// returns event log as an associative array
+	function getAdminLog(){
+		$query = 'SELECT * FROM EventLog
+				ORDER BY event_datetime DESC';
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
+	}
+	
 	// returns the pages editable by admins
 	function getSitePages(){
 		$query = 'SELECT * FROM PageContent';

@@ -31,7 +31,7 @@
 		unset($_SESSION['error_UserExists']);
 	}
 	
-$createForm = '<div> <form method="POST" action="admin_user_new_step2.php">
+$createForm = '<div class="create_user"> <form method="POST" action="admin_user_new_step2.php">
  			       	
 			<table class="create_user">
                 <tr>
