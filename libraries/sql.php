@@ -153,31 +153,6 @@
 		return $toReturn;
 	}
 	
-	// create a new user if they do not exist already
-	function createUser($username, $password, $userType, $email, $firstname, $lastname){
-		global $db;
-		
-		// use escape string to avoid injection attacks
-		$Susername = mysqli_real_escape_string($db, $username);
-		// hash password using SHA-512
-		$Spassword = hash("sha512", $password); 
-		
-		$query = "INSERT INTO User (username, password, userType, email, firstname, lastname) 
-			VALUES ($Susername, $Spassword, $userType, $email, $firstname, $lastname)";
-		
-		// proceed if user doesn't already exist
-		if(!userExists($username)){
-			$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
-			return true;
-		}
-		
-		// user exists, so do nothing
-		else{
-			return false;
-		}
-		
-	}
-	
 	// checks if username exists in db
 	function userExists($username){
 		global $db;

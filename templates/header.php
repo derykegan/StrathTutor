@@ -90,8 +90,11 @@
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
 			
+			// open page container and header divs
+			$header = $header . "<div id='page_Container'><div id='page_Header'>";
+			
 			$show_Description = getSetting("show_description");
-			$header = $header . "<div class='wrap'><div class='header'><div class='header_Title'>
+			$header = $header . "<div class='header_Title'>
 				<a href='index.php'>$site_name</a></div>\n";
 			
 			// display site description in header if appropriate
@@ -117,7 +120,7 @@
 			$header = $header . " <li><a href='index.php'>Home</a></li>
 			<li><a href='about.php'>About $site_name</a></li></ul>";
 			
-			// close header div
+			// close navigation and page_Header div
 			$header = $header . " </div></div>";
 			
 			// if there is not a cookie present, advise about cookie collection
@@ -159,6 +162,9 @@
 				
 			}
 			
+			// open page content div
+			$header = $header . "\n<div id='page_Body'>";
+			
 			// function will return header
 			return $header;
 			
@@ -184,8 +190,11 @@
 			// close HTML header tag
 			$header = $header . "</head>\n<body>\n";
 			
+			// open page container and header divs
+			$header = $header . "<div id='page_Container'><div id='page_Header'>";
+			
 			$show_Description = getSetting("show_description");
-			$header = $header . "<div class='wrap'><div class='header'><div class='header_Title'>
+			$header = $header . "<div class='header_Title'>
 			<a href='index.php'>$site_name</a></div>\n";
 			
 			// display site description in header if appropriate
@@ -200,8 +209,11 @@
 			$header = $header . " <li><a href='index.php'>Home</a></li>
 			<li><a href='about.php'>About $site_name</a></li></ul>";
 			
-			// close header div
+			// close navigation and page_Header divs
 			$header = $header . " </div></div>";
+			
+			// open page content div
+			$header = $header . "\n<div class='page_Body'>";
 			
 			// function will return header
 			return $header;

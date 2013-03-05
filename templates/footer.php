@@ -1,8 +1,8 @@
 <?php
 	include_once 'header.php';
 	
-	// start footer, close wrapper div tag
-	$footer = "</div><footer>\n";
+	// start footer, close page_Body div tag
+	$footer = "</div><footer><div id='pageFooter'>\n";
 
 	// method to return header when called.
 	function getFooter(){
@@ -22,8 +22,8 @@
 				Remove all cookies</a>";
 		}
 		
-		// close footer and body tags
-		$footer = $footer . "</footer></body>\n";
+		// close footer and body tags, and page_Container div
+		$footer = $footer . "</div></div></footer></body>\n";
 		
 		// function will return footer
 		return $footer;

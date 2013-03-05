@@ -6,7 +6,6 @@ html, body {
 	margin: 0;
 	padding: 0;
 	background:#CCC;
-	height: 100%;
 	}
 	
 body {
@@ -18,11 +17,28 @@ body {
 	min-width:300px;
 }
 
-.wrap {
+#page_Container {
 	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -5em;
+	position: relative;
+}
+
+#page_Header{
+	background-color: #FFA;
+	
+}
+
+#page_Body{
+	padding-bottom: 5em; 
+}
+
+#page_Footer{
+	position: absolute;
+	bottom: 0;
+	background: #CCC;
+	height: 5em;
+	max-height: 5em;
+	width: 100%;
+	
 }
 
 /* prevent images from breaking layout */
