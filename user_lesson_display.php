@@ -104,7 +104,11 @@ EOT;
 		// if lesson is WAITING, allow APPROVE option
 		if($lesson['statusName'] == 'WAITING'){
 			$sitePage = $sitePage . 
-				'<a class="lessonButton" href="libraries/lesson_status_change.php">Approve Lesson</a>';
+				'<form method="POST" action="libraries/lesson_status_change.php">' 
+				. '<input type="hidden" name="lesson_id" value="' . $lessonid . '">'
+				. '<input type="hidden" name="lesson_new_status" value="APPROVED">'
+				. '<input type="Submit" value="Approve Lesson" class="lessonButton">'
+				. '</form>';
 		}
 		// else nothing to show
 	}
@@ -124,8 +128,9 @@ EOT;
 		// if admin, add a drop down list to allow changing the status
 		$sitePage = $sitePage . 
 			'<form method="POST" action="libraries/lesson_status_change.php">' 
+			. '<input type="hidden" name="lesson_id" value="' . $lessonid . '">'
 			. generateStatusDropDown($lesson['statusName'])
-			. '<input type="Submit" value="Save" class="saveButton">'
+			. '<input type="Submit" value="Save" class="lessonButton">'
 			. '</form>';
 		
 	}
@@ -169,7 +174,12 @@ EOT;
 		}
 		else{
 			if($currentUserType == 'tutor' || $currentUserType == 'admin'){
-				$sitePage = $sitePage . '<div class ="reportBlock"><a class="addReportButton" href="user_report_new.php?id=' . $lessonid . '">Add Report</a>';
+				// only completed lessons can have reports added
+				if($lesson['statusName'] != 'WAITING' && $lesson['statusName'] != 'APPROVED'){
+					$sitePage = $sitePage . '<div class ="reportBlock"><form method="get" action="user_report_new.php">' 
+					. '<input type="hidden" name="id" value="' .$lessonid . '">
+					<input type="Submit" value="Add Report" class="lessonButton"></form>';
+				}
 			}
 		}
 		$sitePage = $sitePage . '</div>';
