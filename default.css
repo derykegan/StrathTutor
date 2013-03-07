@@ -207,6 +207,30 @@ div.errorText{
 	
 }
 
+div.successNotice{
+	background-color: #0C0;
+	width: 100%;
+	max-width: 100%;
+	clear: both;
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#0C0'); /* IE 5 - 9*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#0C0)); /* legacy webkit */
+	background: -moz-linear-gradient(top,  #333,  #0C0); /* legacy firefox */
+	background: linear-gradient(to bottom, #333,  #0C0); /* standards compliant CSS3 */
+
+}
+
+div.successText{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0.9em;
+	font-style: italic;
+	font-weight: bold;
+	color: #FFF;
+	
+}
+
 div.EUconsentText{
 	width: 90%;
 	margin-left: auto;

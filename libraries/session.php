@@ -27,5 +27,15 @@
 	}
 	
 	$_SESSION['timeout'] = time();
+	
+	// method to set an error for display on next page load.
+	function setError($error){
+		$_SESSION['error'] = $error;
+	}
+	
+	// method to set a success message for display on next page load.
+	function setSuccess($success){
+		$_SESSION['success'] = $success;
+	}
 
 ?>

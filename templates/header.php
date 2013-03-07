@@ -162,6 +162,24 @@
 				
 			}
 			
+			// retrieve error if it exists
+			if(isset($_SESSION['error'])){
+				$error = $_SESSION['error'];
+				unset($_SESSION['error']);
+				
+				$header = $header . "<div class='errorNotice'><div class='errorText'>" . $error
+				. "</div></div>";
+			}
+			
+			// retrieve success notice  if it exists
+			if(isset($_SESSION['success'])){
+				$success = $_SESSION['success'];
+				unset($_SESSION['success']);
+				
+				$header = $header . "<div class='successNotice'><div class='successText'>" . $success
+				. "</div></div>";
+			}
+			
 			// open page content div
 			$header = $header . "\n<div id='page_Body'>";
 			
