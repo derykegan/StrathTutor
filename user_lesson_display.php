@@ -29,6 +29,7 @@
 	// get username and query the requested lesson
 	$username = getLoggedInUsername();
 	$lesson = getSingleLessonId($lessonid);
+	$lessonFiles = getLessonFiles($lessonid);
 	
 	// now check that this user should be able to view this lesson at all.
 	// ie - admin, or either the tutor, student or parent
@@ -149,6 +150,18 @@ EOT;
 	$sitePage = $sitePage . '</div>';
 	
 	
+	// files --------------------
+	if(!empty($lessonFiles)){
+		$sitePage = $sitePage . '<div class="lessonFiles"><span class = "label">Files:</span>';
+		
+		// todo - finish
+		
+		
+		// close lessonFiles div
+		$sitePage = $sitePage . '</div>';
+	}
+	
+	
 	// report -------------------
 	
 	
@@ -184,6 +197,20 @@ EOT;
 			}
 		}
 
+	}
+	
+	// now show add file option if appropriate
+	if($currentUserType == 'tutor' || $currentUserType == 'admin'){
+		
+		$sitePage = $sitePage . '<div class="fileBlock"><span class="blockTitle">Add File</span>
+							<form method="post" action="libraries/file_management.php" enctype="multipart/form-data">
+							<p class="label">File:</p>
+							<input type="file" name="file">
+							<p class="label">Description:</p>
+							<input type="text" name="file_description"
+							<input type="hidden" name="lesson_id" value="' . $lessonid . '">
+							<input type="Submit" value="Add File" class="submitButton"></form>';
+		
 	}
 	
 	

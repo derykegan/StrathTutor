@@ -232,6 +232,46 @@
 		return $result_array;
 	}
 	
+	// function to get the files for a lesson
+	function getLessonFiles($lesson_id){
+		$lesson_id = escapeQuery($lesson_id);
+		
+		$query = "SELECT * FROM LessonFiles
+			WHERE lesson_id = '$lesson_id'";
+			
+		$result = doQuery($query);
+		
+		// save query results in an array
+		$result_array = array();
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
+	}
+	
+	// function to add a file for a lesson
+	function addLessonFile($lesson_id, $file_name, $file_name_server, $description){
+		$lesson_id = escapeQuery($lesson_id);
+		$file_name = escapeQuery($file_name);
+		$file_name_server = escapeQuery($file_name_server);
+		$description = escapeQuery($description);
+		
+		$query = "INSERT INTO LessonFiles(
+			lesson_id,
+			file_name_server,
+			file_name_original,
+			file_description)
+			VALUES(
+			'$lesson_id',
+			'$file_name_server',
+			'$file_name',
+			'$description'";
+			
+		$result = doQuery($query);
+	}
+	
 	// maintenance - cleans the lesson statuses for lessons that have already occurred.
 	function findAndCleanLessons(){
 		
