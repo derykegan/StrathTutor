@@ -50,6 +50,11 @@
 				<meta name='viewport' content='width=device-width, initial-scale=1'>\n
 				<link rel='apple-touch-icon' media='screen and (resolution: 163dpi)' href='images/phoneIcon.png' />
 				<link rel='shortcut icon' href='images/fav.ico' />
+				
+				<meta name='application-name' content='StrathTutor'/>
+				<meta name='msapplication-TileColor' content='#e0d8a2'/>
+				<meta name='msapplication-TileImage' content='3860ef65-9389-405f-b458-aff9502587b6.png'/>
+
 				<title>$site_name</title>\n";
 			
 			
