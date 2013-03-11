@@ -12,7 +12,7 @@ body {
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:0.85em;
 	color:#000;
-	background-color:#FFE;
+	background-color:#FEFEFE;
 	/* stop from scaling down too far */
 	min-width:300px;
 	height: 100%;
@@ -21,6 +21,7 @@ body {
 #page_Container {
 	min-height: 100%;
 	position: relative;
+	background-color: #CCC;
 }
 
 #page_Header{
@@ -32,6 +33,7 @@ body {
 	padding-bottom: 5em; 
 	min-height: 100%;
 	height: 100%;
+	background-color: #FFF;
 }
 
 #page_Footer{
@@ -60,7 +62,7 @@ img {
 	/* for desktops etc */
   ul.header_Nav li a{
 	padding: 8px 15px;
-	border-right: 1px solid #FFF;
+	border-right: 1px solid #AAA;
   }
   
   ul.message_Nav li a{
@@ -68,7 +70,34 @@ img {
 	border-right: 1px solid #FFF;
   }
   
+  #page_Header{
+    max-width:95%;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	}
+  
+  #page_Body{
+    max-width:95%;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	}
+  
+  #page_navBar{
+	max-width: 100%; 
+	width: 100%; 
+	background-color: rgb(51, 51, 51); 
+	position: absolute;
+	}
 	
+  ul.header_Nav li{
+    width: 95%;
+    max-width: 95%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+		
 }
 
 @media screen and (min-width:480px) and (max-width:800px) {
@@ -162,8 +191,10 @@ div.header{
 	background-color:#FFA;
 }
 
-div.header_Title{
-	font-size:1.5em;
+div.header_Title a{
+	font-size:2em;
+	color: #000;
+	text-decoration: none;
 }
 
 div.header_Description{
@@ -176,6 +207,7 @@ div.EUconsent{
 	width: 100%;
 	max-width: 100%;
 	clear: both;
+	float: left;
 	
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333', endColorstr='#C00'); /* IE 5 - 9*/
 	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#C00)); /* legacy webkit */
@@ -298,7 +330,6 @@ ul.header_Nav li.logout a:hover{
 ul.header_Nav li a{
 	max-width: 100%;
 	text-decoration: none;
-	font-weight: bold;
 	color: #FFF;
 }
 /* ------------------------------------------*/
@@ -349,10 +380,10 @@ ul.message_Nav li a{
 /* user panel specific ----------------------*/
 a.panelOption{
 	/* button background */
-	display:block;
-	box-shadow:#000;
-	width:20em;
-	float:left;
+	display: block;
+	box-shadow: #000;
+	width: 20em;
+	float: left;
 	margin:1em;
 	/* default background / compatibility */
 	background-color:#090;
@@ -365,13 +396,13 @@ a.panelOption{
 	/* button text */
 	text-align:center;
 	padding: 1em 0;
-	text-shadow:0 1px 0 #000;
+	text-shadow:0 1px 5px #000;
 	text-decoration:none;
 	color:#FFF;
 	
 	/* button border */
 	border:1px solid #000;
-	border-radius: 0.5em;
+	border-radius: 0.8em;
 	/* browser specific settings */
 	-moz-border-radius: 0.5em;
 	-webkit-border-radius: 0.5em;
@@ -470,6 +501,8 @@ footer {
 	text-align:center;
 	background:#CCC;
 	height: 5em;
+	position:absolute;
+	bottom: 0px;
 }
 
 /* ------------------------------------------*/

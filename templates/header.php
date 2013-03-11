@@ -65,7 +65,7 @@
 			
 			// import jquery for use with date/time pickers
 			$header = $header. '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 				<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 				<script src="js/jquery-ui-timepicker-addon.js"></script>
 			  
@@ -113,11 +113,18 @@
 				  $lastName = $_SESSION['lastName'];
 				  // display user's name
 				  $header = $header . "<div class='header_Name'>Hello $firstName $lastName! </div>";
+				  
+				  // start navigation bar div
+				  $header = $header . "</div><div class='page_navBar'>";
+				  
 				  $header = $header . "<div class='navigation'><ul class='header_Nav'><li class='logout'><a href='logout.php'>
 				  Log out</a></li>";
 			}
 			// display 'Log In'
 			else{
+				// start navigation bar div
+				$header = $header . "</div><div class='page_navBar'>";
+				
 				$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
 			}
 			
@@ -225,6 +232,9 @@
 				$header = $header . "<div class='header_Description'>$site_desc</div> \n";
 			}
 			
+			// start navigation bar div
+			$header = $header . "</div><div class='page_navBar'>";
+			
 			// print login
 			$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
 		
@@ -236,7 +246,7 @@
 			$header = $header . " </div></div>";
 			
 			// open page content div
-			$header = $header . "\n<div class='page_Body'>";
+			$header = $header . "\n<div id='page_Body'>";
 			
 			// function will return header
 			return $header;
