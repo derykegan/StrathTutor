@@ -154,8 +154,13 @@ EOT;
 	if(!empty($lessonFiles)){
 		$sitePage = $sitePage . '<div class="lessonFiles"><span class = "label">Files:</span>';
 		
-		// todo - finish
-		
+		foreach($lessonFiles as $l){
+			$sitePage = $sitePage . '<div class="lesson_file"><span class = "label">File name: </span>'
+				. '<a class="fileButton" href="upload/' . $lessonid . '/' . $l['file_name_server']
+				. '">' . $l['file_name_original'] . '</a>'
+				. '<span class="label">Description: </span>' 
+				. $l['file_description'] . '</div>';
+		}
 		
 		// close lessonFiles div
 		$sitePage = $sitePage . '</div>';
@@ -205,9 +210,9 @@ EOT;
 		$sitePage = $sitePage . '<div class="fileBlock"><span class="blockTitle">Add File</span>
 							<form method="post" action="libraries/file_management.php" enctype="multipart/form-data">
 							<p class="label">File:</p>
-							<input type="file" name="file">
+							<input type="file" name="file" required>
 							<p class="label">Description:</p>
-							<input type="text" name="file_description"
+							<input type="text" name="file_description" required><br />
 							<input type="hidden" name="lesson_id" value="' . $lessonid . '">
 							<input type="Submit" value="Add File" class="submitButton"></form>';
 		

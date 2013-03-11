@@ -110,9 +110,14 @@
 		exit;
 	}
 	
+	// check location to make sure it exists, create it if not
+	if(!is_dir("../upload/" . $lesson_id . "/")){
+		mkdir("../upload/" . $lesson_id . "/");
+	}
+	
 	// now move temp file to actual location and name
 	move_uploaded_file($_FILES["file"]["tmp_name"], 
-		"../upload/" . $lesson_id . "/" . $_FILES["file"]["name"]);
+		"../upload/" . $lesson_id . "/" . $file_name_server);
 		
 	// now update lesson db
 	addLessonFile($lesson_id, $_FILES["file"]["name"], 

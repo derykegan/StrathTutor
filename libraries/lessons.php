@@ -267,7 +267,7 @@
 			'$lesson_id',
 			'$file_name_server',
 			'$file_name',
-			'$description'";
+			'$description');";
 			
 		$result = doQuery($query);
 	}
