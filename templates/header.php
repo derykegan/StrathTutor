@@ -51,7 +51,7 @@
 				<link rel='apple-touch-icon' media='screen and (resolution: 163dpi)' href='images/phoneIcon.png' />
 				<link rel='shortcut icon' href='images/fav.ico' />
 				
-				<meta name='application-name' content='StrathTutor'/>
+				<meta name='application-name' content='$site_name'/>
 				<meta name='msapplication-TileColor' content='#e0d8a2'/>
 				<meta name='msapplication-TileImage' content='images/3860ef65-9389-405f-b458-aff9502587b6.png'/>
 
@@ -115,7 +115,7 @@
 				  $header = $header . "<div class='header_Name'>Hello $firstName $lastName! </div>";
 				  
 				  // start navigation bar div
-				  $header = $header . "</div><div class='page_navBar'>";
+				  $header = $header . "</div><div id='page_navBar'>";
 				  
 				  $header = $header . "<div class='navigation'><ul class='header_Nav'><li class='logout'><a href='logout.php'>
 				  Log out</a></li>";
@@ -233,7 +233,7 @@
 			}
 			
 			// start navigation bar div
-			$header = $header . "</div><div class='page_navBar'>";
+			$header = $header . "</div><div id='page_navBar'>";
 			
 			// print login
 			$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";

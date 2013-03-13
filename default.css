@@ -63,6 +63,7 @@ img {
   ul.header_Nav li a{
 	padding: 8px 15px;
 	border-right: 1px solid #AAA;
+	border-left: 1px solid #AAA;
   }
   
   ul.message_Nav li a{
@@ -88,7 +89,6 @@ img {
 	max-width: 100%; 
 	width: 100%; 
 	background-color: rgb(51, 51, 51); 
-	position: absolute;
 	}
 	
   ul.header_Nav li{
@@ -373,7 +373,6 @@ ul.message_Nav li a:hover{
 ul.message_Nav li a{
 	max-width: 100%;
 	text-decoration: none;
-	font-weight: bold;
 	color: #FFF;
 }
 
@@ -423,7 +422,7 @@ div.panelContainer{
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	overflow:: hidden;
+	overflow: hidden;
 	
 }
 
@@ -439,11 +438,13 @@ table.twoCol{
 	border-color: #000;
 	table-layout: fixed;
 	border: medium solid;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 div.tableContainer{
 	padding: 0.5em;
-	margin-bottom: -1em;
+	overflow:auto;
 }
 
 td{
@@ -470,6 +471,7 @@ tr.odd:hover{
 }
 
 table.create_user{
+	display:inline;
 }
 
 /* ------------------------------------------*/

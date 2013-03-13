@@ -31,15 +31,15 @@
 		unset($_SESSION['error_UserExists']);
 	}
 	
-$createForm = '<div class="create_user"> <form method="POST" action="admin_user_new_step2.php">
+$createForm = '<div> <form method="POST" action="admin_user_new_step2.php">
  			       	
 			<table class="create_user">
                 <tr>
-                    <td><p class="label">Please select which user type you would like to create.</p></td>
+                    <td colspan="2"><p class="label">Please select which user type you would like to create.</p></td>
                 </tr>
                 <tr>
                      <td><p class="label">User Type:</p></td>
-                    <td><select name="new_user_type">' . generateDropDown('userType') . '</td>
+                    <td><select name="new_user_type">' . generateDropDown('userType') . '</select></td>
                 </tr>
 				<tr>
 					<td><p class="label">Username:</p></td>
@@ -86,7 +86,7 @@ $createForm = '<div class="create_user"> <form method="POST" action="admin_user_
 					<td><input type="text" name="new_user_phone_mobile"></td>
 				</tr>
                 <tr>
-                    <td><input type="Submit" value="Continue" class="continueButton"></td>
+                    <td colspan="2"><input type="Submit" value="Continue" class="continueButton"></td>
                 </tr>
             </table>
 
