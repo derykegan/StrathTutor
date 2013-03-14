@@ -40,8 +40,9 @@
 			include_once 'libraries/session.php';
 			include_once 'libraries/sql.php';
 			
-			$site_name = getSetting("site_name");
-			$site_desc = getSetting("site_description");
+			$site_name = 	getSetting("site_name");
+			$site_desc = 	getSetting("site_description");
+			$cookiesText = 	getPageContent("cookies_notice");
 			
 			// define page metadata
 			$header = "<!DOCTYPE html>\n<head>\n
@@ -146,12 +147,8 @@
 			}
 			
 			if($displayCookie){
-				$header = $header . "<div class='EUconsent'><div class='EUconsentText'>
-				This site uses cookies. They're nothing to worry about, but if you want 
-				to remove them, you can by clicking <a href='remove_cookies.php'>here.</a>
-				<br />Unfortunately, if you do this, you won't be able to log in!
-				<br />This notice will disappear in the future.
-				</div></div>";
+				$header = $header . "<div class='EUconsent'><div class='EUconsentText'>"
+				. $cookiesText . "</div></div>";
 				// save notification cookie
 				setcookie("EUconsent", true);
 			}

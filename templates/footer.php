@@ -22,6 +22,9 @@
 				Remove all cookies</a>";
 		}
 		
+		$footer = $footer . "| <a class='cookies' href='privacy_policy.php'>
+				Privacy Policy</a>";
+		
 		// close footer and body tags, and page_Container div
 		$footer = $footer . "</div></div></body>\n";
 		
