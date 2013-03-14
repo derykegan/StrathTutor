@@ -102,7 +102,7 @@
 			$id = getIdFromUsername($username);
 			$studentId = getIdFromUsername($studentName);
 			$query = "UPDATE UserStudent
-			SET user_id='$studentId', isOwnParent='0', parentId='id')";
+			SET user_id='$studentId', isOwnParent='0', parentId='$id')";
 			doQuery($query);
 		}
 		

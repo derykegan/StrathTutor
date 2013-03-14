@@ -335,7 +335,7 @@ ul.header_Nav li a{
 /* ------------------------------------------*/
 
 table.create_lesson{
-	float:left;
+	display:inline;
 	left:10px;
 }
 
