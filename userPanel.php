@@ -36,9 +36,9 @@
 	<a class = 'panelOption'href='admin_log.php' title='View the system event log.'>Event Log</a>";
 	
 	// parent specific menu options
-	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
-	<a class = 'panelOption'href='user_payments.php' title='View payments and invoicing information'>Payments</a>
-	<a class = 'panelOption'href='user_reports.php' title='View past lesson reports'>Reports</a>";
+	$parentSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>" .
+//	"<a class = 'panelOption'href='user_payments.php' title='View payments and invoicing information'>Payments</a>" .
+	"<a class = 'panelOption'href='user_reports.php' title='View past lesson reports'>Reports</a>";
 	
 	// tutor specific menu options
 	$tutorSpecific = "<a class = 'panelOption'href='user_booking.php' title='Make a new lesson booking.'>Lesson Booking</a>
