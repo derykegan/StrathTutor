@@ -18,14 +18,6 @@
 		header("Location: index.php");
 	}
 	
-	// check session for errors
-	if(isset($_SESSION['error_message_noUser'])){
-		if($_SESSION['error_message_noUser']){
-			$error_noUser = true;
-		}
-		unset($_SESSION['error_message_noUser']);
-	}
-	
 	// determine logged in user's type
 	$currentUserType = getLoggedInType();
 	
@@ -33,7 +25,7 @@
 	$createForm = "<div class='error'>Not a valid user type</div>";
 	
 	// case: student
-	if($currentUserType == 'student'){
+	if($currentUserType == 'student' && hasParentAccess()){
 	
 $createForm = '<form method="POST" action="libraries/lesson_new.php">
  			       	

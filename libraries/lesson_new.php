@@ -40,10 +40,10 @@
 	}
 	else{
 		// set session flag to indicate invalid user, then redirect
-		$_SESSION['error_message_noUser'] = true;
+		setError("Oops! Looks like that user name was wrong. Please try again.");
 		
 		// redirect with error
-		header("Location: ../user_lesson_new.php");
+		header("Location: ../user_booking.php");
 	}
 	
 	// get lesson details from POST
