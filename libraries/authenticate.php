@@ -16,7 +16,7 @@
 	// if logged in, redirect to index
 	if($loggedIn){
 		// regenerate session id for security
-		session_regenerate_id();
+		session_regenerate_id(true);
 		
 		// set session flags accordingly
 		$_SESSION['loggedIn'] = true;
@@ -58,7 +58,7 @@
 	else{
 		
 		// set session flag to indicate incorrect login, then redirect
-		$_SESSION['invalidLogin'] = true;
+		setError("There was a problem with the details supplied, please try logging in again.");
 		
 		// save to event log
 		$ip = $_SERVER['REMOTE_ADDR'];

@@ -2,15 +2,13 @@
 	
 	include_once 'classes/pageFactory.php';
 	include_once 'libraries/sql.php';
-	include 'libraries/session.php';
+	include_once 'libraries/user_check.php';
+	include_once 'libraries/session.php';
 	
-	$printError = false;
-	// check session login details
-	if(isset($_SESSION['invalidLogin'])){
-		if($_SESSION['invalidLogin']){
-			$printError = true;
-		}
-		unset($_SESSION['invalidLogin']);
+	// if user is already logged in, redirect.
+	if(getLoggedInType() != ""){
+		header("index.php");
+		exit;
 	}
 	
 $loginForm = <<<EOT
@@ -35,11 +33,6 @@ $loginForm = <<<EOT
 
         </form>
 EOT;
-	
-	// print error message if previous login was invalid
-	if($printError){
-		$loginForm = "<div class='errorNotice'><div class='errorText'>Login failed - please try again.</div></div>" . $loginForm;
-	}
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
