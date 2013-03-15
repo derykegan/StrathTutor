@@ -7,7 +7,7 @@
 	
 	// if user is already logged in, redirect.
 	if(getLoggedInType() != ""){
-		header("index.php");
+		header("Location: index.php");
 		exit;
 	}
 	
