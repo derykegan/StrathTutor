@@ -60,7 +60,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 	}
 	
 		// case: parent
-	if($currentUserType == 'parent'){
+	else if($currentUserType == 'parent'){
 	
 $createForm = '<form method="POST" action="libraries/lesson_new.php">
  			       	
@@ -99,7 +99,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 	}
 	
 		// case: tutor
-	if($currentUserType == 'tutor'){
+	else if($currentUserType == 'tutor'){
 	
 $createForm = '<form method="POST" action="libraries/lesson_new.php">
  			       	
@@ -133,12 +133,6 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 
 	}
 	
-	// print error message if appropriate
-	if($error_noUser){
-		$createForm = "<div class='errorNotice'><div class='errorText'>
-		Oops! It doesn't look like that user name was right. Please try again.
-		</div></div>" . $createForm;
-	}
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
