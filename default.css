@@ -432,6 +432,45 @@ span.clear{
 }
 
 /* ------------------------------------------*/
+/* page buttons -----------------------------*/
+a.pageButton{
+	/* button background */
+	display: block;
+	box-shadow: #000;
+	width: 15em;
+	margin:1em;
+	/* default background / compatibility */
+	background-color:#C30;
+	/* browser specifics */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#300', endColorstr='#C30'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#300), to(#C30)); /* webkit */
+	background: -moz-linear-gradient(top,  #300,  #C30); /* firefox */
+	background: linear-gradient(to bottom, #300,  #C30); /* standards compliant CSS3 */
+	
+	/* button text */
+	text-align:center;
+	padding: 0.5em 1em;
+	text-shadow:0 1px 5px #000;
+	text-decoration:none;
+	color:#FFF;
+	
+	/* button border */
+	border:1px solid #000;
+	border-radius: 0.4em;
+	/* browser specific settings */
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+}
+
+a.pageButton:hover{
+	/* default background / compatibility */
+	background-color:#E00;
+	/* browser specifics */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#900', endColorstr='#F00'); /* IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#900), to(#F00)); /* webkit */
+	background: -moz-linear-gradient(top,  #900,  #F00); /* firefox */
+	background: linear-gradient(to bottom, #900,  #F00); /* standards compliant CSS3 */
+}
 
 /* table specific  --------------------------*/
 table.twoCol{

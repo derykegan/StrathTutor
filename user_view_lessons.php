@@ -51,8 +51,8 @@ $sitePage = <<<EOT
 	<h1>Lessons</h1>
 	<h2>Select a lesson to see more information.</h2>
 	<br />
-	<a class = 'panelOption' href='user_view_lessons.php?view=futureOnly'>View Future Lessons</a>
-	<a class = 'panelOption' href='user_view_lessons.php?view=all'>View All Lessons</a>
+	<a class = 'pageButton' href='user_view_lessons.php?view=futureOnly'>View Future Lessons</a>
+	<a class = 'pageButton' href='user_view_lessons.php?view=all'>View All Lessons</a>
 	<br />
     
 EOT;
