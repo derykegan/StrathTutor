@@ -17,6 +17,7 @@
 	// check that user is logged in, else redirect
 	if(getLoggedInType() == ""){
 		header("Location: ../index.php");
+		exit;
 	}
 	
 	// make sure we have either a student or tutor, or both
@@ -44,6 +45,7 @@
 		
 		// redirect with error
 		header("Location: ../user_booking.php");
+		exit;
 	}
 	
 	// get lesson details from POST
@@ -76,14 +78,16 @@
 		createLesson($student, $tutor, $subjectId, $startTime, $duration, $comments, $status);
 		
 		// redirect to lessons page
-		header("Location: ../user_view_lessons.php");
+		header("Location: ../user_lessons.php");
+		exit;
 		
 	}
 	else{
 		// set session flag to indicate invalid users, then redirect
-		$_SESSION['error_message_noUser'] = true;
+		setError("Oops! Looks like that user name was wrong. Please try again.");
 		
-		header("Location: ../user_lesson_new.php");
+		header("Location: ../user_booking.php");
+		exit;
 	}
 	
 ?>
