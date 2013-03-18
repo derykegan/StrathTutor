@@ -21,13 +21,16 @@
 	// determine logged in user's type
 	$currentUserType = getLoggedInType();
 	
-	// now define form based on user's type.
-	$createForm = "<div class='error'>Not a valid user type</div>";
+	$createForm = "<h1>Lesson Booking</h1>
+	<h2>Please fill out the following information.</h2>";
+	
+	// now define form based on user's type
 	
 	// case: student
 	if($currentUserType == 'student' && hasParentAccess()){
 	
-$createForm = '<form method="POST" action="libraries/lesson_new.php">
+$createForm = $createForm . '
+	<form method="POST" action="libraries/lesson_new.php">
  			       	
 			<table class="create_lesson">
                 <tr>
@@ -62,7 +65,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 		// case: parent
 	else if($currentUserType == 'parent'){
 	
-$createForm = '<form method="POST" action="libraries/lesson_new.php">
+$createForm = $createForm . '<form method="POST" action="libraries/lesson_new.php">
  			       	
 			<table class="create_lesson">
 				<tr>
@@ -101,7 +104,7 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 		// case: tutor
 	else if($currentUserType == 'tutor'){
 	
-$createForm = '<form method="POST" action="libraries/lesson_new.php">
+$createForm = $createForm . '<form method="POST" action="libraries/lesson_new.php">
  			       	
 			<table class="create_lesson">
                 <tr>
@@ -131,6 +134,10 @@ $createForm = '<form method="POST" action="libraries/lesson_new.php">
 
         </form>';
 
+	}
+	else{
+		// else is non valid user type
+		$createForm = $createForm . "<div class='error'>Not a valid user type</div>";
 	}
 	
 	

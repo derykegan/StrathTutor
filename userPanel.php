@@ -55,7 +55,7 @@
 	
 	// if not admin, add view lessons option
 	if($isNotAdmin){
-		$userPage = $userPage . "<a class = 'panelOption' href='user_view_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
+		$userPage = $userPage . "<a class = 'panelOption' href='user_lessons.php' title='View scheduled and past lessons'>View Lessons</a>";
 	}
 	
 	// if an admin, add in admin options

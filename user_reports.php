@@ -65,7 +65,7 @@ EOT;
 	}
 
 	// case: student
-	else if($userType == 'student'){
+	else if($userType == 'student' && hasParentAccess()){
 		$lessons = getStudentLessonsWithReports($username);
 	}
 	
@@ -73,13 +73,20 @@ EOT;
 	
 	// if no lessons
 	if($size == 0){
-		$sitePage = $sitePage . 'No reports currently available to view.';
+		if($userType == 'tutor'){
+			$sitePage = $sitePage . 'No lessons are currently needing reports added. 
+				If you wish to edit an existing lesson report, you can do so via
+				the <a href="user_lessons.php">lessons</a> page.';
+		}
+		else{
+			$sitePage = $sitePage . 'No reports currently available to view.';
+		}
 	}
 	// else have lessons
 	else{
 		
 		$tableFactory = new tableFactory();
-		$table = $tableFactory->makeTableView(array(""), $lessons, 'lesson_id', 'user_report_display.php');
+		$table = $tableFactory->makeTableView(array(""), $lessons, 'lesson_id', 'user_lesson_display.php');
 		$sitePage = $sitePage . $table->getTable();
 		
 	}
