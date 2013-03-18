@@ -3,7 +3,7 @@
 	
 	include_once 'sql.php';
 	
-	// returns this student's messages
+	// returns this student's lessons
 	function getStudentLessons($username, $view){
 		findAndCleanLessons();
 		$username = escapeQuery($username);

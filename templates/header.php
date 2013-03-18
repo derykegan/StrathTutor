@@ -39,6 +39,8 @@
 		public function getHeader(){
 			include_once 'libraries/session.php';
 			include_once 'libraries/sql.php';
+			include_once 'libraries/user_notifications.php';
+			include_once 'libraries/user_check.php';
 			
 			$site_name = 	getSetting("site_name");
 			$site_desc = 	getSetting("site_description");
@@ -135,6 +137,61 @@
 			
 			// close navigation and page_Header div
 			$header = $header . " </div></div>";
+			
+			// show notification bar if appropriate
+			if(getSetting('notif_num_days') > 0){
+				if($this->checkLogin()){
+					// if logged in
+					$header = $header . "<div class='page_notifBar'>";
+					
+					$header = $header . "<div class='notification_Text'>";
+					
+					$printNotif = false;
+					
+					if(getLoggedInType() == 'tutor'){
+						$notifications = getTutorNotifications(getLoggedInUsername());
+						// if we have any notifications
+						if(count($notifications) > 0 || !empty($notifications)){
+							if(count($notifications) == 1){
+								$header = $header . count($notifications) . " lesson due soon!<br />";
+							}
+							else{
+								$header = $header . count($notifications) . " lessons due soon!<br />";
+							}
+							$header = $header .
+							 "Next lesson: " . $notifications[0]['startTime'] . ": "
+								. $notifications[0]['duration'] . " minutes with " 
+								. $notifications[0]['student'] . " for " . $notifications[0]['SubjectDescription'];
+							$printNotif = true;
+						}
+					}
+					else if(getLoggedInType() == 'student'){
+						$notifications = getStudentNotifications(getLoggedInUsername());
+						// if we have any notifications
+						if(count($notifications) > 0 || !empty($notifications)){
+							if(count($notifications) == 1){
+								$header = $header . count($notifications) . " lesson due soon!<br />";
+							}
+							else{
+								$header = $header . count($notifications) . " lessons due soon!<br />";
+							}
+							$header = $header .
+							"Next lesson: " . $notifications[0]['startTime'] . ": "
+								. $notifications[0]['duration'] . " minutes with " 
+								. $notifications[0]['tutor'] . " for " . $notifications[0]['SubjectDescription'];
+							$printNotif = true;
+						}
+					}
+					
+					if(!$printNotif){
+						$header = $header . "No notifications to display.";
+					}
+					
+					// close divs
+					$header = $header . "</div> </div>";
+				}
+			}
+			
 			
 			// if there is not a cookie present, advise about cookie collection
 			// as per EU policies
