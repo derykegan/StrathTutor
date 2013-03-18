@@ -45,8 +45,10 @@ EOT;
 	}
 	$sitePage = $sitePage . ('</table></div>');
 	
-	$sitePage = $sitePage . '<div class = "addSubject"><span class="sectionTitle">Add Subject</span>
+	$sitePage = $sitePage . '<div class = "addSubject">
 	<form class="subject" name="addSubject" method="POST" action="libraries/subject_add.php">
+	<fieldset>
+	<legend>Add Subject</legend>
 		<table class="create_subject">
                 <tr>
                     <td><p class="label">Subject:</p></td>
@@ -64,10 +66,14 @@ EOT;
                     <td><input type="Submit" value="Add Subject" class="sendButton"></td>
                 </tr>
             </table>
-			</form></div>';
+			</fieldset>
+		</form>
+		</div>';
 			
-	$sitePage = $sitePage . '<div class = "addSubject"><span class="sectionTitle">Add Tuition Level</span>
+	$sitePage = $sitePage . '<div class = "addSubject">
 	<form class="subject" name="addLevel" method="POST" action="libraries/subject_add_level.php">
+	<fieldset>
+	<legend>Add Tuition Level</legend>
 		<table class="create_subject">
                 <tr>
                     <td><p class="label">Level:</p></td>
@@ -81,7 +87,8 @@ EOT;
                     <td><input type="Submit" value="Add Level" class="sendButton"></td>
                 </tr>
             </table>
-			</form> <br />';
+			</fieldset>
+			</form></div> <br />';
 	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();

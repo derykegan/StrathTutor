@@ -473,6 +473,13 @@ a.pageButton:hover{
 }
 
 /* table specific  --------------------------*/
+
+div.addSubject{
+	margin-left:auto;
+	margin-right:auto;
+	padding:1em;
+}
+
 table.twoCol{
 	border-color: #000;
 	table-layout: fixed;
