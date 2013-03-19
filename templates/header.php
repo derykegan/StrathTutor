@@ -182,6 +182,23 @@
 							$printNotif = true;
 						}
 					}
+					else if(getLoggedInType() == 'parent'){
+						$notifications = getParentNotifications(getLoggedInUsername());
+						// if we have any notifications
+						if(count($notifications) > 0 || !empty($notifications)){
+							if(count($notifications) == 1){
+								$header = $header . count($notifications) . " lesson due soon!<br />";
+							}
+							else{
+								$header = $header . count($notifications) . " lessons due soon!<br />";
+							}
+							$header = $header .
+							"Next lesson: " . $notifications[0]['startTime'] . ": "
+								. $notifications[0]['duration'] . " minutes for " . $notifications[0]['student'] . " with " 
+								. $notifications[0]['tutor'] . " for " . $notifications[0]['SubjectDescription'];
+							$printNotif = true;
+						}
+					}
 					
 					if(!$printNotif){
 						$header = $header . "No notifications to display.";
