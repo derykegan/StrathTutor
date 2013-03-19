@@ -272,8 +272,13 @@
 		WHERE U1.username = '$parent'";
 		
 		$result = mysqli_query($db, $query) or die ("Error in query: $query. ".mysqli_error($db));
-		$result = mysqli_fetch_assoc($result);
-		return $result;
+		
+		while($row = mysqli_fetch_assoc($result))
+		{
+    		$result_array[] = $row;
+		}
+		
+		return $result_array;
 		
 	}
 	

@@ -85,5 +85,52 @@
 		return $result_array;
 	}
 	
+	
+	// returns this parent's lessons
+	function getParentNotifications($username){
+		findAndCleanLessons();
+		$username = escapeQuery($username);
+		
+		// first get the list of students for this parent
+		$query1 = "SELECT  U1.username AS parent, U2.username AS student, UserStudent.IsOwnParent
+			FROM UserStudent
+			INNER JOIN User AS U1 ON UserStudent.parentID = U1.user_id
+			INNER JOIN User AS U2 ON UserStudent.user_id = U2.user_id
+			WHERE U1.username = '$username' AND UserStudent.IsOwnParent = '0'";
+			
+		$result1 = doQuery($query1);
+		$student_array = array();
+		while($row = mysqli_fetch_assoc($result1))
+		{
+    		$student_array[] = $row;
+		}
+		$studentCount = count($student_array);
+		// if no students, don't continue
+		if($studentCount <= 0){
+			// return blank array
+			return array();
+		}
+		
+		// we have >=1 students
+		
+		// set up holding array
+		$toReturn = array();
+		
+		for($i = 0; $i < $studentCount; $i++){
+			
+			$studentName = $student_array[$i]['student'];
+			
+			$studentLessons = getStudentNotifications($studentName);
+			
+			// append to return array
+			for($j = 0; $j < count($studentLessons); $j++){
+				$toReturn[] = $studentLessons[$j];
+			}
+			
+		}
+		
+		
+		return $toReturn;
+	}
 
 ?>
