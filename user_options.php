@@ -41,6 +41,21 @@ EOT;
 			
 	$sitePage = $sitePage . ('</table></form></div>');
 	
+	// for parents, show children
+	if(getLoggedInType() == 'parent'){
+		// now generate table
+		$children = getChildrenUsernames(getLoggedInUsername());
+		
+		if($children > 0 || !empty($children)){
+			$sitePage = $sitePage . "<p class='label'>Registered Children</p>
+							<p>The following child usernames are registered to this account.</p>";
+			$headings = array("");
+			$tableFactory = new tableFactory();
+			$table = $tableFactory->makeTable($headings, $children);
+			$sitePage = $sitePage . $table->getTable();
+		}
+	}
+	
 	// create page factory and generate new page
 	$pageFactory = new pageFactory();
 	$page = $pageFactory->makeHFCookiesPage($sitePage);

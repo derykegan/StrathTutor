@@ -112,7 +112,7 @@
 				
 				foreach (array_keys($tableContent[0]) as $h){
 					
-					$page = $page . '<td class = "headerCell">' . $h . '</td>';
+					$page = $page . '<th class = "headerCell">' . $h . '</th>';
 				}
 				
 				$page = $page . '</tr>';
