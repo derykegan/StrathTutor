@@ -58,7 +58,7 @@ EOT;
 		$students = getChildrenUsernames($username);
 
 		$lessons = array();
-		foreach($students as $s){
+		foreach($students[0] as $s){
 			$lessons = getStudentLessonsWithReports($s);
 		}
 		
