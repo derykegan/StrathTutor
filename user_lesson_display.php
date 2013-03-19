@@ -19,7 +19,7 @@
 	
 	// if there is no post variable, redirect
 	if(!isset($_GET['id'])){
-		header("Location: user_view_lessons.php");
+		header("Location: user_lessons.php");
 	}
 	else{
 		// read lesson id from post
@@ -38,7 +38,7 @@
 			&& $username != $lesson[0]["Student"]
 			&& $username != getParentUsername($lesson[0]["Student"])){
 				// redirect as needed
-				header("Location: user_view_lessons.php");
+				header("Location: user_lessons.php");
 		}
 	}
 	
