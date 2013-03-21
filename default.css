@@ -423,13 +423,14 @@ a.panelOption{
 	width: 17em;
 	float: left;
 	margin:1em;
+	
+	/* colours - shading */
 	/* default background / compatibility */
-	background-color:#090;
+	background-color:#787878;
 	/* browser specifics */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090', endColorstr='#0C0'); /* IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#090), to(#0C0)); /* webkit */
-	background: -moz-linear-gradient(top,  #090,  #0C0); /* firefox */
-	background: linear-gradient(to bottom, #090,  #0C0); /* standards compliant CSS3 */
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#787878)); /* webkit */
+	background: -moz-linear-gradient(top,  #333,  #787878); /* firefox */
+	background: linear-gradient(to bottom, #333,  #787878); /* standards compliant CSS3 */
 	
 	/* button text */
 	text-align:center;
@@ -448,12 +449,11 @@ a.panelOption{
 
 a.panelOption:hover{
 	/* default background / compatibility */
-	background-color:#0A0;
+	background-color:#A0A0A0;
 	/* browser specifics */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0A0', endColorstr='#0F0'); /* IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#0A0), to(#0F0)); /* webkit */
-	background: -moz-linear-gradient(top,  #0A0,  #0F0); /* firefox */
-	background: linear-gradient(to bottom, #0A0,  #0F0); /* standards compliant CSS3 */
+	background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#A0A0A0)); /* webkit */
+	background: -moz-linear-gradient(top,  #333,  #A0A0A0); /* firefox */
+	background: linear-gradient(to bottom, #333,  #A0A0A0); /* standards compliant CSS3 */
 }
 
 div.panelContainer{
@@ -478,10 +478,11 @@ a.pageButton{
 	box-shadow: #000;
 	width: 15em;
 	margin:1em;
+	
+	/* colours and shading */
 	/* default background / compatibility */
 	background-color:#C30;
 	/* browser specifics */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#300', endColorstr='#C30'); /* IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#300), to(#C30)); /* webkit */
 	background: -moz-linear-gradient(top,  #300,  #C30); /* firefox */
 	background: linear-gradient(to bottom, #300,  #C30); /* standards compliant CSS3 */
@@ -504,8 +505,9 @@ a.pageButton{
 a.pageButton:hover{
 	/* default background / compatibility */
 	background-color:#E00;
+	
+	/* colours and shading */
 	/* browser specifics */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#900', endColorstr='#F00'); /* IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#900), to(#F00)); /* webkit */
 	background: -moz-linear-gradient(top,  #900,  #F00); /* firefox */
 	background: linear-gradient(to bottom, #900,  #F00); /* standards compliant CSS3 */
