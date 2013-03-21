@@ -67,6 +67,12 @@
 	
 	// Process input ---------------------
 	
+	// check is logged in.
+	if(getLoggedInType() == ''){
+		setError("Not logged in.");
+		header($redir_error);
+	}
+	
 	// validate form
 	if(!isset($_POST['lesson_id'], $_POST['file_description'])){
 		setError("Required information not provided, please try again.");
@@ -101,7 +107,7 @@
 	// else file has uploaded successfully
 	
 	// create server name by hashing the lesson id and file name
-	$file_name_server = hash("md5", $_FILES["file"]["name"]);
+	$file_name_server = hash("md5", $lesson_id . $_FILES["file"]["name"]);
 	
 	// now check that the file doesn't already exist
 	if(file_exists("../upload/" . $lesson_id ."/" . $file_name_server)){
