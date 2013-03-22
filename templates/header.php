@@ -128,12 +128,12 @@
 				// start navigation bar div
 				$header = $header . "</div><div class='page_navBar'>";
 				
-				$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a href='login.php'>Log in</a></li>";
+				$header = $header . "<div class='navigation'><ul class='header_Nav'><li><a name='login' href='login.php'>Log in</a></li>";
 			}
 			
 		
-			$header = $header . " <li><a href='index.php'>Home</a></li>
-			<li><a href='about.php'>About $site_name</a></li></ul>";
+			$header = $header . " <li><a name='home' href='index.php'>Home</a></li>
+			<li><a name='about' href='about.php'>About $site_name</a></li></ul>";
 			
 			// close navigation and page_Header div
 			$header = $header . " </div></div>";

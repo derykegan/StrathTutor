@@ -48,6 +48,16 @@
 		exit;
 	}
 	
+	// check that POST details are set
+	if(!(isset($_POST['subject']) && isset($_POST['startTime']) && isset($_POST['duration']))){
+		// set session flag to indicate invalid info
+		setError("Oops! Some of the required information wasn't provided. Please try again.");
+		
+		// redirect with error
+		header("Location: ../user_booking.php");
+		exit;
+	}
+	
 	// get lesson details from POST
 	$subjectId = $_POST['subject'];
 	$startTime = $_POST['startTime'];

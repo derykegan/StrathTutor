@@ -63,7 +63,7 @@ $createForm = $createForm . '
 	}
 	
 		// case: parent
-	else if($currentUserType == 'parent'){
+	else if($currentUserType == 'parent' || $currentUserType == 'admin'){
 	
 $createForm = $createForm . '<form method="POST" action="libraries/lesson_new.php">
  			       	

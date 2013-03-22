@@ -12,6 +12,7 @@
 	// check that user is logged in, else redirect
 	if(getLoggedInType() == ""){
 		header("Location: index.php");
+		exit;
 	}
 	
 	// set default view
@@ -69,6 +70,11 @@ EOT;
 	}
 	else if($userType == 'parent'){
 		$lessons = getParentLessons($username, $view);
+	}
+	// if an admin, redirect to the admin overview for lessons
+	else if($userType == 'admin'){
+		header('Location: admin_lessons.php');
+		exit;
 	}
 	
 	$size = count($lessons);
