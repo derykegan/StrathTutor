@@ -19,7 +19,8 @@
 			AND L.startTime >= NOW()
 			ORDER BY L.startTime ASC";
 		}
-		else if($view == 'all'){
+		// all
+		else {
 			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId
@@ -57,7 +58,8 @@
 			AND L.startTime >= NOW()
 			ORDER BY L.startTime ASC";
 		}
-		else if($view == 'all'){
+		// all
+		else {
 			$query = "SELECT L.lesson_id, U1.username AS tutor, U2.username AS student, L.startTime, L.duration, Subject.SubjectName, Subject.SubjectLevel, Subject.SubjectDescription, L.status, LS.statusDescription
 			FROM Lessons AS L 
 			INNER JOIN Subject ON L.subject_id = Subject.SubjectId

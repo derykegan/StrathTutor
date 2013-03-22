@@ -27,7 +27,7 @@ $loginForm = <<<EOT
                     <td><input type="password" name="password" size="30"></td>
                 </tr>
                 <tr>
-                    <td><input type="Submit" value="Log in" class="loginButton"></td>
+                    <td><input type="Submit" value="Log in" class="loginButton" name="log_in"></td>
                 </tr>
             </table>
 
