@@ -118,8 +118,9 @@ EOT;
 	else if($currentUserType == 'parent'){
 		// if lesson is DONE_NO_PAY, allow pay option
 		if($lesson['statusName'] == 'DONE_NO_PAY'){
-			$sitePage = $sitePage . 
-				'<a class="lessonButton" href="TODO">Make Payment</a>';
+	/*		$sitePage = $sitePage . 
+				'<a class="lessonButton" href="TODO">Make Payment</a>';  
+				^^ commented out for now until payments portal implemented */
 		}
 		// else nothing to show
 	}
