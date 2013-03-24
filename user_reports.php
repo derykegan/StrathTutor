@@ -14,11 +14,13 @@
 	// check that user is logged in, else redirect
 	if(getLoggedInType() == ""){
 		header("Location: index.php");
+		exit;
 	}
 	
 	// check if ordinary student, if so, redirect
 	if(getLoggedInType() == 'student' && !hasParentAccess()){
 		header("Location: index.php");
+		exit;
 	}
 	
 	
@@ -67,6 +69,12 @@ EOT;
 	// case: student
 	else if($userType == 'student' && hasParentAccess()){
 		$lessons = getStudentLessonsWithReports($username);
+	}
+	
+	// case: admin
+	else{
+		header("Location: user_lessons.php");
+		exit;
 	}
 	
 	$size = count($lessons);
