@@ -1,6 +1,12 @@
 <?php
 require_once('simpletest/autorun.php');
 
+/**
+	A suite of unit tests for StrathTutor using SimpleTest.
+	Runs all individual unit tests.
+	
+	*/
+
 class AllTests extends TestSuite {
     function AllTests() {
         $this->TestSuite('All tests');

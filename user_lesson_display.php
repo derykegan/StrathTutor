@@ -1,7 +1,12 @@
 <?php
 
 	/*
-		Lesson display - takes id from post
+		Lesson display - takes id from get
+		
+		Displays lesson detail to the user, including any files for this
+		lesson if they exist.
+		Depending on user type, may also show file upload facility, and report
+		editing.
 		
 		*/
 		
@@ -10,7 +15,6 @@
 	include_once 'libraries/lessons.php';
 	include_once 'libraries/reports.php';
 	include_once 'classes/pageFactory.php';
-	include_once 'classes/tableFactory.php';
 	
 	// check that user is logged in, else redirect
 	if(getLoggedInType() == ""){
@@ -22,7 +26,7 @@
 		header("Location: user_lessons.php");
 	}
 	else{
-		// read lesson id from post
+		// read lesson id from get
 		$lessonid = $_GET['id'];
 	}
 	
@@ -52,12 +56,6 @@
 EOT;
 
 	$currentUserType = getLoggedInType();
-	/*
-	// create table and get lesson content
-	$tablef = new tableFactory();
-	$table = $tablef->makeTable(null, $lesson);
-	$sitePage = $sitePage . $table->getTable();
-	*/
 	
 	$lesson = $lesson[0];
 	
@@ -159,8 +157,8 @@ EOT;
 			$sitePage = $sitePage . '<div class="lesson_file"><span class = "label">File name: </span>'
 				. '<a class="fileButton" href="upload/' . $lessonid . '/' . $l['file_name_server']
 				. '">' . $l['file_name_original'] . '</a>'
-				. '<span class="label">Description: </span>' 
-				. $l['file_description'] . '</div>';
+				. '<div class="fileDescription"><span class="label">Description: </span>' 
+				. $l['file_description'] . '</div></div>';
 		}
 		
 		// close lessonFiles div

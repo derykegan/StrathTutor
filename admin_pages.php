@@ -1,4 +1,10 @@
 <?php
+
+	/*
+		Administrator view for editing site content pages.
+		
+		*/
+		
 	// import session and header
 	include_once 'libraries/admin_sql.php';
 	include_once 'libraries/user_check.php';

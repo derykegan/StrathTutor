@@ -1,4 +1,9 @@
 <?php
+	/*
+		Admin page for editing site configuration.
+		
+		*/
+		
 	// import session and header
 	include_once 'libraries/admin_sql.php';
 	include_once 'libraries/user_check.php';

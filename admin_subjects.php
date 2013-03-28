@@ -1,4 +1,8 @@
 <?php
+	/*
+		Admin page for editing subjects and tuition levels.
+		
+		*/
 	// import session and header
 	include_once 'libraries/admin_sql.php';
 	include_once 'libraries/user_check.php';

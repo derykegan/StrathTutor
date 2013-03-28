@@ -1,4 +1,10 @@
 <?php
+
+	/**
+		Displays About page.
+		
+		*/
+		
 	// imports
 	include_once 'classes/pageFactory.php';
 	include_once 'libraries/sql.php';

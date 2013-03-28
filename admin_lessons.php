@@ -1,4 +1,9 @@
 <?php
+
+	/**
+		Displays admin lessons view, showing all lessons on system.
+		
+		*/
 	// import session and header
 	include_once 'libraries/lessons.php';
 	include_once 'libraries/user_check.php';

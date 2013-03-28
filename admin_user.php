@@ -1,4 +1,10 @@
 <?php
+	/*
+		Admin user view - shows all user on system, gives
+		option to add new users.
+		
+		*/
+		
 	// import session and header
 	include_once 'libraries/admin_sql.php';
 	include_once 'libraries/user_check.php';

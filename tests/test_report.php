@@ -2,6 +2,13 @@
 require_once('simpletest/autorun.php');
 require_once('../libraries/reports.php');
 
+/**
+	Reports unit testing
+	
+	Unit testing of reports.php library functionality. 
+	
+	*/
+
 class Test_Report extends UnitTestCase {
     function testGetSingleReport() {
 		$report = getSingleReportId(24);

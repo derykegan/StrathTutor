@@ -1,4 +1,9 @@
 <?php
+	/*
+		Admin messaging view. Shows messages for all
+		users on system.
+		*/
+		
 	// import session and header
 	include_once 'libraries/user_check.php';
 	include_once 'libraries/messages.php';
