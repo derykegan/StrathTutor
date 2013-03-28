@@ -1,11 +1,18 @@
 <?php
-	// Class to deal with MySQL interaction.
+	/*  Core library to deal with MySQL interaction.
+		Provides key services, including script execution,
+		input validation, page and setting retrieval, and
+		more.
+		
+		If installing on a new server, remember to edit the
+		database values below as needed.
+		*/
 	
 	// mysql settings
-	$db_username = "rmb09188";
-	$db_password = "ersterys";
-	$db_hostname = "devweb2012.cis.strath.ac.uk";
-	$db_name = "rmb09188";
+	$db_username = "rmb09188";		//username for database
+	$db_password = "ersterys";		//password for database
+	$db_hostname = "devweb2012.cis.strath.ac.uk"; //database server address
+	$db_name = "rmb09188";			//name of database
 
 	// connect to database server
 	$db = mysqli_connect($db_hostname, $db_username, $db_password, $db_name)

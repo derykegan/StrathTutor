@@ -1,5 +1,10 @@
 <?php
-	// PLACEHOLDER
+	/*
+		Index page - redirects as needed.
+		If logged in, directs to user panel.
+		Else, directs to login page.
+	
+		*/
 	
 	// check session
 	include 'libraries/session.php';
@@ -10,28 +15,8 @@
 	if (isset($_SESSION['loggedIn'])) {
 		
 		if($_SESSION['loggedIn']){
-		  $userType = $_SESSION['userType'];
-		  
-		  // admin
-		  if($userType == 'admin'){
 			  $redir = "userPanel.php";
 		  }
-		  
-		  // tutor
-		  if($userType == 'tutor'){
-			  $redir = "userPanel.php";
-		  }
-		  
-		  // parent
-		  if($userType == 'parent'){
-			  $redir = "userPanel.php";
-		  }
-		  
-		  // student
-		  if($userType == 'student'){
-			  $redir = "userPanel.php";
-		  }
-		}
 		
 	} 
 	 

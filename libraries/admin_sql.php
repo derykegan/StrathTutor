@@ -1,5 +1,8 @@
 <?php
-	// Class to deal with MySQL interaction for admin pages.
+	/*  Library to deal with MySQL interaction for admin pages.
+		Leverages the SQL core library (sql.php)
+	
+		*/
 	
 	include_once 'sql.php';
 	
